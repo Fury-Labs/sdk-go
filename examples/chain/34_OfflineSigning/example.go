@@ -6,11 +6,11 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/InjectiveLabs/sdk-go/client/common"
+	"github.com/Fury-Labs/sdk-go/client/common"
 	"github.com/shopspring/decimal"
 
-	exchangetypes "github.com/InjectiveLabs/sdk-go/chain/exchange/types"
-	chainclient "github.com/InjectiveLabs/sdk-go/client/chain"
+	exchangetypes "github.com/Fury-Labs/sdk-go/chain/exchange/types"
+	chainclient "github.com/Fury-Labs/sdk-go/client/chain"
 	rpchttp "github.com/tendermint/tendermint/rpc/client/http"
 )
 
@@ -36,10 +36,10 @@ func main() {
 	}
 
 	senderAddress, cosmosKeyring, err := chainclient.InitCosmosKeyring(
-		os.Getenv("HOME")+"/.injectived",
-		"injectived",
+		os.Getenv("HOME")+"/.kaijud",
+		"kaijud",
 		"file",
-		"inj-user",
+		"kai-user",
 		"12345678",
 		"5d386fbdbf11f1141010f81a46b40f94887367562bd33b452bbaa6ce1cd1381e", // keyring will be used if pk not provided
 		false,
@@ -65,7 +65,7 @@ func main() {
 		clientCtx,
 		network.ChainGrpcEndpoint,
 		common.OptionTLSCert(network.ChainTlsCert),
-		common.OptionGasPrices("500000000inj"),
+		common.OptionGasPrices("500000000kai"),
 	)
 
 	if err != nil {

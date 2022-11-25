@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/InjectiveLabs/sdk-go/client/common"
-	exchangeclient "github.com/InjectiveLabs/sdk-go/client/exchange"
-	accountPB "github.com/InjectiveLabs/sdk-go/exchange/accounts_rpc/pb"
+	"github.com/Fury-Labs/sdk-go/client/common"
+	exchangeclient "github.com/Fury-Labs/sdk-go/client/exchange"
+	accountPB "github.com/Fury-Labs/sdk-go/exchange/accounts_rpc/pb"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 	}
 
 	ctx := context.Background()
-	accountAddress := "inj1rwv4zn3jptsqs7l8lpa3uvzhs57y8duemete9e"
+	accountAddress := "kai1rwv4zn3jptsqs7l8lpa3uvzhs57y8duemete9e"
 	epoch := int64(1)
 
 	req := accountPB.RewardsRequest{

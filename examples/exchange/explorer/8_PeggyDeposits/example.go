@@ -4,10 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	explorerPB "github.com/InjectiveLabs/sdk-go/exchange/explorer_rpc/pb"
+	explorerPB "github.com/Fury-Labs/sdk-go/exchange/explorer_rpc/pb"
 
-	"github.com/InjectiveLabs/sdk-go/client/common"
-	exchangeclient "github.com/InjectiveLabs/sdk-go/client/exchange"
+	"github.com/Fury-Labs/sdk-go/client/common"
+	exchangeclient "github.com/Fury-Labs/sdk-go/client/exchange"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 
 	ctx := context.Background()
 
-	receiver := "inj14au322k9munkmx5wrchz9q30juf5wjgz2cfqku"
+	receiver := "kai14au322k9munkmx5wrchz9q30juf5wjgz2cfqku"
 
 	req := explorerPB.GetPeggyDepositTxsRequest{
 		Receiver: receiver,

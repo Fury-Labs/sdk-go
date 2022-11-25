@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.4
-// source: injective_spot_exchange_rpc.proto
+// source: kaiju_spot_exchange_rpc.proto
 
-package injective_spot_exchange_rpcpb
+package kaiju_spot_exchange_rpcpb
 
 import (
 	context "context"
@@ -18,32 +18,32 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// InjectiveSpotExchangeRPCClient is the client API for InjectiveSpotExchangeRPC service.
+// KaijuSpotExchangeRPCClient is the client API for KaijuSpotExchangeRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type InjectiveSpotExchangeRPCClient interface {
+type KaijuSpotExchangeRPCClient interface {
 	// Get a list of Spot Markets
 	Markets(ctx context.Context, in *MarketsRequest, opts ...grpc.CallOption) (*MarketsResponse, error)
 	// Get details of a single spot market
 	Market(ctx context.Context, in *MarketRequest, opts ...grpc.CallOption) (*MarketResponse, error)
 	// Stream live updates of selected spot markets
-	StreamMarkets(ctx context.Context, in *StreamMarketsRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamMarketsClient, error)
+	StreamMarkets(ctx context.Context, in *StreamMarketsRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamMarketsClient, error)
 	// Orderbook of a Spot Market
 	Orderbook(ctx context.Context, in *OrderbookRequest, opts ...grpc.CallOption) (*OrderbookResponse, error)
 	// Orderbook of Spot Markets
 	Orderbooks(ctx context.Context, in *OrderbooksRequest, opts ...grpc.CallOption) (*OrderbooksResponse, error)
 	// Stream live snapshot updates of selected spot market orderbook
-	StreamOrderbookSnapshot(ctx context.Context, in *StreamOrderbookSnapshotRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamOrderbookSnapshotClient, error)
+	StreamOrderbookSnapshot(ctx context.Context, in *StreamOrderbookSnapshotRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamOrderbookSnapshotClient, error)
 	// Stream live level updates of selected spot market orderbook
-	StreamOrderbookUpdate(ctx context.Context, in *StreamOrderbookUpdateRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamOrderbookUpdateClient, error)
+	StreamOrderbookUpdate(ctx context.Context, in *StreamOrderbookUpdateRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamOrderbookUpdateClient, error)
 	// Orders of a Spot Market
 	Orders(ctx context.Context, in *OrdersRequest, opts ...grpc.CallOption) (*OrdersResponse, error)
 	// Stream updates to individual orders of a Spot Market
-	StreamOrders(ctx context.Context, in *StreamOrdersRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamOrdersClient, error)
+	StreamOrders(ctx context.Context, in *StreamOrdersRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamOrdersClient, error)
 	// Trades of a Spot Market
 	Trades(ctx context.Context, in *TradesRequest, opts ...grpc.CallOption) (*TradesResponse, error)
 	// Stream newly executed trades from Spot Market
-	StreamTrades(ctx context.Context, in *StreamTradesRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamTradesClient, error)
+	StreamTrades(ctx context.Context, in *StreamTradesRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamTradesClient, error)
 	// List orders posted from this subaccount
 	SubaccountOrdersList(ctx context.Context, in *SubaccountOrdersListRequest, opts ...grpc.CallOption) (*SubaccountOrdersListResponse, error)
 	// List trades executed by this subaccount
@@ -51,41 +51,41 @@ type InjectiveSpotExchangeRPCClient interface {
 	// Lists history orders posted from this subaccount
 	OrdersHistory(ctx context.Context, in *OrdersHistoryRequest, opts ...grpc.CallOption) (*OrdersHistoryResponse, error)
 	// Stream updates to historical orders of a spot Market
-	StreamOrdersHistory(ctx context.Context, in *StreamOrdersHistoryRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamOrdersHistoryClient, error)
+	StreamOrdersHistory(ctx context.Context, in *StreamOrdersHistoryRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamOrdersHistoryClient, error)
 }
 
-type injectiveSpotExchangeRPCClient struct {
+type kaijuSpotExchangeRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewInjectiveSpotExchangeRPCClient(cc grpc.ClientConnInterface) InjectiveSpotExchangeRPCClient {
-	return &injectiveSpotExchangeRPCClient{cc}
+func NewKaijuSpotExchangeRPCClient(cc grpc.ClientConnInterface) KaijuSpotExchangeRPCClient {
+	return &kaijuSpotExchangeRPCClient{cc}
 }
 
-func (c *injectiveSpotExchangeRPCClient) Markets(ctx context.Context, in *MarketsRequest, opts ...grpc.CallOption) (*MarketsResponse, error) {
+func (c *kaijuSpotExchangeRPCClient) Markets(ctx context.Context, in *MarketsRequest, opts ...grpc.CallOption) (*MarketsResponse, error) {
 	out := new(MarketsResponse)
-	err := c.cc.Invoke(ctx, "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Markets", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Markets", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) Market(ctx context.Context, in *MarketRequest, opts ...grpc.CallOption) (*MarketResponse, error) {
+func (c *kaijuSpotExchangeRPCClient) Market(ctx context.Context, in *MarketRequest, opts ...grpc.CallOption) (*MarketResponse, error) {
 	out := new(MarketResponse)
-	err := c.cc.Invoke(ctx, "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Market", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Market", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) StreamMarkets(ctx context.Context, in *StreamMarketsRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamMarketsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveSpotExchangeRPC_ServiceDesc.Streams[0], "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/StreamMarkets", opts...)
+func (c *kaijuSpotExchangeRPCClient) StreamMarkets(ctx context.Context, in *StreamMarketsRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamMarketsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuSpotExchangeRPC_ServiceDesc.Streams[0], "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/StreamMarkets", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveSpotExchangeRPCStreamMarketsClient{stream}
+	x := &kaijuSpotExchangeRPCStreamMarketsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -95,16 +95,16 @@ func (c *injectiveSpotExchangeRPCClient) StreamMarkets(ctx context.Context, in *
 	return x, nil
 }
 
-type InjectiveSpotExchangeRPC_StreamMarketsClient interface {
+type KaijuSpotExchangeRPC_StreamMarketsClient interface {
 	Recv() (*StreamMarketsResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveSpotExchangeRPCStreamMarketsClient struct {
+type kaijuSpotExchangeRPCStreamMarketsClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamMarketsClient) Recv() (*StreamMarketsResponse, error) {
+func (x *kaijuSpotExchangeRPCStreamMarketsClient) Recv() (*StreamMarketsResponse, error) {
 	m := new(StreamMarketsResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -112,30 +112,30 @@ func (x *injectiveSpotExchangeRPCStreamMarketsClient) Recv() (*StreamMarketsResp
 	return m, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) Orderbook(ctx context.Context, in *OrderbookRequest, opts ...grpc.CallOption) (*OrderbookResponse, error) {
+func (c *kaijuSpotExchangeRPCClient) Orderbook(ctx context.Context, in *OrderbookRequest, opts ...grpc.CallOption) (*OrderbookResponse, error) {
 	out := new(OrderbookResponse)
-	err := c.cc.Invoke(ctx, "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Orderbook", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Orderbook", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) Orderbooks(ctx context.Context, in *OrderbooksRequest, opts ...grpc.CallOption) (*OrderbooksResponse, error) {
+func (c *kaijuSpotExchangeRPCClient) Orderbooks(ctx context.Context, in *OrderbooksRequest, opts ...grpc.CallOption) (*OrderbooksResponse, error) {
 	out := new(OrderbooksResponse)
-	err := c.cc.Invoke(ctx, "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Orderbooks", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Orderbooks", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) StreamOrderbookSnapshot(ctx context.Context, in *StreamOrderbookSnapshotRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamOrderbookSnapshotClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveSpotExchangeRPC_ServiceDesc.Streams[1], "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/StreamOrderbookSnapshot", opts...)
+func (c *kaijuSpotExchangeRPCClient) StreamOrderbookSnapshot(ctx context.Context, in *StreamOrderbookSnapshotRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamOrderbookSnapshotClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuSpotExchangeRPC_ServiceDesc.Streams[1], "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/StreamOrderbookSnapshot", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveSpotExchangeRPCStreamOrderbookSnapshotClient{stream}
+	x := &kaijuSpotExchangeRPCStreamOrderbookSnapshotClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -145,16 +145,16 @@ func (c *injectiveSpotExchangeRPCClient) StreamOrderbookSnapshot(ctx context.Con
 	return x, nil
 }
 
-type InjectiveSpotExchangeRPC_StreamOrderbookSnapshotClient interface {
+type KaijuSpotExchangeRPC_StreamOrderbookSnapshotClient interface {
 	Recv() (*StreamOrderbookSnapshotResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveSpotExchangeRPCStreamOrderbookSnapshotClient struct {
+type kaijuSpotExchangeRPCStreamOrderbookSnapshotClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamOrderbookSnapshotClient) Recv() (*StreamOrderbookSnapshotResponse, error) {
+func (x *kaijuSpotExchangeRPCStreamOrderbookSnapshotClient) Recv() (*StreamOrderbookSnapshotResponse, error) {
 	m := new(StreamOrderbookSnapshotResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -162,12 +162,12 @@ func (x *injectiveSpotExchangeRPCStreamOrderbookSnapshotClient) Recv() (*StreamO
 	return m, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) StreamOrderbookUpdate(ctx context.Context, in *StreamOrderbookUpdateRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamOrderbookUpdateClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveSpotExchangeRPC_ServiceDesc.Streams[2], "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/StreamOrderbookUpdate", opts...)
+func (c *kaijuSpotExchangeRPCClient) StreamOrderbookUpdate(ctx context.Context, in *StreamOrderbookUpdateRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamOrderbookUpdateClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuSpotExchangeRPC_ServiceDesc.Streams[2], "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/StreamOrderbookUpdate", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveSpotExchangeRPCStreamOrderbookUpdateClient{stream}
+	x := &kaijuSpotExchangeRPCStreamOrderbookUpdateClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -177,16 +177,16 @@ func (c *injectiveSpotExchangeRPCClient) StreamOrderbookUpdate(ctx context.Conte
 	return x, nil
 }
 
-type InjectiveSpotExchangeRPC_StreamOrderbookUpdateClient interface {
+type KaijuSpotExchangeRPC_StreamOrderbookUpdateClient interface {
 	Recv() (*StreamOrderbookUpdateResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveSpotExchangeRPCStreamOrderbookUpdateClient struct {
+type kaijuSpotExchangeRPCStreamOrderbookUpdateClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamOrderbookUpdateClient) Recv() (*StreamOrderbookUpdateResponse, error) {
+func (x *kaijuSpotExchangeRPCStreamOrderbookUpdateClient) Recv() (*StreamOrderbookUpdateResponse, error) {
 	m := new(StreamOrderbookUpdateResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -194,21 +194,21 @@ func (x *injectiveSpotExchangeRPCStreamOrderbookUpdateClient) Recv() (*StreamOrd
 	return m, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) Orders(ctx context.Context, in *OrdersRequest, opts ...grpc.CallOption) (*OrdersResponse, error) {
+func (c *kaijuSpotExchangeRPCClient) Orders(ctx context.Context, in *OrdersRequest, opts ...grpc.CallOption) (*OrdersResponse, error) {
 	out := new(OrdersResponse)
-	err := c.cc.Invoke(ctx, "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Orders", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Orders", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) StreamOrders(ctx context.Context, in *StreamOrdersRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamOrdersClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveSpotExchangeRPC_ServiceDesc.Streams[3], "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/StreamOrders", opts...)
+func (c *kaijuSpotExchangeRPCClient) StreamOrders(ctx context.Context, in *StreamOrdersRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamOrdersClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuSpotExchangeRPC_ServiceDesc.Streams[3], "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/StreamOrders", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveSpotExchangeRPCStreamOrdersClient{stream}
+	x := &kaijuSpotExchangeRPCStreamOrdersClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -218,16 +218,16 @@ func (c *injectiveSpotExchangeRPCClient) StreamOrders(ctx context.Context, in *S
 	return x, nil
 }
 
-type InjectiveSpotExchangeRPC_StreamOrdersClient interface {
+type KaijuSpotExchangeRPC_StreamOrdersClient interface {
 	Recv() (*StreamOrdersResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveSpotExchangeRPCStreamOrdersClient struct {
+type kaijuSpotExchangeRPCStreamOrdersClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamOrdersClient) Recv() (*StreamOrdersResponse, error) {
+func (x *kaijuSpotExchangeRPCStreamOrdersClient) Recv() (*StreamOrdersResponse, error) {
 	m := new(StreamOrdersResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -235,21 +235,21 @@ func (x *injectiveSpotExchangeRPCStreamOrdersClient) Recv() (*StreamOrdersRespon
 	return m, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) Trades(ctx context.Context, in *TradesRequest, opts ...grpc.CallOption) (*TradesResponse, error) {
+func (c *kaijuSpotExchangeRPCClient) Trades(ctx context.Context, in *TradesRequest, opts ...grpc.CallOption) (*TradesResponse, error) {
 	out := new(TradesResponse)
-	err := c.cc.Invoke(ctx, "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Trades", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Trades", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) StreamTrades(ctx context.Context, in *StreamTradesRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamTradesClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveSpotExchangeRPC_ServiceDesc.Streams[4], "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/StreamTrades", opts...)
+func (c *kaijuSpotExchangeRPCClient) StreamTrades(ctx context.Context, in *StreamTradesRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamTradesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuSpotExchangeRPC_ServiceDesc.Streams[4], "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/StreamTrades", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveSpotExchangeRPCStreamTradesClient{stream}
+	x := &kaijuSpotExchangeRPCStreamTradesClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -259,16 +259,16 @@ func (c *injectiveSpotExchangeRPCClient) StreamTrades(ctx context.Context, in *S
 	return x, nil
 }
 
-type InjectiveSpotExchangeRPC_StreamTradesClient interface {
+type KaijuSpotExchangeRPC_StreamTradesClient interface {
 	Recv() (*StreamTradesResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveSpotExchangeRPCStreamTradesClient struct {
+type kaijuSpotExchangeRPCStreamTradesClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamTradesClient) Recv() (*StreamTradesResponse, error) {
+func (x *kaijuSpotExchangeRPCStreamTradesClient) Recv() (*StreamTradesResponse, error) {
 	m := new(StreamTradesResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -276,39 +276,39 @@ func (x *injectiveSpotExchangeRPCStreamTradesClient) Recv() (*StreamTradesRespon
 	return m, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) SubaccountOrdersList(ctx context.Context, in *SubaccountOrdersListRequest, opts ...grpc.CallOption) (*SubaccountOrdersListResponse, error) {
+func (c *kaijuSpotExchangeRPCClient) SubaccountOrdersList(ctx context.Context, in *SubaccountOrdersListRequest, opts ...grpc.CallOption) (*SubaccountOrdersListResponse, error) {
 	out := new(SubaccountOrdersListResponse)
-	err := c.cc.Invoke(ctx, "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/SubaccountOrdersList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/SubaccountOrdersList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) SubaccountTradesList(ctx context.Context, in *SubaccountTradesListRequest, opts ...grpc.CallOption) (*SubaccountTradesListResponse, error) {
+func (c *kaijuSpotExchangeRPCClient) SubaccountTradesList(ctx context.Context, in *SubaccountTradesListRequest, opts ...grpc.CallOption) (*SubaccountTradesListResponse, error) {
 	out := new(SubaccountTradesListResponse)
-	err := c.cc.Invoke(ctx, "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/SubaccountTradesList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/SubaccountTradesList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) OrdersHistory(ctx context.Context, in *OrdersHistoryRequest, opts ...grpc.CallOption) (*OrdersHistoryResponse, error) {
+func (c *kaijuSpotExchangeRPCClient) OrdersHistory(ctx context.Context, in *OrdersHistoryRequest, opts ...grpc.CallOption) (*OrdersHistoryResponse, error) {
 	out := new(OrdersHistoryResponse)
-	err := c.cc.Invoke(ctx, "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/OrdersHistory", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/OrdersHistory", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveSpotExchangeRPCClient) StreamOrdersHistory(ctx context.Context, in *StreamOrdersHistoryRequest, opts ...grpc.CallOption) (InjectiveSpotExchangeRPC_StreamOrdersHistoryClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveSpotExchangeRPC_ServiceDesc.Streams[5], "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/StreamOrdersHistory", opts...)
+func (c *kaijuSpotExchangeRPCClient) StreamOrdersHistory(ctx context.Context, in *StreamOrdersHistoryRequest, opts ...grpc.CallOption) (KaijuSpotExchangeRPC_StreamOrdersHistoryClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuSpotExchangeRPC_ServiceDesc.Streams[5], "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/StreamOrdersHistory", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveSpotExchangeRPCStreamOrdersHistoryClient{stream}
+	x := &kaijuSpotExchangeRPCStreamOrdersHistoryClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -318,16 +318,16 @@ func (c *injectiveSpotExchangeRPCClient) StreamOrdersHistory(ctx context.Context
 	return x, nil
 }
 
-type InjectiveSpotExchangeRPC_StreamOrdersHistoryClient interface {
+type KaijuSpotExchangeRPC_StreamOrdersHistoryClient interface {
 	Recv() (*StreamOrdersHistoryResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveSpotExchangeRPCStreamOrdersHistoryClient struct {
+type kaijuSpotExchangeRPCStreamOrdersHistoryClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamOrdersHistoryClient) Recv() (*StreamOrdersHistoryResponse, error) {
+func (x *kaijuSpotExchangeRPCStreamOrdersHistoryClient) Recv() (*StreamOrdersHistoryResponse, error) {
 	m := new(StreamOrdersHistoryResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -335,32 +335,32 @@ func (x *injectiveSpotExchangeRPCStreamOrdersHistoryClient) Recv() (*StreamOrder
 	return m, nil
 }
 
-// InjectiveSpotExchangeRPCServer is the server API for InjectiveSpotExchangeRPC service.
-// All implementations must embed UnimplementedInjectiveSpotExchangeRPCServer
+// KaijuSpotExchangeRPCServer is the server API for KaijuSpotExchangeRPC service.
+// All implementations must embed UnimplementedKaijuSpotExchangeRPCServer
 // for forward compatibility
-type InjectiveSpotExchangeRPCServer interface {
+type KaijuSpotExchangeRPCServer interface {
 	// Get a list of Spot Markets
 	Markets(context.Context, *MarketsRequest) (*MarketsResponse, error)
 	// Get details of a single spot market
 	Market(context.Context, *MarketRequest) (*MarketResponse, error)
 	// Stream live updates of selected spot markets
-	StreamMarkets(*StreamMarketsRequest, InjectiveSpotExchangeRPC_StreamMarketsServer) error
+	StreamMarkets(*StreamMarketsRequest, KaijuSpotExchangeRPC_StreamMarketsServer) error
 	// Orderbook of a Spot Market
 	Orderbook(context.Context, *OrderbookRequest) (*OrderbookResponse, error)
 	// Orderbook of Spot Markets
 	Orderbooks(context.Context, *OrderbooksRequest) (*OrderbooksResponse, error)
 	// Stream live snapshot updates of selected spot market orderbook
-	StreamOrderbookSnapshot(*StreamOrderbookSnapshotRequest, InjectiveSpotExchangeRPC_StreamOrderbookSnapshotServer) error
+	StreamOrderbookSnapshot(*StreamOrderbookSnapshotRequest, KaijuSpotExchangeRPC_StreamOrderbookSnapshotServer) error
 	// Stream live level updates of selected spot market orderbook
-	StreamOrderbookUpdate(*StreamOrderbookUpdateRequest, InjectiveSpotExchangeRPC_StreamOrderbookUpdateServer) error
+	StreamOrderbookUpdate(*StreamOrderbookUpdateRequest, KaijuSpotExchangeRPC_StreamOrderbookUpdateServer) error
 	// Orders of a Spot Market
 	Orders(context.Context, *OrdersRequest) (*OrdersResponse, error)
 	// Stream updates to individual orders of a Spot Market
-	StreamOrders(*StreamOrdersRequest, InjectiveSpotExchangeRPC_StreamOrdersServer) error
+	StreamOrders(*StreamOrdersRequest, KaijuSpotExchangeRPC_StreamOrdersServer) error
 	// Trades of a Spot Market
 	Trades(context.Context, *TradesRequest) (*TradesResponse, error)
 	// Stream newly executed trades from Spot Market
-	StreamTrades(*StreamTradesRequest, InjectiveSpotExchangeRPC_StreamTradesServer) error
+	StreamTrades(*StreamTradesRequest, KaijuSpotExchangeRPC_StreamTradesServer) error
 	// List orders posted from this subaccount
 	SubaccountOrdersList(context.Context, *SubaccountOrdersListRequest) (*SubaccountOrdersListResponse, error)
 	// List trades executed by this subaccount
@@ -368,436 +368,436 @@ type InjectiveSpotExchangeRPCServer interface {
 	// Lists history orders posted from this subaccount
 	OrdersHistory(context.Context, *OrdersHistoryRequest) (*OrdersHistoryResponse, error)
 	// Stream updates to historical orders of a spot Market
-	StreamOrdersHistory(*StreamOrdersHistoryRequest, InjectiveSpotExchangeRPC_StreamOrdersHistoryServer) error
-	mustEmbedUnimplementedInjectiveSpotExchangeRPCServer()
+	StreamOrdersHistory(*StreamOrdersHistoryRequest, KaijuSpotExchangeRPC_StreamOrdersHistoryServer) error
+	mustEmbedUnimplementedKaijuSpotExchangeRPCServer()
 }
 
-// UnimplementedInjectiveSpotExchangeRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedInjectiveSpotExchangeRPCServer struct {
+// UnimplementedKaijuSpotExchangeRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedKaijuSpotExchangeRPCServer struct {
 }
 
-func (UnimplementedInjectiveSpotExchangeRPCServer) Markets(context.Context, *MarketsRequest) (*MarketsResponse, error) {
+func (UnimplementedKaijuSpotExchangeRPCServer) Markets(context.Context, *MarketsRequest) (*MarketsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Markets not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) Market(context.Context, *MarketRequest) (*MarketResponse, error) {
+func (UnimplementedKaijuSpotExchangeRPCServer) Market(context.Context, *MarketRequest) (*MarketResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Market not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) StreamMarkets(*StreamMarketsRequest, InjectiveSpotExchangeRPC_StreamMarketsServer) error {
+func (UnimplementedKaijuSpotExchangeRPCServer) StreamMarkets(*StreamMarketsRequest, KaijuSpotExchangeRPC_StreamMarketsServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamMarkets not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) Orderbook(context.Context, *OrderbookRequest) (*OrderbookResponse, error) {
+func (UnimplementedKaijuSpotExchangeRPCServer) Orderbook(context.Context, *OrderbookRequest) (*OrderbookResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Orderbook not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) Orderbooks(context.Context, *OrderbooksRequest) (*OrderbooksResponse, error) {
+func (UnimplementedKaijuSpotExchangeRPCServer) Orderbooks(context.Context, *OrderbooksRequest) (*OrderbooksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Orderbooks not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) StreamOrderbookSnapshot(*StreamOrderbookSnapshotRequest, InjectiveSpotExchangeRPC_StreamOrderbookSnapshotServer) error {
+func (UnimplementedKaijuSpotExchangeRPCServer) StreamOrderbookSnapshot(*StreamOrderbookSnapshotRequest, KaijuSpotExchangeRPC_StreamOrderbookSnapshotServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamOrderbookSnapshot not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) StreamOrderbookUpdate(*StreamOrderbookUpdateRequest, InjectiveSpotExchangeRPC_StreamOrderbookUpdateServer) error {
+func (UnimplementedKaijuSpotExchangeRPCServer) StreamOrderbookUpdate(*StreamOrderbookUpdateRequest, KaijuSpotExchangeRPC_StreamOrderbookUpdateServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamOrderbookUpdate not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) Orders(context.Context, *OrdersRequest) (*OrdersResponse, error) {
+func (UnimplementedKaijuSpotExchangeRPCServer) Orders(context.Context, *OrdersRequest) (*OrdersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Orders not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) StreamOrders(*StreamOrdersRequest, InjectiveSpotExchangeRPC_StreamOrdersServer) error {
+func (UnimplementedKaijuSpotExchangeRPCServer) StreamOrders(*StreamOrdersRequest, KaijuSpotExchangeRPC_StreamOrdersServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamOrders not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) Trades(context.Context, *TradesRequest) (*TradesResponse, error) {
+func (UnimplementedKaijuSpotExchangeRPCServer) Trades(context.Context, *TradesRequest) (*TradesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Trades not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) StreamTrades(*StreamTradesRequest, InjectiveSpotExchangeRPC_StreamTradesServer) error {
+func (UnimplementedKaijuSpotExchangeRPCServer) StreamTrades(*StreamTradesRequest, KaijuSpotExchangeRPC_StreamTradesServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamTrades not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) SubaccountOrdersList(context.Context, *SubaccountOrdersListRequest) (*SubaccountOrdersListResponse, error) {
+func (UnimplementedKaijuSpotExchangeRPCServer) SubaccountOrdersList(context.Context, *SubaccountOrdersListRequest) (*SubaccountOrdersListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubaccountOrdersList not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) SubaccountTradesList(context.Context, *SubaccountTradesListRequest) (*SubaccountTradesListResponse, error) {
+func (UnimplementedKaijuSpotExchangeRPCServer) SubaccountTradesList(context.Context, *SubaccountTradesListRequest) (*SubaccountTradesListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubaccountTradesList not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) OrdersHistory(context.Context, *OrdersHistoryRequest) (*OrdersHistoryResponse, error) {
+func (UnimplementedKaijuSpotExchangeRPCServer) OrdersHistory(context.Context, *OrdersHistoryRequest) (*OrdersHistoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OrdersHistory not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) StreamOrdersHistory(*StreamOrdersHistoryRequest, InjectiveSpotExchangeRPC_StreamOrdersHistoryServer) error {
+func (UnimplementedKaijuSpotExchangeRPCServer) StreamOrdersHistory(*StreamOrdersHistoryRequest, KaijuSpotExchangeRPC_StreamOrdersHistoryServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamOrdersHistory not implemented")
 }
-func (UnimplementedInjectiveSpotExchangeRPCServer) mustEmbedUnimplementedInjectiveSpotExchangeRPCServer() {
+func (UnimplementedKaijuSpotExchangeRPCServer) mustEmbedUnimplementedKaijuSpotExchangeRPCServer() {
 }
 
-// UnsafeInjectiveSpotExchangeRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to InjectiveSpotExchangeRPCServer will
+// UnsafeKaijuSpotExchangeRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KaijuSpotExchangeRPCServer will
 // result in compilation errors.
-type UnsafeInjectiveSpotExchangeRPCServer interface {
-	mustEmbedUnimplementedInjectiveSpotExchangeRPCServer()
+type UnsafeKaijuSpotExchangeRPCServer interface {
+	mustEmbedUnimplementedKaijuSpotExchangeRPCServer()
 }
 
-func RegisterInjectiveSpotExchangeRPCServer(s grpc.ServiceRegistrar, srv InjectiveSpotExchangeRPCServer) {
-	s.RegisterService(&InjectiveSpotExchangeRPC_ServiceDesc, srv)
+func RegisterKaijuSpotExchangeRPCServer(s grpc.ServiceRegistrar, srv KaijuSpotExchangeRPCServer) {
+	s.RegisterService(&KaijuSpotExchangeRPC_ServiceDesc, srv)
 }
 
-func _InjectiveSpotExchangeRPC_Markets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuSpotExchangeRPC_Markets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(MarketsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveSpotExchangeRPCServer).Markets(ctx, in)
+		return srv.(KaijuSpotExchangeRPCServer).Markets(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Markets",
+		FullMethod: "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Markets",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveSpotExchangeRPCServer).Markets(ctx, req.(*MarketsRequest))
+		return srv.(KaijuSpotExchangeRPCServer).Markets(ctx, req.(*MarketsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveSpotExchangeRPC_Market_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuSpotExchangeRPC_Market_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(MarketRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveSpotExchangeRPCServer).Market(ctx, in)
+		return srv.(KaijuSpotExchangeRPCServer).Market(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Market",
+		FullMethod: "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Market",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveSpotExchangeRPCServer).Market(ctx, req.(*MarketRequest))
+		return srv.(KaijuSpotExchangeRPCServer).Market(ctx, req.(*MarketRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveSpotExchangeRPC_StreamMarkets_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuSpotExchangeRPC_StreamMarkets_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamMarketsRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveSpotExchangeRPCServer).StreamMarkets(m, &injectiveSpotExchangeRPCStreamMarketsServer{stream})
+	return srv.(KaijuSpotExchangeRPCServer).StreamMarkets(m, &kaijuSpotExchangeRPCStreamMarketsServer{stream})
 }
 
-type InjectiveSpotExchangeRPC_StreamMarketsServer interface {
+type KaijuSpotExchangeRPC_StreamMarketsServer interface {
 	Send(*StreamMarketsResponse) error
 	grpc.ServerStream
 }
 
-type injectiveSpotExchangeRPCStreamMarketsServer struct {
+type kaijuSpotExchangeRPCStreamMarketsServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamMarketsServer) Send(m *StreamMarketsResponse) error {
+func (x *kaijuSpotExchangeRPCStreamMarketsServer) Send(m *StreamMarketsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _InjectiveSpotExchangeRPC_Orderbook_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuSpotExchangeRPC_Orderbook_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(OrderbookRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveSpotExchangeRPCServer).Orderbook(ctx, in)
+		return srv.(KaijuSpotExchangeRPCServer).Orderbook(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Orderbook",
+		FullMethod: "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Orderbook",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveSpotExchangeRPCServer).Orderbook(ctx, req.(*OrderbookRequest))
+		return srv.(KaijuSpotExchangeRPCServer).Orderbook(ctx, req.(*OrderbookRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveSpotExchangeRPC_Orderbooks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuSpotExchangeRPC_Orderbooks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(OrderbooksRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveSpotExchangeRPCServer).Orderbooks(ctx, in)
+		return srv.(KaijuSpotExchangeRPCServer).Orderbooks(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Orderbooks",
+		FullMethod: "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Orderbooks",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveSpotExchangeRPCServer).Orderbooks(ctx, req.(*OrderbooksRequest))
+		return srv.(KaijuSpotExchangeRPCServer).Orderbooks(ctx, req.(*OrderbooksRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveSpotExchangeRPC_StreamOrderbookSnapshot_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuSpotExchangeRPC_StreamOrderbookSnapshot_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamOrderbookSnapshotRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveSpotExchangeRPCServer).StreamOrderbookSnapshot(m, &injectiveSpotExchangeRPCStreamOrderbookSnapshotServer{stream})
+	return srv.(KaijuSpotExchangeRPCServer).StreamOrderbookSnapshot(m, &kaijuSpotExchangeRPCStreamOrderbookSnapshotServer{stream})
 }
 
-type InjectiveSpotExchangeRPC_StreamOrderbookSnapshotServer interface {
+type KaijuSpotExchangeRPC_StreamOrderbookSnapshotServer interface {
 	Send(*StreamOrderbookSnapshotResponse) error
 	grpc.ServerStream
 }
 
-type injectiveSpotExchangeRPCStreamOrderbookSnapshotServer struct {
+type kaijuSpotExchangeRPCStreamOrderbookSnapshotServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamOrderbookSnapshotServer) Send(m *StreamOrderbookSnapshotResponse) error {
+func (x *kaijuSpotExchangeRPCStreamOrderbookSnapshotServer) Send(m *StreamOrderbookSnapshotResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _InjectiveSpotExchangeRPC_StreamOrderbookUpdate_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuSpotExchangeRPC_StreamOrderbookUpdate_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamOrderbookUpdateRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveSpotExchangeRPCServer).StreamOrderbookUpdate(m, &injectiveSpotExchangeRPCStreamOrderbookUpdateServer{stream})
+	return srv.(KaijuSpotExchangeRPCServer).StreamOrderbookUpdate(m, &kaijuSpotExchangeRPCStreamOrderbookUpdateServer{stream})
 }
 
-type InjectiveSpotExchangeRPC_StreamOrderbookUpdateServer interface {
+type KaijuSpotExchangeRPC_StreamOrderbookUpdateServer interface {
 	Send(*StreamOrderbookUpdateResponse) error
 	grpc.ServerStream
 }
 
-type injectiveSpotExchangeRPCStreamOrderbookUpdateServer struct {
+type kaijuSpotExchangeRPCStreamOrderbookUpdateServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamOrderbookUpdateServer) Send(m *StreamOrderbookUpdateResponse) error {
+func (x *kaijuSpotExchangeRPCStreamOrderbookUpdateServer) Send(m *StreamOrderbookUpdateResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _InjectiveSpotExchangeRPC_Orders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuSpotExchangeRPC_Orders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(OrdersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveSpotExchangeRPCServer).Orders(ctx, in)
+		return srv.(KaijuSpotExchangeRPCServer).Orders(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Orders",
+		FullMethod: "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Orders",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveSpotExchangeRPCServer).Orders(ctx, req.(*OrdersRequest))
+		return srv.(KaijuSpotExchangeRPCServer).Orders(ctx, req.(*OrdersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveSpotExchangeRPC_StreamOrders_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuSpotExchangeRPC_StreamOrders_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamOrdersRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveSpotExchangeRPCServer).StreamOrders(m, &injectiveSpotExchangeRPCStreamOrdersServer{stream})
+	return srv.(KaijuSpotExchangeRPCServer).StreamOrders(m, &kaijuSpotExchangeRPCStreamOrdersServer{stream})
 }
 
-type InjectiveSpotExchangeRPC_StreamOrdersServer interface {
+type KaijuSpotExchangeRPC_StreamOrdersServer interface {
 	Send(*StreamOrdersResponse) error
 	grpc.ServerStream
 }
 
-type injectiveSpotExchangeRPCStreamOrdersServer struct {
+type kaijuSpotExchangeRPCStreamOrdersServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamOrdersServer) Send(m *StreamOrdersResponse) error {
+func (x *kaijuSpotExchangeRPCStreamOrdersServer) Send(m *StreamOrdersResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _InjectiveSpotExchangeRPC_Trades_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuSpotExchangeRPC_Trades_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TradesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveSpotExchangeRPCServer).Trades(ctx, in)
+		return srv.(KaijuSpotExchangeRPCServer).Trades(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/Trades",
+		FullMethod: "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/Trades",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveSpotExchangeRPCServer).Trades(ctx, req.(*TradesRequest))
+		return srv.(KaijuSpotExchangeRPCServer).Trades(ctx, req.(*TradesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveSpotExchangeRPC_StreamTrades_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuSpotExchangeRPC_StreamTrades_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamTradesRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveSpotExchangeRPCServer).StreamTrades(m, &injectiveSpotExchangeRPCStreamTradesServer{stream})
+	return srv.(KaijuSpotExchangeRPCServer).StreamTrades(m, &kaijuSpotExchangeRPCStreamTradesServer{stream})
 }
 
-type InjectiveSpotExchangeRPC_StreamTradesServer interface {
+type KaijuSpotExchangeRPC_StreamTradesServer interface {
 	Send(*StreamTradesResponse) error
 	grpc.ServerStream
 }
 
-type injectiveSpotExchangeRPCStreamTradesServer struct {
+type kaijuSpotExchangeRPCStreamTradesServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamTradesServer) Send(m *StreamTradesResponse) error {
+func (x *kaijuSpotExchangeRPCStreamTradesServer) Send(m *StreamTradesResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _InjectiveSpotExchangeRPC_SubaccountOrdersList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuSpotExchangeRPC_SubaccountOrdersList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SubaccountOrdersListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveSpotExchangeRPCServer).SubaccountOrdersList(ctx, in)
+		return srv.(KaijuSpotExchangeRPCServer).SubaccountOrdersList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/SubaccountOrdersList",
+		FullMethod: "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/SubaccountOrdersList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveSpotExchangeRPCServer).SubaccountOrdersList(ctx, req.(*SubaccountOrdersListRequest))
+		return srv.(KaijuSpotExchangeRPCServer).SubaccountOrdersList(ctx, req.(*SubaccountOrdersListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveSpotExchangeRPC_SubaccountTradesList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuSpotExchangeRPC_SubaccountTradesList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SubaccountTradesListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveSpotExchangeRPCServer).SubaccountTradesList(ctx, in)
+		return srv.(KaijuSpotExchangeRPCServer).SubaccountTradesList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/SubaccountTradesList",
+		FullMethod: "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/SubaccountTradesList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveSpotExchangeRPCServer).SubaccountTradesList(ctx, req.(*SubaccountTradesListRequest))
+		return srv.(KaijuSpotExchangeRPCServer).SubaccountTradesList(ctx, req.(*SubaccountTradesListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveSpotExchangeRPC_OrdersHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuSpotExchangeRPC_OrdersHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(OrdersHistoryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveSpotExchangeRPCServer).OrdersHistory(ctx, in)
+		return srv.(KaijuSpotExchangeRPCServer).OrdersHistory(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_spot_exchange_rpc.InjectiveSpotExchangeRPC/OrdersHistory",
+		FullMethod: "/kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC/OrdersHistory",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveSpotExchangeRPCServer).OrdersHistory(ctx, req.(*OrdersHistoryRequest))
+		return srv.(KaijuSpotExchangeRPCServer).OrdersHistory(ctx, req.(*OrdersHistoryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveSpotExchangeRPC_StreamOrdersHistory_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuSpotExchangeRPC_StreamOrdersHistory_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamOrdersHistoryRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveSpotExchangeRPCServer).StreamOrdersHistory(m, &injectiveSpotExchangeRPCStreamOrdersHistoryServer{stream})
+	return srv.(KaijuSpotExchangeRPCServer).StreamOrdersHistory(m, &kaijuSpotExchangeRPCStreamOrdersHistoryServer{stream})
 }
 
-type InjectiveSpotExchangeRPC_StreamOrdersHistoryServer interface {
+type KaijuSpotExchangeRPC_StreamOrdersHistoryServer interface {
 	Send(*StreamOrdersHistoryResponse) error
 	grpc.ServerStream
 }
 
-type injectiveSpotExchangeRPCStreamOrdersHistoryServer struct {
+type kaijuSpotExchangeRPCStreamOrdersHistoryServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveSpotExchangeRPCStreamOrdersHistoryServer) Send(m *StreamOrdersHistoryResponse) error {
+func (x *kaijuSpotExchangeRPCStreamOrdersHistoryServer) Send(m *StreamOrdersHistoryResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-// InjectiveSpotExchangeRPC_ServiceDesc is the grpc.ServiceDesc for InjectiveSpotExchangeRPC service.
+// KaijuSpotExchangeRPC_ServiceDesc is the grpc.ServiceDesc for KaijuSpotExchangeRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var InjectiveSpotExchangeRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "injective_spot_exchange_rpc.InjectiveSpotExchangeRPC",
-	HandlerType: (*InjectiveSpotExchangeRPCServer)(nil),
+var KaijuSpotExchangeRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kaiju_spot_exchange_rpc.KaijuSpotExchangeRPC",
+	HandlerType: (*KaijuSpotExchangeRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Markets",
-			Handler:    _InjectiveSpotExchangeRPC_Markets_Handler,
+			Handler:    _KaijuSpotExchangeRPC_Markets_Handler,
 		},
 		{
 			MethodName: "Market",
-			Handler:    _InjectiveSpotExchangeRPC_Market_Handler,
+			Handler:    _KaijuSpotExchangeRPC_Market_Handler,
 		},
 		{
 			MethodName: "Orderbook",
-			Handler:    _InjectiveSpotExchangeRPC_Orderbook_Handler,
+			Handler:    _KaijuSpotExchangeRPC_Orderbook_Handler,
 		},
 		{
 			MethodName: "Orderbooks",
-			Handler:    _InjectiveSpotExchangeRPC_Orderbooks_Handler,
+			Handler:    _KaijuSpotExchangeRPC_Orderbooks_Handler,
 		},
 		{
 			MethodName: "Orders",
-			Handler:    _InjectiveSpotExchangeRPC_Orders_Handler,
+			Handler:    _KaijuSpotExchangeRPC_Orders_Handler,
 		},
 		{
 			MethodName: "Trades",
-			Handler:    _InjectiveSpotExchangeRPC_Trades_Handler,
+			Handler:    _KaijuSpotExchangeRPC_Trades_Handler,
 		},
 		{
 			MethodName: "SubaccountOrdersList",
-			Handler:    _InjectiveSpotExchangeRPC_SubaccountOrdersList_Handler,
+			Handler:    _KaijuSpotExchangeRPC_SubaccountOrdersList_Handler,
 		},
 		{
 			MethodName: "SubaccountTradesList",
-			Handler:    _InjectiveSpotExchangeRPC_SubaccountTradesList_Handler,
+			Handler:    _KaijuSpotExchangeRPC_SubaccountTradesList_Handler,
 		},
 		{
 			MethodName: "OrdersHistory",
-			Handler:    _InjectiveSpotExchangeRPC_OrdersHistory_Handler,
+			Handler:    _KaijuSpotExchangeRPC_OrdersHistory_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "StreamMarkets",
-			Handler:       _InjectiveSpotExchangeRPC_StreamMarkets_Handler,
+			Handler:       _KaijuSpotExchangeRPC_StreamMarkets_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "StreamOrderbookSnapshot",
-			Handler:       _InjectiveSpotExchangeRPC_StreamOrderbookSnapshot_Handler,
+			Handler:       _KaijuSpotExchangeRPC_StreamOrderbookSnapshot_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "StreamOrderbookUpdate",
-			Handler:       _InjectiveSpotExchangeRPC_StreamOrderbookUpdate_Handler,
+			Handler:       _KaijuSpotExchangeRPC_StreamOrderbookUpdate_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "StreamOrders",
-			Handler:       _InjectiveSpotExchangeRPC_StreamOrders_Handler,
+			Handler:       _KaijuSpotExchangeRPC_StreamOrders_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "StreamTrades",
-			Handler:       _InjectiveSpotExchangeRPC_StreamTrades_Handler,
+			Handler:       _KaijuSpotExchangeRPC_StreamTrades_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "StreamOrdersHistory",
-			Handler:       _InjectiveSpotExchangeRPC_StreamOrdersHistory_Handler,
+			Handler:       _KaijuSpotExchangeRPC_StreamOrdersHistory_Handler,
 			ServerStreams: true,
 		},
 	},
-	Metadata: "injective_spot_exchange_rpc.proto",
+	Metadata: "kaiju_spot_exchange_rpc.proto",
 }

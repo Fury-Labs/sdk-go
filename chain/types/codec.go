@@ -12,7 +12,7 @@ type (
 // RegisterInterfaces registers the tendermint concrete client-related
 // implementations and interfaces.
 func RegisterInterfaces(registry codectypes.InterfaceRegistry) {
-	registry.RegisterInterface("injective.types.v1beta1.EthAccount", (*authtypes.AccountI)(nil))
+	registry.RegisterInterface("kaiju.types.v1beta1.EthAccount", (*authtypes.AccountI)(nil))
 
 	registry.RegisterImplementations(
 		(*authtypes.AccountI)(nil),
@@ -24,7 +24,7 @@ func RegisterInterfaces(registry codectypes.InterfaceRegistry) {
 		&EthAccount{},
 	)
 
-	registry.RegisterInterface("injective.types.v1beta1.ExtensionOptionsWeb3Tx", (*ExtensionOptionsWeb3TxI)(nil))
+	registry.RegisterInterface("kaiju.types.v1beta1.ExtensionOptionsWeb3Tx", (*ExtensionOptionsWeb3TxI)(nil))
 	registry.RegisterImplementations(
 		(*ExtensionOptionsWeb3TxI)(nil),
 		&ExtensionOptionsWeb3Tx{},

@@ -13,8 +13,8 @@ const (
 
 func init() {
 	gov.RegisterProposalType(ProposalTypeOcrSetConfig)
-	gov.RegisterProposalTypeCodec(&SetConfigProposal{}, "injective/OcrSetConfigProposal")
-	gov.RegisterProposalTypeCodec(&SetBatchConfigProposal{}, "injective/OcrSetBatchConfigProposal")
+	gov.RegisterProposalTypeCodec(&SetConfigProposal{}, "kaiju/OcrSetConfigProposal")
+	gov.RegisterProposalTypeCodec(&SetBatchConfigProposal{}, "kaiju/OcrSetBatchConfigProposal")
 }
 
 // Implements Proposal Interface

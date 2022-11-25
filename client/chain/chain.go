@@ -17,9 +17,9 @@ import (
 	"time"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	exchangetypes "github.com/InjectiveLabs/sdk-go/chain/exchange/types"
-	"github.com/InjectiveLabs/sdk-go/client/common"
-	log "github.com/InjectiveLabs/suplog"
+	exchangetypes "github.com/Fury-Labs/sdk-go/chain/exchange/types"
+	"github.com/Fury-Labs/sdk-go/client/common"
+	log "github.com/Fury-Labs/suplog"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
@@ -42,8 +42,8 @@ import (
 type OrderbookType string
 
 const (
-	SpotOrderbook       = "injective.exchange.v1beta1.EventOrderbookUpdate.spot_orderbooks"
-	DerivativeOrderbook = "injective.exchange.v1beta1.EventOrderbookUpdate.derivative_orderbooks"
+	SpotOrderbook       = "kaiju.exchange.v1beta1.EventOrderbookUpdate.spot_orderbooks"
+	DerivativeOrderbook = "kaiju.exchange.v1beta1.EventOrderbookUpdate.derivative_orderbooks"
 )
 
 const (
@@ -867,7 +867,7 @@ func (c *chainClient) runBatchBroadcast() {
 }
 
 func (c *chainClient) GetGasFee() (string, error) {
-	gasPrices := strings.Trim(c.opts.GasPrices, "inj")
+	gasPrices := strings.Trim(c.opts.GasPrices, "kai")
 
 	gas, err := strconv.ParseFloat(gasPrices, 64)
 
@@ -1177,7 +1177,7 @@ func (c *chainClient) BuildExchangeBatchUpdateOrdersAuthz(
 }
 
 func (c *chainClient) StreamEventOrderFail(sender string, failEventCh chan map[string]uint) {
-	filter := fmt.Sprintf("tm.event='Tx' AND message.sender='%s' AND message.action='/injective.exchange.v1beta1.MsgBatchUpdateOrders' AND injective.exchange.v1beta1.EventOrderFail.flags EXISTS", sender)
+	filter := fmt.Sprintf("tm.event='Tx' AND message.sender='%s' AND message.action='/kaiju.exchange.v1beta1.MsgBatchUpdateOrders' AND kaiju.exchange.v1beta1.EventOrderFail.flags EXISTS", sender)
 	eventCh, err := c.ctx.Client.Subscribe(context.Background(), "OrderFail", filter, 10000)
 	if err != nil {
 		panic(err)
@@ -1188,13 +1188,13 @@ func (c *chainClient) StreamEventOrderFail(sender string, failEventCh chan map[s
 		e := <-eventCh
 
 		var failedOrderHashes []string
-		err = json.Unmarshal([]byte(e.Events["injective.exchange.v1beta1.EventOrderFail.hashes"][0]), &failedOrderHashes)
+		err = json.Unmarshal([]byte(e.Events["kaiju.exchange.v1beta1.EventOrderFail.hashes"][0]), &failedOrderHashes)
 		if err != nil {
 			panic(err)
 		}
 
 		var failedOrderCodes []uint
-		err = json.Unmarshal([]byte(e.Events["injective.exchange.v1beta1.EventOrderFail.flags"][0]), &failedOrderCodes)
+		err = json.Unmarshal([]byte(e.Events["kaiju.exchange.v1beta1.EventOrderFail.flags"][0]), &failedOrderCodes)
 		if err != nil {
 			panic(err)
 		}

@@ -1,10 +1,10 @@
-module github.com/InjectiveLabs/sdk-go
+module github.com/Fury-Labs/sdk-go
 
 go 1.17
 
 require (
 	github.com/CosmWasm/wasmd v0.28.0
-	github.com/InjectiveLabs/suplog v1.3.3
+	github.com/Fury-Labs/suplog v1.3.3
 	github.com/bandprotocol/bandchain-packet v0.0.2
 	github.com/btcsuite/btcd v0.22.1
 	github.com/btcsuite/btcutil v1.0.3-0.20201208143702-a53e38424cce
@@ -157,6 +157,6 @@ replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
 
 replace github.com/btcsuite/btcutil => github.com/btcsuite/btcutil v1.0.2
 
-replace github.com/cosmos/cosmos-sdk => github.com/InjectiveLabs/cosmos-sdk v0.45.11-inj
+replace github.com/cosmos/cosmos-sdk => github.com/Fury-Labs/cosmos-sdk v0.45.11-kai
 
-replace github.com/CosmWasm/wasmd => github.com/InjectiveLabs/wasmd v0.28.0-inj
+replace github.com/CosmWasm/wasmd => github.com/Fury-Labs/wasmd v0.28.0-kai

@@ -4,7 +4,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	chaintypes "github.com/InjectiveLabs/sdk-go/chain/types"
+	chaintypes "github.com/Fury-Labs/sdk-go/chain/types"
 )
 
 const TypeMsgBid = "bid"
@@ -35,7 +35,7 @@ func (msg MsgBid) ValidateBasic() error {
 		return sdkerrors.Wrap(sdkerrors.ErrInvalidCoins, msg.BidAmount.String())
 	}
 
-	if msg.BidAmount.Denom != chaintypes.InjectiveCoin {
+	if msg.BidAmount.Denom != chaintypes.KaijuCoin {
 		return sdkerrors.Wrap(ErrBidInvalid, msg.BidAmount.Denom)
 	}
 

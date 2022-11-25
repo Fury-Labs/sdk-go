@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.4
-// source: injective_explorer_rpc.proto
+// source: kaiju_explorer_rpc.proto
 
-package injective_explorer_rpcpb
+package kaiju_explorer_rpcpb
 
 import (
 	context "context"
@@ -18,10 +18,10 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// InjectiveExplorerRPCClient is the client API for InjectiveExplorerRPC service.
+// KaijuExplorerRPCClient is the client API for KaijuExplorerRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type InjectiveExplorerRPCClient interface {
+type KaijuExplorerRPCClient interface {
 	// GetAccountTxs returns tranctions involving in an account based upon params.
 	GetAccountTxs(ctx context.Context, in *GetAccountTxsRequest, opts ...grpc.CallOption) (*GetAccountTxsResponse, error)
 	// GetContractTxs returns contract-related transactions
@@ -57,193 +57,193 @@ type InjectiveExplorerRPCClient interface {
 	GetWasmContracts(ctx context.Context, in *GetWasmContractsRequest, opts ...grpc.CallOption) (*GetWasmContractsResponse, error)
 	// GetWasmContractByAddress list cosmwasm contract infor by its address
 	GetWasmContractByAddress(ctx context.Context, in *GetWasmContractByAddressRequest, opts ...grpc.CallOption) (*GetWasmContractByAddressResponse, error)
-	// GetCw20Balance lists all cw20 balances of an injective account
+	// GetCw20Balance lists all cw20 balances of an kaiju account
 	GetCw20Balance(ctx context.Context, in *GetCw20BalanceRequest, opts ...grpc.CallOption) (*GetCw20BalanceResponse, error)
 	// Request relayers infos by marketIDs. If no ids are provided, all market with
 	// associated relayers are returned
 	Relayers(ctx context.Context, in *RelayersRequest, opts ...grpc.CallOption) (*RelayersResponse, error)
 	// StreamTxs returns transactions based upon the request params
-	StreamTxs(ctx context.Context, in *StreamTxsRequest, opts ...grpc.CallOption) (InjectiveExplorerRPC_StreamTxsClient, error)
+	StreamTxs(ctx context.Context, in *StreamTxsRequest, opts ...grpc.CallOption) (KaijuExplorerRPC_StreamTxsClient, error)
 	// StreamBlocks returns the latest blocks
-	StreamBlocks(ctx context.Context, in *StreamBlocksRequest, opts ...grpc.CallOption) (InjectiveExplorerRPC_StreamBlocksClient, error)
+	StreamBlocks(ctx context.Context, in *StreamBlocksRequest, opts ...grpc.CallOption) (KaijuExplorerRPC_StreamBlocksClient, error)
 }
 
-type injectiveExplorerRPCClient struct {
+type kaijuExplorerRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewInjectiveExplorerRPCClient(cc grpc.ClientConnInterface) InjectiveExplorerRPCClient {
-	return &injectiveExplorerRPCClient{cc}
+func NewKaijuExplorerRPCClient(cc grpc.ClientConnInterface) KaijuExplorerRPCClient {
+	return &kaijuExplorerRPCClient{cc}
 }
 
-func (c *injectiveExplorerRPCClient) GetAccountTxs(ctx context.Context, in *GetAccountTxsRequest, opts ...grpc.CallOption) (*GetAccountTxsResponse, error) {
+func (c *kaijuExplorerRPCClient) GetAccountTxs(ctx context.Context, in *GetAccountTxsRequest, opts ...grpc.CallOption) (*GetAccountTxsResponse, error) {
 	out := new(GetAccountTxsResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetAccountTxs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetAccountTxs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetContractTxs(ctx context.Context, in *GetContractTxsRequest, opts ...grpc.CallOption) (*GetContractTxsResponse, error) {
+func (c *kaijuExplorerRPCClient) GetContractTxs(ctx context.Context, in *GetContractTxsRequest, opts ...grpc.CallOption) (*GetContractTxsResponse, error) {
 	out := new(GetContractTxsResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetContractTxs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetContractTxs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetBlocks(ctx context.Context, in *GetBlocksRequest, opts ...grpc.CallOption) (*GetBlocksResponse, error) {
+func (c *kaijuExplorerRPCClient) GetBlocks(ctx context.Context, in *GetBlocksRequest, opts ...grpc.CallOption) (*GetBlocksResponse, error) {
 	out := new(GetBlocksResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetBlocks", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetBlocks", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetBlock(ctx context.Context, in *GetBlockRequest, opts ...grpc.CallOption) (*GetBlockResponse, error) {
+func (c *kaijuExplorerRPCClient) GetBlock(ctx context.Context, in *GetBlockRequest, opts ...grpc.CallOption) (*GetBlockResponse, error) {
 	out := new(GetBlockResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetBlock", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetBlock", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetValidators(ctx context.Context, in *GetValidatorsRequest, opts ...grpc.CallOption) (*GetValidatorsResponse, error) {
+func (c *kaijuExplorerRPCClient) GetValidators(ctx context.Context, in *GetValidatorsRequest, opts ...grpc.CallOption) (*GetValidatorsResponse, error) {
 	out := new(GetValidatorsResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetValidators", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetValidators", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetValidator(ctx context.Context, in *GetValidatorRequest, opts ...grpc.CallOption) (*GetValidatorResponse, error) {
+func (c *kaijuExplorerRPCClient) GetValidator(ctx context.Context, in *GetValidatorRequest, opts ...grpc.CallOption) (*GetValidatorResponse, error) {
 	out := new(GetValidatorResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetValidator", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetValidator", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetValidatorUptime(ctx context.Context, in *GetValidatorUptimeRequest, opts ...grpc.CallOption) (*GetValidatorUptimeResponse, error) {
+func (c *kaijuExplorerRPCClient) GetValidatorUptime(ctx context.Context, in *GetValidatorUptimeRequest, opts ...grpc.CallOption) (*GetValidatorUptimeResponse, error) {
 	out := new(GetValidatorUptimeResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetValidatorUptime", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetValidatorUptime", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetTxs(ctx context.Context, in *GetTxsRequest, opts ...grpc.CallOption) (*GetTxsResponse, error) {
+func (c *kaijuExplorerRPCClient) GetTxs(ctx context.Context, in *GetTxsRequest, opts ...grpc.CallOption) (*GetTxsResponse, error) {
 	out := new(GetTxsResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetTxs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetTxs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetTxByTxHash(ctx context.Context, in *GetTxByTxHashRequest, opts ...grpc.CallOption) (*GetTxByTxHashResponse, error) {
+func (c *kaijuExplorerRPCClient) GetTxByTxHash(ctx context.Context, in *GetTxByTxHashRequest, opts ...grpc.CallOption) (*GetTxByTxHashResponse, error) {
 	out := new(GetTxByTxHashResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetTxByTxHash", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetTxByTxHash", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetPeggyDepositTxs(ctx context.Context, in *GetPeggyDepositTxsRequest, opts ...grpc.CallOption) (*GetPeggyDepositTxsResponse, error) {
+func (c *kaijuExplorerRPCClient) GetPeggyDepositTxs(ctx context.Context, in *GetPeggyDepositTxsRequest, opts ...grpc.CallOption) (*GetPeggyDepositTxsResponse, error) {
 	out := new(GetPeggyDepositTxsResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetPeggyDepositTxs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetPeggyDepositTxs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetPeggyWithdrawalTxs(ctx context.Context, in *GetPeggyWithdrawalTxsRequest, opts ...grpc.CallOption) (*GetPeggyWithdrawalTxsResponse, error) {
+func (c *kaijuExplorerRPCClient) GetPeggyWithdrawalTxs(ctx context.Context, in *GetPeggyWithdrawalTxsRequest, opts ...grpc.CallOption) (*GetPeggyWithdrawalTxsResponse, error) {
 	out := new(GetPeggyWithdrawalTxsResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetPeggyWithdrawalTxs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetPeggyWithdrawalTxs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetIBCTransferTxs(ctx context.Context, in *GetIBCTransferTxsRequest, opts ...grpc.CallOption) (*GetIBCTransferTxsResponse, error) {
+func (c *kaijuExplorerRPCClient) GetIBCTransferTxs(ctx context.Context, in *GetIBCTransferTxsRequest, opts ...grpc.CallOption) (*GetIBCTransferTxsResponse, error) {
 	out := new(GetIBCTransferTxsResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetIBCTransferTxs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetIBCTransferTxs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetWasmCodes(ctx context.Context, in *GetWasmCodesRequest, opts ...grpc.CallOption) (*GetWasmCodesResponse, error) {
+func (c *kaijuExplorerRPCClient) GetWasmCodes(ctx context.Context, in *GetWasmCodesRequest, opts ...grpc.CallOption) (*GetWasmCodesResponse, error) {
 	out := new(GetWasmCodesResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetWasmCodes", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetWasmCodes", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetWasmCodeByID(ctx context.Context, in *GetWasmCodeByIDRequest, opts ...grpc.CallOption) (*GetWasmCodeByIDResponse, error) {
+func (c *kaijuExplorerRPCClient) GetWasmCodeByID(ctx context.Context, in *GetWasmCodeByIDRequest, opts ...grpc.CallOption) (*GetWasmCodeByIDResponse, error) {
 	out := new(GetWasmCodeByIDResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetWasmCodeByID", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetWasmCodeByID", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetWasmContracts(ctx context.Context, in *GetWasmContractsRequest, opts ...grpc.CallOption) (*GetWasmContractsResponse, error) {
+func (c *kaijuExplorerRPCClient) GetWasmContracts(ctx context.Context, in *GetWasmContractsRequest, opts ...grpc.CallOption) (*GetWasmContractsResponse, error) {
 	out := new(GetWasmContractsResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetWasmContracts", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetWasmContracts", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetWasmContractByAddress(ctx context.Context, in *GetWasmContractByAddressRequest, opts ...grpc.CallOption) (*GetWasmContractByAddressResponse, error) {
+func (c *kaijuExplorerRPCClient) GetWasmContractByAddress(ctx context.Context, in *GetWasmContractByAddressRequest, opts ...grpc.CallOption) (*GetWasmContractByAddressResponse, error) {
 	out := new(GetWasmContractByAddressResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetWasmContractByAddress", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetWasmContractByAddress", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) GetCw20Balance(ctx context.Context, in *GetCw20BalanceRequest, opts ...grpc.CallOption) (*GetCw20BalanceResponse, error) {
+func (c *kaijuExplorerRPCClient) GetCw20Balance(ctx context.Context, in *GetCw20BalanceRequest, opts ...grpc.CallOption) (*GetCw20BalanceResponse, error) {
 	out := new(GetCw20BalanceResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/GetCw20Balance", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/GetCw20Balance", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) Relayers(ctx context.Context, in *RelayersRequest, opts ...grpc.CallOption) (*RelayersResponse, error) {
+func (c *kaijuExplorerRPCClient) Relayers(ctx context.Context, in *RelayersRequest, opts ...grpc.CallOption) (*RelayersResponse, error) {
 	out := new(RelayersResponse)
-	err := c.cc.Invoke(ctx, "/injective_explorer_rpc.InjectiveExplorerRPC/Relayers", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_explorer_rpc.KaijuExplorerRPC/Relayers", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExplorerRPCClient) StreamTxs(ctx context.Context, in *StreamTxsRequest, opts ...grpc.CallOption) (InjectiveExplorerRPC_StreamTxsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveExplorerRPC_ServiceDesc.Streams[0], "/injective_explorer_rpc.InjectiveExplorerRPC/StreamTxs", opts...)
+func (c *kaijuExplorerRPCClient) StreamTxs(ctx context.Context, in *StreamTxsRequest, opts ...grpc.CallOption) (KaijuExplorerRPC_StreamTxsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuExplorerRPC_ServiceDesc.Streams[0], "/kaiju_explorer_rpc.KaijuExplorerRPC/StreamTxs", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveExplorerRPCStreamTxsClient{stream}
+	x := &kaijuExplorerRPCStreamTxsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -253,16 +253,16 @@ func (c *injectiveExplorerRPCClient) StreamTxs(ctx context.Context, in *StreamTx
 	return x, nil
 }
 
-type InjectiveExplorerRPC_StreamTxsClient interface {
+type KaijuExplorerRPC_StreamTxsClient interface {
 	Recv() (*StreamTxsResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveExplorerRPCStreamTxsClient struct {
+type kaijuExplorerRPCStreamTxsClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveExplorerRPCStreamTxsClient) Recv() (*StreamTxsResponse, error) {
+func (x *kaijuExplorerRPCStreamTxsClient) Recv() (*StreamTxsResponse, error) {
 	m := new(StreamTxsResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -270,12 +270,12 @@ func (x *injectiveExplorerRPCStreamTxsClient) Recv() (*StreamTxsResponse, error)
 	return m, nil
 }
 
-func (c *injectiveExplorerRPCClient) StreamBlocks(ctx context.Context, in *StreamBlocksRequest, opts ...grpc.CallOption) (InjectiveExplorerRPC_StreamBlocksClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveExplorerRPC_ServiceDesc.Streams[1], "/injective_explorer_rpc.InjectiveExplorerRPC/StreamBlocks", opts...)
+func (c *kaijuExplorerRPCClient) StreamBlocks(ctx context.Context, in *StreamBlocksRequest, opts ...grpc.CallOption) (KaijuExplorerRPC_StreamBlocksClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuExplorerRPC_ServiceDesc.Streams[1], "/kaiju_explorer_rpc.KaijuExplorerRPC/StreamBlocks", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveExplorerRPCStreamBlocksClient{stream}
+	x := &kaijuExplorerRPCStreamBlocksClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -285,16 +285,16 @@ func (c *injectiveExplorerRPCClient) StreamBlocks(ctx context.Context, in *Strea
 	return x, nil
 }
 
-type InjectiveExplorerRPC_StreamBlocksClient interface {
+type KaijuExplorerRPC_StreamBlocksClient interface {
 	Recv() (*StreamBlocksResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveExplorerRPCStreamBlocksClient struct {
+type kaijuExplorerRPCStreamBlocksClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveExplorerRPCStreamBlocksClient) Recv() (*StreamBlocksResponse, error) {
+func (x *kaijuExplorerRPCStreamBlocksClient) Recv() (*StreamBlocksResponse, error) {
 	m := new(StreamBlocksResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -302,10 +302,10 @@ func (x *injectiveExplorerRPCStreamBlocksClient) Recv() (*StreamBlocksResponse, 
 	return m, nil
 }
 
-// InjectiveExplorerRPCServer is the server API for InjectiveExplorerRPC service.
-// All implementations must embed UnimplementedInjectiveExplorerRPCServer
+// KaijuExplorerRPCServer is the server API for KaijuExplorerRPC service.
+// All implementations must embed UnimplementedKaijuExplorerRPCServer
 // for forward compatibility
-type InjectiveExplorerRPCServer interface {
+type KaijuExplorerRPCServer interface {
 	// GetAccountTxs returns tranctions involving in an account based upon params.
 	GetAccountTxs(context.Context, *GetAccountTxsRequest) (*GetAccountTxsResponse, error)
 	// GetContractTxs returns contract-related transactions
@@ -341,552 +341,552 @@ type InjectiveExplorerRPCServer interface {
 	GetWasmContracts(context.Context, *GetWasmContractsRequest) (*GetWasmContractsResponse, error)
 	// GetWasmContractByAddress list cosmwasm contract infor by its address
 	GetWasmContractByAddress(context.Context, *GetWasmContractByAddressRequest) (*GetWasmContractByAddressResponse, error)
-	// GetCw20Balance lists all cw20 balances of an injective account
+	// GetCw20Balance lists all cw20 balances of an kaiju account
 	GetCw20Balance(context.Context, *GetCw20BalanceRequest) (*GetCw20BalanceResponse, error)
 	// Request relayers infos by marketIDs. If no ids are provided, all market with
 	// associated relayers are returned
 	Relayers(context.Context, *RelayersRequest) (*RelayersResponse, error)
 	// StreamTxs returns transactions based upon the request params
-	StreamTxs(*StreamTxsRequest, InjectiveExplorerRPC_StreamTxsServer) error
+	StreamTxs(*StreamTxsRequest, KaijuExplorerRPC_StreamTxsServer) error
 	// StreamBlocks returns the latest blocks
-	StreamBlocks(*StreamBlocksRequest, InjectiveExplorerRPC_StreamBlocksServer) error
-	mustEmbedUnimplementedInjectiveExplorerRPCServer()
+	StreamBlocks(*StreamBlocksRequest, KaijuExplorerRPC_StreamBlocksServer) error
+	mustEmbedUnimplementedKaijuExplorerRPCServer()
 }
 
-// UnimplementedInjectiveExplorerRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedInjectiveExplorerRPCServer struct {
+// UnimplementedKaijuExplorerRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedKaijuExplorerRPCServer struct {
 }
 
-func (UnimplementedInjectiveExplorerRPCServer) GetAccountTxs(context.Context, *GetAccountTxsRequest) (*GetAccountTxsResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetAccountTxs(context.Context, *GetAccountTxsRequest) (*GetAccountTxsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountTxs not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetContractTxs(context.Context, *GetContractTxsRequest) (*GetContractTxsResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetContractTxs(context.Context, *GetContractTxsRequest) (*GetContractTxsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContractTxs not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetBlocks(context.Context, *GetBlocksRequest) (*GetBlocksResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetBlocks(context.Context, *GetBlocksRequest) (*GetBlocksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBlocks not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetBlock(context.Context, *GetBlockRequest) (*GetBlockResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetBlock(context.Context, *GetBlockRequest) (*GetBlockResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBlock not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetValidators(context.Context, *GetValidatorsRequest) (*GetValidatorsResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetValidators(context.Context, *GetValidatorsRequest) (*GetValidatorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetValidators not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetValidator(context.Context, *GetValidatorRequest) (*GetValidatorResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetValidator(context.Context, *GetValidatorRequest) (*GetValidatorResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetValidator not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetValidatorUptime(context.Context, *GetValidatorUptimeRequest) (*GetValidatorUptimeResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetValidatorUptime(context.Context, *GetValidatorUptimeRequest) (*GetValidatorUptimeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetValidatorUptime not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetTxs(context.Context, *GetTxsRequest) (*GetTxsResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetTxs(context.Context, *GetTxsRequest) (*GetTxsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTxs not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetTxByTxHash(context.Context, *GetTxByTxHashRequest) (*GetTxByTxHashResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetTxByTxHash(context.Context, *GetTxByTxHashRequest) (*GetTxByTxHashResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTxByTxHash not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetPeggyDepositTxs(context.Context, *GetPeggyDepositTxsRequest) (*GetPeggyDepositTxsResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetPeggyDepositTxs(context.Context, *GetPeggyDepositTxsRequest) (*GetPeggyDepositTxsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPeggyDepositTxs not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetPeggyWithdrawalTxs(context.Context, *GetPeggyWithdrawalTxsRequest) (*GetPeggyWithdrawalTxsResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetPeggyWithdrawalTxs(context.Context, *GetPeggyWithdrawalTxsRequest) (*GetPeggyWithdrawalTxsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPeggyWithdrawalTxs not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetIBCTransferTxs(context.Context, *GetIBCTransferTxsRequest) (*GetIBCTransferTxsResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetIBCTransferTxs(context.Context, *GetIBCTransferTxsRequest) (*GetIBCTransferTxsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetIBCTransferTxs not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetWasmCodes(context.Context, *GetWasmCodesRequest) (*GetWasmCodesResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetWasmCodes(context.Context, *GetWasmCodesRequest) (*GetWasmCodesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetWasmCodes not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetWasmCodeByID(context.Context, *GetWasmCodeByIDRequest) (*GetWasmCodeByIDResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetWasmCodeByID(context.Context, *GetWasmCodeByIDRequest) (*GetWasmCodeByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetWasmCodeByID not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetWasmContracts(context.Context, *GetWasmContractsRequest) (*GetWasmContractsResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetWasmContracts(context.Context, *GetWasmContractsRequest) (*GetWasmContractsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetWasmContracts not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetWasmContractByAddress(context.Context, *GetWasmContractByAddressRequest) (*GetWasmContractByAddressResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetWasmContractByAddress(context.Context, *GetWasmContractByAddressRequest) (*GetWasmContractByAddressResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetWasmContractByAddress not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) GetCw20Balance(context.Context, *GetCw20BalanceRequest) (*GetCw20BalanceResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) GetCw20Balance(context.Context, *GetCw20BalanceRequest) (*GetCw20BalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCw20Balance not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) Relayers(context.Context, *RelayersRequest) (*RelayersResponse, error) {
+func (UnimplementedKaijuExplorerRPCServer) Relayers(context.Context, *RelayersRequest) (*RelayersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Relayers not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) StreamTxs(*StreamTxsRequest, InjectiveExplorerRPC_StreamTxsServer) error {
+func (UnimplementedKaijuExplorerRPCServer) StreamTxs(*StreamTxsRequest, KaijuExplorerRPC_StreamTxsServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamTxs not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) StreamBlocks(*StreamBlocksRequest, InjectiveExplorerRPC_StreamBlocksServer) error {
+func (UnimplementedKaijuExplorerRPCServer) StreamBlocks(*StreamBlocksRequest, KaijuExplorerRPC_StreamBlocksServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamBlocks not implemented")
 }
-func (UnimplementedInjectiveExplorerRPCServer) mustEmbedUnimplementedInjectiveExplorerRPCServer() {}
+func (UnimplementedKaijuExplorerRPCServer) mustEmbedUnimplementedKaijuExplorerRPCServer() {}
 
-// UnsafeInjectiveExplorerRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to InjectiveExplorerRPCServer will
+// UnsafeKaijuExplorerRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KaijuExplorerRPCServer will
 // result in compilation errors.
-type UnsafeInjectiveExplorerRPCServer interface {
-	mustEmbedUnimplementedInjectiveExplorerRPCServer()
+type UnsafeKaijuExplorerRPCServer interface {
+	mustEmbedUnimplementedKaijuExplorerRPCServer()
 }
 
-func RegisterInjectiveExplorerRPCServer(s grpc.ServiceRegistrar, srv InjectiveExplorerRPCServer) {
-	s.RegisterService(&InjectiveExplorerRPC_ServiceDesc, srv)
+func RegisterKaijuExplorerRPCServer(s grpc.ServiceRegistrar, srv KaijuExplorerRPCServer) {
+	s.RegisterService(&KaijuExplorerRPC_ServiceDesc, srv)
 }
 
-func _InjectiveExplorerRPC_GetAccountTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetAccountTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAccountTxsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetAccountTxs(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetAccountTxs(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetAccountTxs",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetAccountTxs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetAccountTxs(ctx, req.(*GetAccountTxsRequest))
+		return srv.(KaijuExplorerRPCServer).GetAccountTxs(ctx, req.(*GetAccountTxsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetContractTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetContractTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetContractTxsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetContractTxs(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetContractTxs(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetContractTxs",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetContractTxs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetContractTxs(ctx, req.(*GetContractTxsRequest))
+		return srv.(KaijuExplorerRPCServer).GetContractTxs(ctx, req.(*GetContractTxsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetBlocks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetBlocks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetBlocksRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetBlocks(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetBlocks(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetBlocks",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetBlocks",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetBlocks(ctx, req.(*GetBlocksRequest))
+		return srv.(KaijuExplorerRPCServer).GetBlocks(ctx, req.(*GetBlocksRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetBlockRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetBlock(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetBlock(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetBlock",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetBlock",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetBlock(ctx, req.(*GetBlockRequest))
+		return srv.(KaijuExplorerRPCServer).GetBlock(ctx, req.(*GetBlockRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetValidators_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetValidators_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetValidatorsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetValidators(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetValidators(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetValidators",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetValidators",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetValidators(ctx, req.(*GetValidatorsRequest))
+		return srv.(KaijuExplorerRPCServer).GetValidators(ctx, req.(*GetValidatorsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetValidator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetValidator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetValidatorRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetValidator(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetValidator(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetValidator",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetValidator",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetValidator(ctx, req.(*GetValidatorRequest))
+		return srv.(KaijuExplorerRPCServer).GetValidator(ctx, req.(*GetValidatorRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetValidatorUptime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetValidatorUptime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetValidatorUptimeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetValidatorUptime(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetValidatorUptime(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetValidatorUptime",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetValidatorUptime",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetValidatorUptime(ctx, req.(*GetValidatorUptimeRequest))
+		return srv.(KaijuExplorerRPCServer).GetValidatorUptime(ctx, req.(*GetValidatorUptimeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTxsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetTxs(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetTxs(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetTxs",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetTxs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetTxs(ctx, req.(*GetTxsRequest))
+		return srv.(KaijuExplorerRPCServer).GetTxs(ctx, req.(*GetTxsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetTxByTxHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetTxByTxHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTxByTxHashRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetTxByTxHash(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetTxByTxHash(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetTxByTxHash",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetTxByTxHash",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetTxByTxHash(ctx, req.(*GetTxByTxHashRequest))
+		return srv.(KaijuExplorerRPCServer).GetTxByTxHash(ctx, req.(*GetTxByTxHashRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetPeggyDepositTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetPeggyDepositTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetPeggyDepositTxsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetPeggyDepositTxs(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetPeggyDepositTxs(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetPeggyDepositTxs",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetPeggyDepositTxs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetPeggyDepositTxs(ctx, req.(*GetPeggyDepositTxsRequest))
+		return srv.(KaijuExplorerRPCServer).GetPeggyDepositTxs(ctx, req.(*GetPeggyDepositTxsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetPeggyWithdrawalTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetPeggyWithdrawalTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetPeggyWithdrawalTxsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetPeggyWithdrawalTxs(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetPeggyWithdrawalTxs(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetPeggyWithdrawalTxs",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetPeggyWithdrawalTxs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetPeggyWithdrawalTxs(ctx, req.(*GetPeggyWithdrawalTxsRequest))
+		return srv.(KaijuExplorerRPCServer).GetPeggyWithdrawalTxs(ctx, req.(*GetPeggyWithdrawalTxsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetIBCTransferTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetIBCTransferTxs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetIBCTransferTxsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetIBCTransferTxs(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetIBCTransferTxs(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetIBCTransferTxs",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetIBCTransferTxs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetIBCTransferTxs(ctx, req.(*GetIBCTransferTxsRequest))
+		return srv.(KaijuExplorerRPCServer).GetIBCTransferTxs(ctx, req.(*GetIBCTransferTxsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetWasmCodes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetWasmCodes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetWasmCodesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetWasmCodes(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetWasmCodes(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetWasmCodes",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetWasmCodes",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetWasmCodes(ctx, req.(*GetWasmCodesRequest))
+		return srv.(KaijuExplorerRPCServer).GetWasmCodes(ctx, req.(*GetWasmCodesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetWasmCodeByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetWasmCodeByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetWasmCodeByIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetWasmCodeByID(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetWasmCodeByID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetWasmCodeByID",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetWasmCodeByID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetWasmCodeByID(ctx, req.(*GetWasmCodeByIDRequest))
+		return srv.(KaijuExplorerRPCServer).GetWasmCodeByID(ctx, req.(*GetWasmCodeByIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetWasmContracts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetWasmContracts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetWasmContractsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetWasmContracts(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetWasmContracts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetWasmContracts",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetWasmContracts",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetWasmContracts(ctx, req.(*GetWasmContractsRequest))
+		return srv.(KaijuExplorerRPCServer).GetWasmContracts(ctx, req.(*GetWasmContractsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetWasmContractByAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetWasmContractByAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetWasmContractByAddressRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetWasmContractByAddress(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetWasmContractByAddress(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetWasmContractByAddress",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetWasmContractByAddress",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetWasmContractByAddress(ctx, req.(*GetWasmContractByAddressRequest))
+		return srv.(KaijuExplorerRPCServer).GetWasmContractByAddress(ctx, req.(*GetWasmContractByAddressRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_GetCw20Balance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_GetCw20Balance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetCw20BalanceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).GetCw20Balance(ctx, in)
+		return srv.(KaijuExplorerRPCServer).GetCw20Balance(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/GetCw20Balance",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/GetCw20Balance",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).GetCw20Balance(ctx, req.(*GetCw20BalanceRequest))
+		return srv.(KaijuExplorerRPCServer).GetCw20Balance(ctx, req.(*GetCw20BalanceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_Relayers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExplorerRPC_Relayers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RelayersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExplorerRPCServer).Relayers(ctx, in)
+		return srv.(KaijuExplorerRPCServer).Relayers(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_explorer_rpc.InjectiveExplorerRPC/Relayers",
+		FullMethod: "/kaiju_explorer_rpc.KaijuExplorerRPC/Relayers",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExplorerRPCServer).Relayers(ctx, req.(*RelayersRequest))
+		return srv.(KaijuExplorerRPCServer).Relayers(ctx, req.(*RelayersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExplorerRPC_StreamTxs_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuExplorerRPC_StreamTxs_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamTxsRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveExplorerRPCServer).StreamTxs(m, &injectiveExplorerRPCStreamTxsServer{stream})
+	return srv.(KaijuExplorerRPCServer).StreamTxs(m, &kaijuExplorerRPCStreamTxsServer{stream})
 }
 
-type InjectiveExplorerRPC_StreamTxsServer interface {
+type KaijuExplorerRPC_StreamTxsServer interface {
 	Send(*StreamTxsResponse) error
 	grpc.ServerStream
 }
 
-type injectiveExplorerRPCStreamTxsServer struct {
+type kaijuExplorerRPCStreamTxsServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveExplorerRPCStreamTxsServer) Send(m *StreamTxsResponse) error {
+func (x *kaijuExplorerRPCStreamTxsServer) Send(m *StreamTxsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _InjectiveExplorerRPC_StreamBlocks_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuExplorerRPC_StreamBlocks_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamBlocksRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveExplorerRPCServer).StreamBlocks(m, &injectiveExplorerRPCStreamBlocksServer{stream})
+	return srv.(KaijuExplorerRPCServer).StreamBlocks(m, &kaijuExplorerRPCStreamBlocksServer{stream})
 }
 
-type InjectiveExplorerRPC_StreamBlocksServer interface {
+type KaijuExplorerRPC_StreamBlocksServer interface {
 	Send(*StreamBlocksResponse) error
 	grpc.ServerStream
 }
 
-type injectiveExplorerRPCStreamBlocksServer struct {
+type kaijuExplorerRPCStreamBlocksServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveExplorerRPCStreamBlocksServer) Send(m *StreamBlocksResponse) error {
+func (x *kaijuExplorerRPCStreamBlocksServer) Send(m *StreamBlocksResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-// InjectiveExplorerRPC_ServiceDesc is the grpc.ServiceDesc for InjectiveExplorerRPC service.
+// KaijuExplorerRPC_ServiceDesc is the grpc.ServiceDesc for KaijuExplorerRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var InjectiveExplorerRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "injective_explorer_rpc.InjectiveExplorerRPC",
-	HandlerType: (*InjectiveExplorerRPCServer)(nil),
+var KaijuExplorerRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kaiju_explorer_rpc.KaijuExplorerRPC",
+	HandlerType: (*KaijuExplorerRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetAccountTxs",
-			Handler:    _InjectiveExplorerRPC_GetAccountTxs_Handler,
+			Handler:    _KaijuExplorerRPC_GetAccountTxs_Handler,
 		},
 		{
 			MethodName: "GetContractTxs",
-			Handler:    _InjectiveExplorerRPC_GetContractTxs_Handler,
+			Handler:    _KaijuExplorerRPC_GetContractTxs_Handler,
 		},
 		{
 			MethodName: "GetBlocks",
-			Handler:    _InjectiveExplorerRPC_GetBlocks_Handler,
+			Handler:    _KaijuExplorerRPC_GetBlocks_Handler,
 		},
 		{
 			MethodName: "GetBlock",
-			Handler:    _InjectiveExplorerRPC_GetBlock_Handler,
+			Handler:    _KaijuExplorerRPC_GetBlock_Handler,
 		},
 		{
 			MethodName: "GetValidators",
-			Handler:    _InjectiveExplorerRPC_GetValidators_Handler,
+			Handler:    _KaijuExplorerRPC_GetValidators_Handler,
 		},
 		{
 			MethodName: "GetValidator",
-			Handler:    _InjectiveExplorerRPC_GetValidator_Handler,
+			Handler:    _KaijuExplorerRPC_GetValidator_Handler,
 		},
 		{
 			MethodName: "GetValidatorUptime",
-			Handler:    _InjectiveExplorerRPC_GetValidatorUptime_Handler,
+			Handler:    _KaijuExplorerRPC_GetValidatorUptime_Handler,
 		},
 		{
 			MethodName: "GetTxs",
-			Handler:    _InjectiveExplorerRPC_GetTxs_Handler,
+			Handler:    _KaijuExplorerRPC_GetTxs_Handler,
 		},
 		{
 			MethodName: "GetTxByTxHash",
-			Handler:    _InjectiveExplorerRPC_GetTxByTxHash_Handler,
+			Handler:    _KaijuExplorerRPC_GetTxByTxHash_Handler,
 		},
 		{
 			MethodName: "GetPeggyDepositTxs",
-			Handler:    _InjectiveExplorerRPC_GetPeggyDepositTxs_Handler,
+			Handler:    _KaijuExplorerRPC_GetPeggyDepositTxs_Handler,
 		},
 		{
 			MethodName: "GetPeggyWithdrawalTxs",
-			Handler:    _InjectiveExplorerRPC_GetPeggyWithdrawalTxs_Handler,
+			Handler:    _KaijuExplorerRPC_GetPeggyWithdrawalTxs_Handler,
 		},
 		{
 			MethodName: "GetIBCTransferTxs",
-			Handler:    _InjectiveExplorerRPC_GetIBCTransferTxs_Handler,
+			Handler:    _KaijuExplorerRPC_GetIBCTransferTxs_Handler,
 		},
 		{
 			MethodName: "GetWasmCodes",
-			Handler:    _InjectiveExplorerRPC_GetWasmCodes_Handler,
+			Handler:    _KaijuExplorerRPC_GetWasmCodes_Handler,
 		},
 		{
 			MethodName: "GetWasmCodeByID",
-			Handler:    _InjectiveExplorerRPC_GetWasmCodeByID_Handler,
+			Handler:    _KaijuExplorerRPC_GetWasmCodeByID_Handler,
 		},
 		{
 			MethodName: "GetWasmContracts",
-			Handler:    _InjectiveExplorerRPC_GetWasmContracts_Handler,
+			Handler:    _KaijuExplorerRPC_GetWasmContracts_Handler,
 		},
 		{
 			MethodName: "GetWasmContractByAddress",
-			Handler:    _InjectiveExplorerRPC_GetWasmContractByAddress_Handler,
+			Handler:    _KaijuExplorerRPC_GetWasmContractByAddress_Handler,
 		},
 		{
 			MethodName: "GetCw20Balance",
-			Handler:    _InjectiveExplorerRPC_GetCw20Balance_Handler,
+			Handler:    _KaijuExplorerRPC_GetCw20Balance_Handler,
 		},
 		{
 			MethodName: "Relayers",
-			Handler:    _InjectiveExplorerRPC_Relayers_Handler,
+			Handler:    _KaijuExplorerRPC_Relayers_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "StreamTxs",
-			Handler:       _InjectiveExplorerRPC_StreamTxs_Handler,
+			Handler:       _KaijuExplorerRPC_StreamTxs_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "StreamBlocks",
-			Handler:       _InjectiveExplorerRPC_StreamBlocks_Handler,
+			Handler:       _KaijuExplorerRPC_StreamBlocks_Handler,
 			ServerStreams: true,
 		},
 	},
-	Metadata: "injective_explorer_rpc.proto",
+	Metadata: "kaiju_explorer_rpc.proto",
 }

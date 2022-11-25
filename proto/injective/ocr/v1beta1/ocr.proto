@@ -1,12 +1,12 @@
 syntax = "proto3";
-package injective.ocr.v1beta1;
+package kaiju.ocr.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/ocr/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/ocr/types";
 
 message Params {
   option (gogoproto.equal) = true;
@@ -198,7 +198,7 @@ message OracleObservationsCounts {
   repeated uint32 counts = 1;
 }
 
-// LINK-INJ-denominated reimbursements for gas used by transmitters.
+// LINK-KAI-denominated reimbursements for gas used by transmitters.
 message GasReimbursements {
   repeated cosmos.base.v1beta1.Coin reimbursements = 1;
 }

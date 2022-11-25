@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/InjectiveLabs/sdk-go/client/common"
-	exchangeclient "github.com/InjectiveLabs/sdk-go/client/exchange"
+	"github.com/Fury-Labs/sdk-go/client/common"
+	exchangeclient "github.com/Fury-Labs/sdk-go/client/exchange"
 )
 
 func main() {

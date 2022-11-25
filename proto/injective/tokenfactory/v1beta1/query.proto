@@ -1,21 +1,21 @@
 syntax = "proto3";
-package injective.tokenfactory.v1beta1;
+package kaiju.tokenfactory.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-import "injective/tokenfactory/v1beta1/authorityMetadata.proto";
-import "injective/tokenfactory/v1beta1/params.proto";
-import "injective/tokenfactory/v1beta1/genesis.proto";
+import "kaiju/tokenfactory/v1beta1/authorityMetadata.proto";
+import "kaiju/tokenfactory/v1beta1/params.proto";
+import "kaiju/tokenfactory/v1beta1/genesis.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/tokenfactory/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/tokenfactory/types";
 
 // Query defines the gRPC querier service.
 service Query {
   // Params defines a gRPC query method that returns the tokenfactory module's
   // parameters.
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
-    option (google.api.http).get = "/injective/tokenfactory/v1beta1/params";
+    option (google.api.http).get = "/kaiju/tokenfactory/v1beta1/params";
   }
 
   // DenomAuthorityMetadata defines a gRPC query method for fetching
@@ -23,7 +23,7 @@ service Query {
   rpc DenomAuthorityMetadata(QueryDenomAuthorityMetadataRequest)
       returns (QueryDenomAuthorityMetadataResponse) {
     option (google.api.http).get =
-        "/injective/tokenfactory/v1beta1/denoms/{creator}/{sub_denom}/authority_metadata";
+        "/kaiju/tokenfactory/v1beta1/denoms/{creator}/{sub_denom}/authority_metadata";
   }
 
   // DenomsFromCreator defines a gRPC query method for fetching all
@@ -31,12 +31,12 @@ service Query {
   rpc DenomsFromCreator(QueryDenomsFromCreatorRequest)
       returns (QueryDenomsFromCreatorResponse) {
     option (google.api.http).get =
-        "/injective/tokenfactory/v1beta1/denoms_from_creator/{creator}";
+        "/kaiju/tokenfactory/v1beta1/denoms_from_creator/{creator}";
   }
 
   // Retrieves the entire auction module's state
   rpc TokenfactoryModuleState(QueryModuleStateRequest) returns (QueryModuleStateResponse) {
-    option (google.api.http).get = "/injective/tokenfactory/v1beta1/module_state";
+    option (google.api.http).get = "/kaiju/tokenfactory/v1beta1/module_state";
   }
 
 }

@@ -16,7 +16,7 @@ import (
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/pkg/errors"
 
-	"github.com/InjectiveLabs/sdk-go/typeddata"
+	"github.com/Fury-Labs/sdk-go/typeddata"
 )
 
 // WrapTxToEIP712 is an ultimate method that wraps Amino-encoded Cosmos Tx JSON data
@@ -35,7 +35,7 @@ func WrapTxToEIP712(
 	}
 
 	domain := typeddata.TypedDataDomain{
-		Name:              "Injective Web3",
+		Name:              "Kaiju Web3",
 		Version:           "1.0.0",
 		ChainId:           math.NewHexOrDecimal256(int64(chainID)),
 		VerifyingContract: "cosmos",

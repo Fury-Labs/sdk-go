@@ -7,8 +7,8 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	gov "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	bandprice "github.com/InjectiveLabs/sdk-go/bandchain/hooks/price"
-	bandoracle "github.com/InjectiveLabs/sdk-go/bandchain/oracle/types"
+	bandprice "github.com/Fury-Labs/sdk-go/bandchain/hooks/price"
+	bandoracle "github.com/Fury-Labs/sdk-go/bandchain/oracle/types"
 	bandobi "github.com/bandprotocol/bandchain-packet/obi"
 )
 
@@ -27,23 +27,23 @@ const (
 
 func init() {
 	gov.RegisterProposalType(ProposalTypeGrantBandOraclePrivilege)
-	gov.RegisterProposalTypeCodec(&GrantBandOraclePrivilegeProposal{}, "injective/GrantBandOraclePrivilegeProposal")
+	gov.RegisterProposalTypeCodec(&GrantBandOraclePrivilegeProposal{}, "kaiju/GrantBandOraclePrivilegeProposal")
 	gov.RegisterProposalType(ProposalTypeRevokeBandOraclePrivilege)
-	gov.RegisterProposalTypeCodec(&RevokeBandOraclePrivilegeProposal{}, "injective/RevokeBandOraclePrivilegeProposal")
+	gov.RegisterProposalTypeCodec(&RevokeBandOraclePrivilegeProposal{}, "kaiju/RevokeBandOraclePrivilegeProposal")
 	gov.RegisterProposalType(ProposalTypeGrantPriceFeederOraclePrivilege)
-	gov.RegisterProposalTypeCodec(&GrantPriceFeederPrivilegeProposal{}, "injective/GrantPriceFeederPrivilegeProposal")
+	gov.RegisterProposalTypeCodec(&GrantPriceFeederPrivilegeProposal{}, "kaiju/GrantPriceFeederPrivilegeProposal")
 	gov.RegisterProposalType(ProposalTypeRevokePriceFeederOraclePrivilege)
-	gov.RegisterProposalTypeCodec(&RevokePriceFeederPrivilegeProposal{}, "injective/RevokePriceFeederPrivilegeProposal")
+	gov.RegisterProposalTypeCodec(&RevokePriceFeederPrivilegeProposal{}, "kaiju/RevokePriceFeederPrivilegeProposal")
 	gov.RegisterProposalType(ProposalAuthorizeBandOracleRequest)
-	gov.RegisterProposalTypeCodec(&AuthorizeBandOracleRequestProposal{}, "injective/AuthorizeBandOracleRequestProposal")
+	gov.RegisterProposalTypeCodec(&AuthorizeBandOracleRequestProposal{}, "kaiju/AuthorizeBandOracleRequestProposal")
 	gov.RegisterProposalType(ProposalEnableBandIBC)
-	gov.RegisterProposalTypeCodec(&EnableBandIBCProposal{}, "injective/EnableBandIBCProposal")
+	gov.RegisterProposalTypeCodec(&EnableBandIBCProposal{}, "kaiju/EnableBandIBCProposal")
 	gov.RegisterProposalType(ProposalUpdateBandOracleRequest)
-	gov.RegisterProposalTypeCodec(&UpdateBandOracleRequestProposal{}, "injective/UpdateBandOracleRequestProposal")
+	gov.RegisterProposalTypeCodec(&UpdateBandOracleRequestProposal{}, "kaiju/UpdateBandOracleRequestProposal")
 	gov.RegisterProposalType(ProposalTypeGrantProviderPrivilege)
-	gov.RegisterProposalTypeCodec(&GrantProviderPrivilegeProposal{}, "injective/GrantProviderPrivilegeProposal")
+	gov.RegisterProposalTypeCodec(&GrantProviderPrivilegeProposal{}, "kaiju/GrantProviderPrivilegeProposal")
 	gov.RegisterProposalType(ProposalTypeRevokeProviderPrivilege)
-	gov.RegisterProposalTypeCodec(&RevokeProviderPrivilegeProposal{}, "injective/RevokeProviderPrivilegeProposal")
+	gov.RegisterProposalTypeCodec(&RevokeProviderPrivilegeProposal{}, "kaiju/RevokeProviderPrivilegeProposal")
 }
 
 // Implements Proposal Interface

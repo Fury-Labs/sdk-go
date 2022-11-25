@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	exchangetypes "github.com/InjectiveLabs/sdk-go/chain/exchange/types"
-	chainclient "github.com/InjectiveLabs/sdk-go/client/chain"
-	"github.com/InjectiveLabs/sdk-go/client/common"
+	exchangetypes "github.com/Fury-Labs/sdk-go/chain/exchange/types"
+	chainclient "github.com/Fury-Labs/sdk-go/client/chain"
+	"github.com/Fury-Labs/sdk-go/client/common"
 	rpchttp "github.com/tendermint/tendermint/rpc/client/http"
 )
 
@@ -26,7 +26,7 @@ func main() {
 		clientCtx,
 		network.ChainGrpcEndpoint,
 		common.OptionTLSCert(network.ChainTlsCert),
-		common.OptionGasPrices("500000000inj"),
+		common.OptionGasPrices("500000000kai"),
 	)
 	if err != nil {
 		panic(err)

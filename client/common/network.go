@@ -34,22 +34,22 @@ func LoadNetwork(name string, node string) Network {
 
 	case "devnet-1":
 		return Network{
-			LcdEndpoint:          "https://devnet-1.lcd.injective.dev",
-			TmEndpoint:           "https://devnet-1.tm.injective.dev:443",
-			ChainGrpcEndpoint:    "tcp://devnet-1.grpc.injective.dev:9900",
-			ExchangeGrpcEndpoint: "tcp://devnet-1.api.injective.dev:9910",
-			ChainId:              "injective-777",
-			Fee_denom:            "inj",
+			LcdEndpoint:          "https://devnet-1.lcd.kaiju.dev",
+			TmEndpoint:           "https://devnet-1.tm.kaiju.dev:443",
+			ChainGrpcEndpoint:    "tcp://devnet-1.grpc.kaiju.dev:9900",
+			ExchangeGrpcEndpoint: "tcp://devnet-1.api.kaiju.dev:9910",
+			ChainId:              "kaiju-777",
+			Fee_denom:            "kai",
 			Name:                 "devnet-1",
 		}
 	case "devnet":
 		return Network{
-			LcdEndpoint:          "https://devnet.lcd.injective.dev",
-			TmEndpoint:           "https://devnet.tm.injective.dev:443",
-			ChainGrpcEndpoint:    "tcp://devnet.injective.dev:9900",
-			ExchangeGrpcEndpoint: "tcp://devnet.injective.dev:9910",
-			ChainId:              "injective-777",
-			Fee_denom:            "inj",
+			LcdEndpoint:          "https://devnet.lcd.kaiju.dev",
+			TmEndpoint:           "https://devnet.tm.kaiju.dev:443",
+			ChainGrpcEndpoint:    "tcp://devnet.kaiju.dev:9900",
+			ExchangeGrpcEndpoint: "tcp://devnet.kaiju.dev:9910",
+			ChainId:              "kaiju-777",
+			Fee_denom:            "kai",
 			Name:                 "devnet",
 		}
 	case "testnet":
@@ -62,17 +62,17 @@ func LoadNetwork(name string, node string) Network {
 		var chainTlsCert, exchangeTlsCert credentials.TransportCredentials
 		if node == "k8s" {
 			certPath := getFileAbsPath("../cert/testnet.crt")
-			lcdEndpoint = "https://k8s.testnet.lcd.injective.network"
-			tmEndpoint = "https://k8s.testnet.tm.injective.network:443"
-			chainGrpcEndpoint = "tcp://k8s.testnet.chain.grpc.injective.network:443"
+			lcdEndpoint = "https://k8s.testnet.lcd.kaiju.network"
+			tmEndpoint = "https://k8s.testnet.tm.kaiju.network:443"
+			chainGrpcEndpoint = "tcp://k8s.testnet.chain.grpc.kaiju.network:443"
 			chainTlsCert = LoadTlsCert(certPath, chainGrpcEndpoint)
-			exchangeGrpcEndpoint = "tcp://k8s.testnet.exchange.grpc.injective.network:443"
+			exchangeGrpcEndpoint = "tcp://k8s.testnet.exchange.grpc.kaiju.network:443"
 			exchangeTlsCert = LoadTlsCert(certPath, exchangeGrpcEndpoint)
 		} else {
-			lcdEndpoint = fmt.Sprintf("http://%s.injective.dev:10337", node)
-			tmEndpoint = fmt.Sprintf("http://%s.injective.dev:26657", node)
-			chainGrpcEndpoint = fmt.Sprintf("tcp://%s.injective.dev:9900", node)
-			exchangeGrpcEndpoint = fmt.Sprintf("tcp://%s.injective.dev:9910", node)
+			lcdEndpoint = fmt.Sprintf("http://%s.kaiju.dev:10337", node)
+			tmEndpoint = fmt.Sprintf("http://%s.kaiju.dev:26657", node)
+			chainGrpcEndpoint = fmt.Sprintf("tcp://%s.kaiju.dev:9900", node)
+			exchangeGrpcEndpoint = fmt.Sprintf("tcp://%s.kaiju.dev:9910", node)
 		}
 
 		return Network{
@@ -82,8 +82,8 @@ func LoadNetwork(name string, node string) Network {
 			ChainTlsCert:         chainTlsCert,
 			ExchangeGrpcEndpoint: exchangeGrpcEndpoint,
 			ExchangeTlsCert:      exchangeTlsCert,
-			ChainId:              "injective-888",
-			Fee_denom:            "inj",
+			ChainId:              "kaiju-888",
+			Fee_denom:            "kai",
 			Name:                 "testnet",
 		}
 	case "mainnet":
@@ -95,24 +95,24 @@ func LoadNetwork(name string, node string) Network {
 		var chainTlsCert, exchangeTlsCert credentials.TransportCredentials
 		if node == "k8s" {
 			certPath := getFileAbsPath("../cert/mainnet.crt")
-			lcdEndpoint = fmt.Sprintf("https://%s.mainnet.lcd.injective.network", node)
-			tmEndpoint = fmt.Sprintf("https://%s.mainnet.tm.injective.network:443", node)
-			chainGrpcEndpoint = fmt.Sprintf("tcp://%s.mainnet.chain.grpc.injective.network:443", node)
+			lcdEndpoint = fmt.Sprintf("https://%s.mainnet.lcd.kaiju.network", node)
+			tmEndpoint = fmt.Sprintf("https://%s.mainnet.tm.kaiju.network:443", node)
+			chainGrpcEndpoint = fmt.Sprintf("tcp://%s.mainnet.chain.grpc.kaiju.network:443", node)
 			chainTlsCert = LoadTlsCert(certPath, chainGrpcEndpoint)
-			exchangeGrpcEndpoint = fmt.Sprintf("tcp://%s.mainnet.exchange.grpc.injective.network:443", node)
+			exchangeGrpcEndpoint = fmt.Sprintf("tcp://%s.mainnet.exchange.grpc.kaiju.network:443", node)
 			exchangeTlsCert = LoadTlsCert(certPath, exchangeGrpcEndpoint)
 		} else if node == "lb" {
-			lcdEndpoint = "https://k8s.global.mainnet.lcd.injective.network"
-			tmEndpoint = "https://k8s.global.mainnet.tm.injective.network:443"
-			chainGrpcEndpoint = "k8s.global.mainnet.chain.grpc.injective.network:443"
-			exchangeGrpcEndpoint = "k8s.global.mainnet.exchange.grpc.injective.network:443"
+			lcdEndpoint = "https://k8s.global.mainnet.lcd.kaiju.network"
+			tmEndpoint = "https://k8s.global.mainnet.tm.kaiju.network:443"
+			chainGrpcEndpoint = "k8s.global.mainnet.chain.grpc.kaiju.network:443"
+			exchangeGrpcEndpoint = "k8s.global.mainnet.exchange.grpc.kaiju.network:443"
 			chainTlsCert = credentials.NewServerTLSFromCert(&tls.Certificate{})
 			exchangeTlsCert = credentials.NewServerTLSFromCert(&tls.Certificate{})
 		} else {
-			lcdEndpoint = fmt.Sprintf("http://%s.injective.network:10337", node)
-			tmEndpoint = fmt.Sprintf("http://%s.injective.network:26657", node)
-			chainGrpcEndpoint = fmt.Sprintf("tcp://%s.injective.network:9900", node)
-			exchangeGrpcEndpoint = fmt.Sprintf("tcp://%s.injective.network:9910", node)
+			lcdEndpoint = fmt.Sprintf("http://%s.kaiju.network:10337", node)
+			tmEndpoint = fmt.Sprintf("http://%s.kaiju.network:26657", node)
+			chainGrpcEndpoint = fmt.Sprintf("tcp://%s.kaiju.network:9900", node)
+			exchangeGrpcEndpoint = fmt.Sprintf("tcp://%s.kaiju.network:9910", node)
 		}
 
 		return Network{
@@ -122,8 +122,8 @@ func LoadNetwork(name string, node string) Network {
 			ChainTlsCert:         chainTlsCert,
 			ExchangeGrpcEndpoint: exchangeGrpcEndpoint,
 			ExchangeTlsCert:      exchangeTlsCert,
-			ChainId:              "injective-1",
-			Fee_denom:            "inj",
+			ChainId:              "kaiju-1",
+			Fee_denom:            "kai",
 			Name:                 "mainnet",
 		}
 	}

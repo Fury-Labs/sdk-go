@@ -1,10 +1,10 @@
 syntax = "proto3";
-package injective.insurance.v1beta1;
+package kaiju.insurance.v1beta1;
 
-import "injective/insurance/v1beta1/insurance.proto";
+import "kaiju/insurance/v1beta1/insurance.proto";
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/insurance/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/insurance/types";
 
 // GenesisState defines the insurance module's genesis state.
 message GenesisState {

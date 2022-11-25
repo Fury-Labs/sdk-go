@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.4
-// source: injective_accounts_rpc.proto
+// source: kaiju_accounts_rpc.proto
 
-package injective_accounts_rpcpb
+package kaiju_accounts_rpcpb
 
 import (
 	context "context"
@@ -18,10 +18,10 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// InjectiveAccountsRPCClient is the client API for InjectiveAccountsRPC service.
+// KaijuAccountsRPCClient is the client API for KaijuAccountsRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type InjectiveAccountsRPCClient interface {
+type KaijuAccountsRPCClient interface {
 	// Provide the account's portfolio value in USD.
 	Portfolio(ctx context.Context, in *PortfolioRequest, opts ...grpc.CallOption) (*PortfolioResponse, error)
 	// List order states by order hashes
@@ -35,7 +35,7 @@ type InjectiveAccountsRPCClient interface {
 	// StreamSubaccountBalance streams new balance changes for a specified
 	// subaccount and denoms. If no denoms are provided, all denom changes are
 	// streamed.
-	StreamSubaccountBalance(ctx context.Context, in *StreamSubaccountBalanceRequest, opts ...grpc.CallOption) (InjectiveAccountsRPC_StreamSubaccountBalanceClient, error)
+	StreamSubaccountBalance(ctx context.Context, in *StreamSubaccountBalanceRequest, opts ...grpc.CallOption) (KaijuAccountsRPC_StreamSubaccountBalanceClient, error)
 	// Get subaccount's deposits and withdrawals history
 	SubaccountHistory(ctx context.Context, in *SubaccountHistoryRequest, opts ...grpc.CallOption) (*SubaccountHistoryResponse, error)
 	// Get subaccount's orders summary
@@ -44,65 +44,65 @@ type InjectiveAccountsRPCClient interface {
 	Rewards(ctx context.Context, in *RewardsRequest, opts ...grpc.CallOption) (*RewardsResponse, error)
 }
 
-type injectiveAccountsRPCClient struct {
+type kaijuAccountsRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewInjectiveAccountsRPCClient(cc grpc.ClientConnInterface) InjectiveAccountsRPCClient {
-	return &injectiveAccountsRPCClient{cc}
+func NewKaijuAccountsRPCClient(cc grpc.ClientConnInterface) KaijuAccountsRPCClient {
+	return &kaijuAccountsRPCClient{cc}
 }
 
-func (c *injectiveAccountsRPCClient) Portfolio(ctx context.Context, in *PortfolioRequest, opts ...grpc.CallOption) (*PortfolioResponse, error) {
+func (c *kaijuAccountsRPCClient) Portfolio(ctx context.Context, in *PortfolioRequest, opts ...grpc.CallOption) (*PortfolioResponse, error) {
 	out := new(PortfolioResponse)
-	err := c.cc.Invoke(ctx, "/injective_accounts_rpc.InjectiveAccountsRPC/Portfolio", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_accounts_rpc.KaijuAccountsRPC/Portfolio", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveAccountsRPCClient) OrderStates(ctx context.Context, in *OrderStatesRequest, opts ...grpc.CallOption) (*OrderStatesResponse, error) {
+func (c *kaijuAccountsRPCClient) OrderStates(ctx context.Context, in *OrderStatesRequest, opts ...grpc.CallOption) (*OrderStatesResponse, error) {
 	out := new(OrderStatesResponse)
-	err := c.cc.Invoke(ctx, "/injective_accounts_rpc.InjectiveAccountsRPC/OrderStates", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_accounts_rpc.KaijuAccountsRPC/OrderStates", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveAccountsRPCClient) SubaccountsList(ctx context.Context, in *SubaccountsListRequest, opts ...grpc.CallOption) (*SubaccountsListResponse, error) {
+func (c *kaijuAccountsRPCClient) SubaccountsList(ctx context.Context, in *SubaccountsListRequest, opts ...grpc.CallOption) (*SubaccountsListResponse, error) {
 	out := new(SubaccountsListResponse)
-	err := c.cc.Invoke(ctx, "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountsList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountsList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveAccountsRPCClient) SubaccountBalancesList(ctx context.Context, in *SubaccountBalancesListRequest, opts ...grpc.CallOption) (*SubaccountBalancesListResponse, error) {
+func (c *kaijuAccountsRPCClient) SubaccountBalancesList(ctx context.Context, in *SubaccountBalancesListRequest, opts ...grpc.CallOption) (*SubaccountBalancesListResponse, error) {
 	out := new(SubaccountBalancesListResponse)
-	err := c.cc.Invoke(ctx, "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountBalancesList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountBalancesList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveAccountsRPCClient) SubaccountBalanceEndpoint(ctx context.Context, in *SubaccountBalanceRequest, opts ...grpc.CallOption) (*SubaccountBalanceResponse, error) {
+func (c *kaijuAccountsRPCClient) SubaccountBalanceEndpoint(ctx context.Context, in *SubaccountBalanceRequest, opts ...grpc.CallOption) (*SubaccountBalanceResponse, error) {
 	out := new(SubaccountBalanceResponse)
-	err := c.cc.Invoke(ctx, "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountBalanceEndpoint", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountBalanceEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveAccountsRPCClient) StreamSubaccountBalance(ctx context.Context, in *StreamSubaccountBalanceRequest, opts ...grpc.CallOption) (InjectiveAccountsRPC_StreamSubaccountBalanceClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveAccountsRPC_ServiceDesc.Streams[0], "/injective_accounts_rpc.InjectiveAccountsRPC/StreamSubaccountBalance", opts...)
+func (c *kaijuAccountsRPCClient) StreamSubaccountBalance(ctx context.Context, in *StreamSubaccountBalanceRequest, opts ...grpc.CallOption) (KaijuAccountsRPC_StreamSubaccountBalanceClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuAccountsRPC_ServiceDesc.Streams[0], "/kaiju_accounts_rpc.KaijuAccountsRPC/StreamSubaccountBalance", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveAccountsRPCStreamSubaccountBalanceClient{stream}
+	x := &kaijuAccountsRPCStreamSubaccountBalanceClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -112,16 +112,16 @@ func (c *injectiveAccountsRPCClient) StreamSubaccountBalance(ctx context.Context
 	return x, nil
 }
 
-type InjectiveAccountsRPC_StreamSubaccountBalanceClient interface {
+type KaijuAccountsRPC_StreamSubaccountBalanceClient interface {
 	Recv() (*StreamSubaccountBalanceResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveAccountsRPCStreamSubaccountBalanceClient struct {
+type kaijuAccountsRPCStreamSubaccountBalanceClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveAccountsRPCStreamSubaccountBalanceClient) Recv() (*StreamSubaccountBalanceResponse, error) {
+func (x *kaijuAccountsRPCStreamSubaccountBalanceClient) Recv() (*StreamSubaccountBalanceResponse, error) {
 	m := new(StreamSubaccountBalanceResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -129,37 +129,37 @@ func (x *injectiveAccountsRPCStreamSubaccountBalanceClient) Recv() (*StreamSubac
 	return m, nil
 }
 
-func (c *injectiveAccountsRPCClient) SubaccountHistory(ctx context.Context, in *SubaccountHistoryRequest, opts ...grpc.CallOption) (*SubaccountHistoryResponse, error) {
+func (c *kaijuAccountsRPCClient) SubaccountHistory(ctx context.Context, in *SubaccountHistoryRequest, opts ...grpc.CallOption) (*SubaccountHistoryResponse, error) {
 	out := new(SubaccountHistoryResponse)
-	err := c.cc.Invoke(ctx, "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountHistory", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountHistory", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveAccountsRPCClient) SubaccountOrderSummary(ctx context.Context, in *SubaccountOrderSummaryRequest, opts ...grpc.CallOption) (*SubaccountOrderSummaryResponse, error) {
+func (c *kaijuAccountsRPCClient) SubaccountOrderSummary(ctx context.Context, in *SubaccountOrderSummaryRequest, opts ...grpc.CallOption) (*SubaccountOrderSummaryResponse, error) {
 	out := new(SubaccountOrderSummaryResponse)
-	err := c.cc.Invoke(ctx, "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountOrderSummary", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountOrderSummary", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveAccountsRPCClient) Rewards(ctx context.Context, in *RewardsRequest, opts ...grpc.CallOption) (*RewardsResponse, error) {
+func (c *kaijuAccountsRPCClient) Rewards(ctx context.Context, in *RewardsRequest, opts ...grpc.CallOption) (*RewardsResponse, error) {
 	out := new(RewardsResponse)
-	err := c.cc.Invoke(ctx, "/injective_accounts_rpc.InjectiveAccountsRPC/Rewards", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_accounts_rpc.KaijuAccountsRPC/Rewards", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// InjectiveAccountsRPCServer is the server API for InjectiveAccountsRPC service.
-// All implementations must embed UnimplementedInjectiveAccountsRPCServer
+// KaijuAccountsRPCServer is the server API for KaijuAccountsRPC service.
+// All implementations must embed UnimplementedKaijuAccountsRPCServer
 // for forward compatibility
-type InjectiveAccountsRPCServer interface {
+type KaijuAccountsRPCServer interface {
 	// Provide the account's portfolio value in USD.
 	Portfolio(context.Context, *PortfolioRequest) (*PortfolioResponse, error)
 	// List order states by order hashes
@@ -173,271 +173,271 @@ type InjectiveAccountsRPCServer interface {
 	// StreamSubaccountBalance streams new balance changes for a specified
 	// subaccount and denoms. If no denoms are provided, all denom changes are
 	// streamed.
-	StreamSubaccountBalance(*StreamSubaccountBalanceRequest, InjectiveAccountsRPC_StreamSubaccountBalanceServer) error
+	StreamSubaccountBalance(*StreamSubaccountBalanceRequest, KaijuAccountsRPC_StreamSubaccountBalanceServer) error
 	// Get subaccount's deposits and withdrawals history
 	SubaccountHistory(context.Context, *SubaccountHistoryRequest) (*SubaccountHistoryResponse, error)
 	// Get subaccount's orders summary
 	SubaccountOrderSummary(context.Context, *SubaccountOrderSummaryRequest) (*SubaccountOrderSummaryResponse, error)
 	// Provide historical trading rewards
 	Rewards(context.Context, *RewardsRequest) (*RewardsResponse, error)
-	mustEmbedUnimplementedInjectiveAccountsRPCServer()
+	mustEmbedUnimplementedKaijuAccountsRPCServer()
 }
 
-// UnimplementedInjectiveAccountsRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedInjectiveAccountsRPCServer struct {
+// UnimplementedKaijuAccountsRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedKaijuAccountsRPCServer struct {
 }
 
-func (UnimplementedInjectiveAccountsRPCServer) Portfolio(context.Context, *PortfolioRequest) (*PortfolioResponse, error) {
+func (UnimplementedKaijuAccountsRPCServer) Portfolio(context.Context, *PortfolioRequest) (*PortfolioResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Portfolio not implemented")
 }
-func (UnimplementedInjectiveAccountsRPCServer) OrderStates(context.Context, *OrderStatesRequest) (*OrderStatesResponse, error) {
+func (UnimplementedKaijuAccountsRPCServer) OrderStates(context.Context, *OrderStatesRequest) (*OrderStatesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OrderStates not implemented")
 }
-func (UnimplementedInjectiveAccountsRPCServer) SubaccountsList(context.Context, *SubaccountsListRequest) (*SubaccountsListResponse, error) {
+func (UnimplementedKaijuAccountsRPCServer) SubaccountsList(context.Context, *SubaccountsListRequest) (*SubaccountsListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubaccountsList not implemented")
 }
-func (UnimplementedInjectiveAccountsRPCServer) SubaccountBalancesList(context.Context, *SubaccountBalancesListRequest) (*SubaccountBalancesListResponse, error) {
+func (UnimplementedKaijuAccountsRPCServer) SubaccountBalancesList(context.Context, *SubaccountBalancesListRequest) (*SubaccountBalancesListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubaccountBalancesList not implemented")
 }
-func (UnimplementedInjectiveAccountsRPCServer) SubaccountBalanceEndpoint(context.Context, *SubaccountBalanceRequest) (*SubaccountBalanceResponse, error) {
+func (UnimplementedKaijuAccountsRPCServer) SubaccountBalanceEndpoint(context.Context, *SubaccountBalanceRequest) (*SubaccountBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubaccountBalanceEndpoint not implemented")
 }
-func (UnimplementedInjectiveAccountsRPCServer) StreamSubaccountBalance(*StreamSubaccountBalanceRequest, InjectiveAccountsRPC_StreamSubaccountBalanceServer) error {
+func (UnimplementedKaijuAccountsRPCServer) StreamSubaccountBalance(*StreamSubaccountBalanceRequest, KaijuAccountsRPC_StreamSubaccountBalanceServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamSubaccountBalance not implemented")
 }
-func (UnimplementedInjectiveAccountsRPCServer) SubaccountHistory(context.Context, *SubaccountHistoryRequest) (*SubaccountHistoryResponse, error) {
+func (UnimplementedKaijuAccountsRPCServer) SubaccountHistory(context.Context, *SubaccountHistoryRequest) (*SubaccountHistoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubaccountHistory not implemented")
 }
-func (UnimplementedInjectiveAccountsRPCServer) SubaccountOrderSummary(context.Context, *SubaccountOrderSummaryRequest) (*SubaccountOrderSummaryResponse, error) {
+func (UnimplementedKaijuAccountsRPCServer) SubaccountOrderSummary(context.Context, *SubaccountOrderSummaryRequest) (*SubaccountOrderSummaryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubaccountOrderSummary not implemented")
 }
-func (UnimplementedInjectiveAccountsRPCServer) Rewards(context.Context, *RewardsRequest) (*RewardsResponse, error) {
+func (UnimplementedKaijuAccountsRPCServer) Rewards(context.Context, *RewardsRequest) (*RewardsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Rewards not implemented")
 }
-func (UnimplementedInjectiveAccountsRPCServer) mustEmbedUnimplementedInjectiveAccountsRPCServer() {}
+func (UnimplementedKaijuAccountsRPCServer) mustEmbedUnimplementedKaijuAccountsRPCServer() {}
 
-// UnsafeInjectiveAccountsRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to InjectiveAccountsRPCServer will
+// UnsafeKaijuAccountsRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KaijuAccountsRPCServer will
 // result in compilation errors.
-type UnsafeInjectiveAccountsRPCServer interface {
-	mustEmbedUnimplementedInjectiveAccountsRPCServer()
+type UnsafeKaijuAccountsRPCServer interface {
+	mustEmbedUnimplementedKaijuAccountsRPCServer()
 }
 
-func RegisterInjectiveAccountsRPCServer(s grpc.ServiceRegistrar, srv InjectiveAccountsRPCServer) {
-	s.RegisterService(&InjectiveAccountsRPC_ServiceDesc, srv)
+func RegisterKaijuAccountsRPCServer(s grpc.ServiceRegistrar, srv KaijuAccountsRPCServer) {
+	s.RegisterService(&KaijuAccountsRPC_ServiceDesc, srv)
 }
 
-func _InjectiveAccountsRPC_Portfolio_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuAccountsRPC_Portfolio_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PortfolioRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveAccountsRPCServer).Portfolio(ctx, in)
+		return srv.(KaijuAccountsRPCServer).Portfolio(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_accounts_rpc.InjectiveAccountsRPC/Portfolio",
+		FullMethod: "/kaiju_accounts_rpc.KaijuAccountsRPC/Portfolio",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveAccountsRPCServer).Portfolio(ctx, req.(*PortfolioRequest))
+		return srv.(KaijuAccountsRPCServer).Portfolio(ctx, req.(*PortfolioRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveAccountsRPC_OrderStates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuAccountsRPC_OrderStates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(OrderStatesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveAccountsRPCServer).OrderStates(ctx, in)
+		return srv.(KaijuAccountsRPCServer).OrderStates(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_accounts_rpc.InjectiveAccountsRPC/OrderStates",
+		FullMethod: "/kaiju_accounts_rpc.KaijuAccountsRPC/OrderStates",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveAccountsRPCServer).OrderStates(ctx, req.(*OrderStatesRequest))
+		return srv.(KaijuAccountsRPCServer).OrderStates(ctx, req.(*OrderStatesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveAccountsRPC_SubaccountsList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuAccountsRPC_SubaccountsList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SubaccountsListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveAccountsRPCServer).SubaccountsList(ctx, in)
+		return srv.(KaijuAccountsRPCServer).SubaccountsList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountsList",
+		FullMethod: "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountsList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveAccountsRPCServer).SubaccountsList(ctx, req.(*SubaccountsListRequest))
+		return srv.(KaijuAccountsRPCServer).SubaccountsList(ctx, req.(*SubaccountsListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveAccountsRPC_SubaccountBalancesList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuAccountsRPC_SubaccountBalancesList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SubaccountBalancesListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveAccountsRPCServer).SubaccountBalancesList(ctx, in)
+		return srv.(KaijuAccountsRPCServer).SubaccountBalancesList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountBalancesList",
+		FullMethod: "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountBalancesList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveAccountsRPCServer).SubaccountBalancesList(ctx, req.(*SubaccountBalancesListRequest))
+		return srv.(KaijuAccountsRPCServer).SubaccountBalancesList(ctx, req.(*SubaccountBalancesListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveAccountsRPC_SubaccountBalanceEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuAccountsRPC_SubaccountBalanceEndpoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SubaccountBalanceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveAccountsRPCServer).SubaccountBalanceEndpoint(ctx, in)
+		return srv.(KaijuAccountsRPCServer).SubaccountBalanceEndpoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountBalanceEndpoint",
+		FullMethod: "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountBalanceEndpoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveAccountsRPCServer).SubaccountBalanceEndpoint(ctx, req.(*SubaccountBalanceRequest))
+		return srv.(KaijuAccountsRPCServer).SubaccountBalanceEndpoint(ctx, req.(*SubaccountBalanceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveAccountsRPC_StreamSubaccountBalance_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuAccountsRPC_StreamSubaccountBalance_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamSubaccountBalanceRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveAccountsRPCServer).StreamSubaccountBalance(m, &injectiveAccountsRPCStreamSubaccountBalanceServer{stream})
+	return srv.(KaijuAccountsRPCServer).StreamSubaccountBalance(m, &kaijuAccountsRPCStreamSubaccountBalanceServer{stream})
 }
 
-type InjectiveAccountsRPC_StreamSubaccountBalanceServer interface {
+type KaijuAccountsRPC_StreamSubaccountBalanceServer interface {
 	Send(*StreamSubaccountBalanceResponse) error
 	grpc.ServerStream
 }
 
-type injectiveAccountsRPCStreamSubaccountBalanceServer struct {
+type kaijuAccountsRPCStreamSubaccountBalanceServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveAccountsRPCStreamSubaccountBalanceServer) Send(m *StreamSubaccountBalanceResponse) error {
+func (x *kaijuAccountsRPCStreamSubaccountBalanceServer) Send(m *StreamSubaccountBalanceResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _InjectiveAccountsRPC_SubaccountHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuAccountsRPC_SubaccountHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SubaccountHistoryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveAccountsRPCServer).SubaccountHistory(ctx, in)
+		return srv.(KaijuAccountsRPCServer).SubaccountHistory(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountHistory",
+		FullMethod: "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountHistory",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveAccountsRPCServer).SubaccountHistory(ctx, req.(*SubaccountHistoryRequest))
+		return srv.(KaijuAccountsRPCServer).SubaccountHistory(ctx, req.(*SubaccountHistoryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveAccountsRPC_SubaccountOrderSummary_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuAccountsRPC_SubaccountOrderSummary_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SubaccountOrderSummaryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveAccountsRPCServer).SubaccountOrderSummary(ctx, in)
+		return srv.(KaijuAccountsRPCServer).SubaccountOrderSummary(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_accounts_rpc.InjectiveAccountsRPC/SubaccountOrderSummary",
+		FullMethod: "/kaiju_accounts_rpc.KaijuAccountsRPC/SubaccountOrderSummary",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveAccountsRPCServer).SubaccountOrderSummary(ctx, req.(*SubaccountOrderSummaryRequest))
+		return srv.(KaijuAccountsRPCServer).SubaccountOrderSummary(ctx, req.(*SubaccountOrderSummaryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveAccountsRPC_Rewards_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuAccountsRPC_Rewards_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RewardsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveAccountsRPCServer).Rewards(ctx, in)
+		return srv.(KaijuAccountsRPCServer).Rewards(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_accounts_rpc.InjectiveAccountsRPC/Rewards",
+		FullMethod: "/kaiju_accounts_rpc.KaijuAccountsRPC/Rewards",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveAccountsRPCServer).Rewards(ctx, req.(*RewardsRequest))
+		return srv.(KaijuAccountsRPCServer).Rewards(ctx, req.(*RewardsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// InjectiveAccountsRPC_ServiceDesc is the grpc.ServiceDesc for InjectiveAccountsRPC service.
+// KaijuAccountsRPC_ServiceDesc is the grpc.ServiceDesc for KaijuAccountsRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var InjectiveAccountsRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "injective_accounts_rpc.InjectiveAccountsRPC",
-	HandlerType: (*InjectiveAccountsRPCServer)(nil),
+var KaijuAccountsRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kaiju_accounts_rpc.KaijuAccountsRPC",
+	HandlerType: (*KaijuAccountsRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Portfolio",
-			Handler:    _InjectiveAccountsRPC_Portfolio_Handler,
+			Handler:    _KaijuAccountsRPC_Portfolio_Handler,
 		},
 		{
 			MethodName: "OrderStates",
-			Handler:    _InjectiveAccountsRPC_OrderStates_Handler,
+			Handler:    _KaijuAccountsRPC_OrderStates_Handler,
 		},
 		{
 			MethodName: "SubaccountsList",
-			Handler:    _InjectiveAccountsRPC_SubaccountsList_Handler,
+			Handler:    _KaijuAccountsRPC_SubaccountsList_Handler,
 		},
 		{
 			MethodName: "SubaccountBalancesList",
-			Handler:    _InjectiveAccountsRPC_SubaccountBalancesList_Handler,
+			Handler:    _KaijuAccountsRPC_SubaccountBalancesList_Handler,
 		},
 		{
 			MethodName: "SubaccountBalanceEndpoint",
-			Handler:    _InjectiveAccountsRPC_SubaccountBalanceEndpoint_Handler,
+			Handler:    _KaijuAccountsRPC_SubaccountBalanceEndpoint_Handler,
 		},
 		{
 			MethodName: "SubaccountHistory",
-			Handler:    _InjectiveAccountsRPC_SubaccountHistory_Handler,
+			Handler:    _KaijuAccountsRPC_SubaccountHistory_Handler,
 		},
 		{
 			MethodName: "SubaccountOrderSummary",
-			Handler:    _InjectiveAccountsRPC_SubaccountOrderSummary_Handler,
+			Handler:    _KaijuAccountsRPC_SubaccountOrderSummary_Handler,
 		},
 		{
 			MethodName: "Rewards",
-			Handler:    _InjectiveAccountsRPC_Rewards_Handler,
+			Handler:    _KaijuAccountsRPC_Rewards_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "StreamSubaccountBalance",
-			Handler:       _InjectiveAccountsRPC_StreamSubaccountBalance_Handler,
+			Handler:       _KaijuAccountsRPC_StreamSubaccountBalance_Handler,
 			ServerStreams: true,
 		},
 	},
-	Metadata: "injective_accounts_rpc.proto",
+	Metadata: "kaiju_accounts_rpc.proto",
 }

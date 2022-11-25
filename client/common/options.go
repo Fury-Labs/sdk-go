@@ -1,8 +1,8 @@
 package common
 
 import (
-	ctypes "github.com/InjectiveLabs/sdk-go/chain/types"
-	log "github.com/InjectiveLabs/suplog"
+	ctypes "github.com/Fury-Labs/sdk-go/chain/types"
+	log "github.com/Fury-Labs/suplog"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/pkg/errors"
 	"google.golang.org/grpc/credentials"
@@ -12,7 +12,7 @@ func init() {
 	// set the address prefixes
 	config := sdk.GetConfig()
 
-	// This is specific to Injective chain
+	// This is specific to Kaiju chain
 	ctypes.SetBech32Prefixes(config)
 	ctypes.SetBip44CoinType(config)
 }

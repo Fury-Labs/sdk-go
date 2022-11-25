@@ -1,7 +1,7 @@
 package types
 
 import (
-	bandprice "github.com/InjectiveLabs/sdk-go/bandchain/hooks/price"
+	bandprice "github.com/Fury-Labs/sdk-go/bandchain/hooks/price"
 	bandobi "github.com/bandprotocol/bandchain-packet/obi"
 	bandPacket "github.com/bandprotocol/bandchain-packet/packet"
 )

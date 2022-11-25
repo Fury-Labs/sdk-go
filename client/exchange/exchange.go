@@ -4,18 +4,18 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/InjectiveLabs/sdk-go/client/common"
-	accountPB "github.com/InjectiveLabs/sdk-go/exchange/accounts_rpc/pb"
-	auctionPB "github.com/InjectiveLabs/sdk-go/exchange/auction_rpc/pb"
-	derivativeExchangePB "github.com/InjectiveLabs/sdk-go/exchange/derivative_exchange_rpc/pb"
-	explorerPB "github.com/InjectiveLabs/sdk-go/exchange/explorer_rpc/pb"
-	insurancePB "github.com/InjectiveLabs/sdk-go/exchange/insurance_rpc/pb"
-	metaPB "github.com/InjectiveLabs/sdk-go/exchange/meta_rpc/pb"
-	oraclePB "github.com/InjectiveLabs/sdk-go/exchange/oracle_rpc/pb"
-	spotExchangePB "github.com/InjectiveLabs/sdk-go/exchange/spot_exchange_rpc/pb"
+	"github.com/Fury-Labs/sdk-go/client/common"
+	accountPB "github.com/Fury-Labs/sdk-go/exchange/accounts_rpc/pb"
+	auctionPB "github.com/Fury-Labs/sdk-go/exchange/auction_rpc/pb"
+	derivativeExchangePB "github.com/Fury-Labs/sdk-go/exchange/derivative_exchange_rpc/pb"
+	explorerPB "github.com/Fury-Labs/sdk-go/exchange/explorer_rpc/pb"
+	insurancePB "github.com/Fury-Labs/sdk-go/exchange/insurance_rpc/pb"
+	metaPB "github.com/Fury-Labs/sdk-go/exchange/meta_rpc/pb"
+	oraclePB "github.com/Fury-Labs/sdk-go/exchange/oracle_rpc/pb"
+	spotExchangePB "github.com/Fury-Labs/sdk-go/exchange/spot_exchange_rpc/pb"
 	"google.golang.org/grpc/metadata"
 
-	log "github.com/InjectiveLabs/suplog"
+	log "github.com/Fury-Labs/suplog"
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 )
@@ -25,29 +25,29 @@ type ExchangeClient interface {
 	GetDerivativeMarket(ctx context.Context, marketId string) (derivativeExchangePB.MarketResponse, error)
 	GetDerivativeOrderbook(ctx context.Context, marketId string) (derivativeExchangePB.OrderbookResponse, error)
 	GetDerivativeOrderbooks(ctx context.Context, marketIds []string) (derivativeExchangePB.OrderbooksResponse, error)
-	StreamDerivativeOrderbookSnapshot(ctx context.Context, marketIds []string) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamOrderbookSnapshotClient, error)
-	StreamDerivativeOrderbookUpdate(ctx context.Context, marketIds []string) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamOrderbookUpdateClient, error)
-	StreamDerivativeMarket(ctx context.Context, marketIds []string) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamMarketClient, error)
+	StreamDerivativeOrderbookSnapshot(ctx context.Context, marketIds []string) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamOrderbookSnapshotClient, error)
+	StreamDerivativeOrderbookUpdate(ctx context.Context, marketIds []string) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamOrderbookUpdateClient, error)
+	StreamDerivativeMarket(ctx context.Context, marketIds []string) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamMarketClient, error)
 	GetDerivativeOrders(ctx context.Context, req derivativeExchangePB.OrdersRequest) (derivativeExchangePB.OrdersResponse, error)
 	GetDerivativeMarkets(ctx context.Context, req derivativeExchangePB.MarketsRequest) (derivativeExchangePB.MarketsResponse, error)
 	GetDerivativePositions(ctx context.Context, req derivativeExchangePB.PositionsRequest) (derivativeExchangePB.PositionsResponse, error)
-	StreamDerivativePositions(ctx context.Context, req derivativeExchangePB.StreamPositionsRequest) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamPositionsClient, error)
-	StreamDerivativeOrders(ctx context.Context, req derivativeExchangePB.StreamOrdersRequest) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamOrdersClient, error)
+	StreamDerivativePositions(ctx context.Context, req derivativeExchangePB.StreamPositionsRequest) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamPositionsClient, error)
+	StreamDerivativeOrders(ctx context.Context, req derivativeExchangePB.StreamOrdersRequest) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamOrdersClient, error)
 	GetDerivativeTrades(ctx context.Context, req derivativeExchangePB.TradesRequest) (derivativeExchangePB.TradesResponse, error)
-	StreamDerivativeTrades(ctx context.Context, req derivativeExchangePB.StreamTradesRequest) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamTradesClient, error)
+	StreamDerivativeTrades(ctx context.Context, req derivativeExchangePB.StreamTradesRequest) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamTradesClient, error)
 	GetSubaccountDerivativeOrdersList(ctx context.Context, req derivativeExchangePB.SubaccountOrdersListRequest) (derivativeExchangePB.SubaccountOrdersListResponse, error)
 	GetSubaccountDerivativeTradesList(ctx context.Context, req derivativeExchangePB.SubaccountTradesListRequest) (derivativeExchangePB.SubaccountTradesListResponse, error)
 	GetDerivativeFundingPayments(ctx context.Context, req derivativeExchangePB.FundingPaymentsRequest) (derivativeExchangePB.FundingPaymentsResponse, error)
 	GetDerivativeFundingRates(ctx context.Context, req derivativeExchangePB.FundingRatesRequest) (derivativeExchangePB.FundingRatesResponse, error)
 	GetPrice(ctx context.Context, baseSymbol string, quoteSymbol string, oracleType string, oracleScaleFactor uint32) (oraclePB.PriceResponse, error)
 	GetOracleList(ctx context.Context) (oraclePB.OracleListResponse, error)
-	StreamPrices(ctx context.Context, baseSymbol string, quoteSymbol string, oracleType string) (oraclePB.InjectiveOracleRPC_StreamPricesClient, error)
+	StreamPrices(ctx context.Context, baseSymbol string, quoteSymbol string, oracleType string) (oraclePB.KaijuOracleRPC_StreamPricesClient, error)
 	GetAuction(ctx context.Context, round int64) (auctionPB.AuctionResponse, error)
 	GetAuctions(ctx context.Context) (auctionPB.AuctionsResponse, error)
-	StreamBids(ctx context.Context) (auctionPB.InjectiveAuctionRPC_StreamBidsClient, error)
+	StreamBids(ctx context.Context) (auctionPB.KaijuAuctionRPC_StreamBidsClient, error)
 	GetSubaccountsList(ctx context.Context, accountAddress string) (accountPB.SubaccountsListResponse, error)
 	GetSubaccountBalance(ctx context.Context, subaccountId string, denom string) (accountPB.SubaccountBalanceResponse, error)
-	StreamSubaccountBalance(ctx context.Context, subaccountId string) (accountPB.InjectiveAccountsRPC_StreamSubaccountBalanceClient, error)
+	StreamSubaccountBalance(ctx context.Context, subaccountId string) (accountPB.KaijuAccountsRPC_StreamSubaccountBalanceClient, error)
 	GetSubaccountBalancesList(ctx context.Context, subaccountId string) (accountPB.SubaccountBalancesListResponse, error)
 	GetSubaccountHistory(ctx context.Context, req accountPB.SubaccountHistoryRequest) (accountPB.SubaccountHistoryResponse, error)
 	GetSubaccountOrderSummary(ctx context.Context, req accountPB.SubaccountOrderSummaryRequest) (accountPB.SubaccountOrderSummaryResponse, error)
@@ -57,19 +57,19 @@ type ExchangeClient interface {
 	GetSpotOrders(ctx context.Context, req spotExchangePB.OrdersRequest) (spotExchangePB.OrdersResponse, error)
 	GetSpotOrderbook(ctx context.Context, marketId string) (spotExchangePB.OrderbookResponse, error)
 	GetSpotOrderbooks(ctx context.Context, marketIds []string) (spotExchangePB.OrderbooksResponse, error)
-	StreamSpotOrderbookSnapshot(ctx context.Context, marketIds []string) (spotExchangePB.InjectiveSpotExchangeRPC_StreamOrderbookSnapshotClient, error)
-	StreamSpotOrderbookUpdate(ctx context.Context, marketIds []string) (spotExchangePB.InjectiveSpotExchangeRPC_StreamOrderbookUpdateClient, error)
+	StreamSpotOrderbookSnapshot(ctx context.Context, marketIds []string) (spotExchangePB.KaijuSpotExchangeRPC_StreamOrderbookSnapshotClient, error)
+	StreamSpotOrderbookUpdate(ctx context.Context, marketIds []string) (spotExchangePB.KaijuSpotExchangeRPC_StreamOrderbookUpdateClient, error)
 	GetSpotMarkets(ctx context.Context, req spotExchangePB.MarketsRequest) (spotExchangePB.MarketsResponse, error)
 	GetSpotMarket(ctx context.Context, marketId string) (spotExchangePB.MarketResponse, error)
-	StreamSpotMarket(ctx context.Context, marketIds []string) (spotExchangePB.InjectiveSpotExchangeRPC_StreamMarketsClient, error)
-	StreamSpotOrders(ctx context.Context, req spotExchangePB.StreamOrdersRequest) (spotExchangePB.InjectiveSpotExchangeRPC_StreamOrdersClient, error)
+	StreamSpotMarket(ctx context.Context, marketIds []string) (spotExchangePB.KaijuSpotExchangeRPC_StreamMarketsClient, error)
+	StreamSpotOrders(ctx context.Context, req spotExchangePB.StreamOrdersRequest) (spotExchangePB.KaijuSpotExchangeRPC_StreamOrdersClient, error)
 	GetSpotTrades(ctx context.Context, req spotExchangePB.TradesRequest) (spotExchangePB.TradesResponse, error)
-	StreamSpotTrades(ctx context.Context, req spotExchangePB.StreamTradesRequest) (spotExchangePB.InjectiveSpotExchangeRPC_StreamTradesClient, error)
+	StreamSpotTrades(ctx context.Context, req spotExchangePB.StreamTradesRequest) (spotExchangePB.KaijuSpotExchangeRPC_StreamTradesClient, error)
 	GetSubaccountSpotOrdersList(ctx context.Context, req spotExchangePB.SubaccountOrdersListRequest) (spotExchangePB.SubaccountOrdersListResponse, error)
 	GetSubaccountSpotTradesList(ctx context.Context, req spotExchangePB.SubaccountTradesListRequest) (spotExchangePB.SubaccountTradesListResponse, error)
 	GetInsuranceFunds(ctx context.Context, req insurancePB.FundsRequest) (insurancePB.FundsResponse, error)
 	GetRedemptions(ctx context.Context, req insurancePB.RedemptionsRequest) (insurancePB.RedemptionsResponse, error)
-	StreamKeepalive(ctx context.Context) (metaPB.InjectiveMetaRPC_StreamKeepaliveClient, error)
+	StreamKeepalive(ctx context.Context) (metaPB.KaijuMetaRPC_StreamKeepaliveClient, error)
 	GetInfo(ctx context.Context, req metaPB.InfoRequest) (metaPB.InfoResponse, error)
 	GetVersion(ctx context.Context, req metaPB.VersionRequest) (metaPB.VersionResponse, error)
 	Ping(ctx context.Context, req metaPB.PingRequest) (metaPB.PingResponse, error)
@@ -81,8 +81,8 @@ type ExchangeClient interface {
 	GetPeggyDeposits(ctx context.Context, req explorerPB.GetPeggyDepositTxsRequest) (explorerPB.GetPeggyDepositTxsResponse, error)
 	GetPeggyWithdrawals(ctx context.Context, req explorerPB.GetPeggyWithdrawalTxsRequest) (explorerPB.GetPeggyWithdrawalTxsResponse, error)
 	GetIBCTransfers(ctx context.Context, req explorerPB.GetIBCTransferTxsRequest) (explorerPB.GetIBCTransferTxsResponse, error)
-	StreamTxs(ctx context.Context) (explorerPB.InjectiveExplorerRPC_StreamTxsClient, error)
-	StreamBlocks(ctx context.Context) (explorerPB.InjectiveExplorerRPC_StreamBlocksClient, error)
+	StreamTxs(ctx context.Context) (explorerPB.KaijuExplorerRPC_StreamTxsClient, error)
+	StreamBlocks(ctx context.Context) (explorerPB.KaijuExplorerRPC_StreamBlocksClient, error)
 	Close()
 }
 
@@ -115,14 +115,14 @@ func NewExchangeClient(protoAddr string, options ...common.ClientOption) (Exchan
 		opts: opts,
 		conn: conn,
 
-		metaClient:               metaPB.NewInjectiveMetaRPCClient(conn),
-		explorerClient:           explorerPB.NewInjectiveExplorerRPCClient(conn),
-		accountClient:            accountPB.NewInjectiveAccountsRPCClient(conn),
-		auctionClient:            auctionPB.NewInjectiveAuctionRPCClient(conn),
-		oracleClient:             oraclePB.NewInjectiveOracleRPCClient(conn),
-		insuranceClient:          insurancePB.NewInjectiveInsuranceRPCClient(conn),
-		spotExchangeClient:       spotExchangePB.NewInjectiveSpotExchangeRPCClient(conn),
-		derivativeExchangeClient: derivativeExchangePB.NewInjectiveDerivativeExchangeRPCClient(conn),
+		metaClient:               metaPB.NewKaijuMetaRPCClient(conn),
+		explorerClient:           explorerPB.NewKaijuExplorerRPCClient(conn),
+		accountClient:            accountPB.NewKaijuAccountsRPCClient(conn),
+		auctionClient:            auctionPB.NewKaijuAuctionRPCClient(conn),
+		oracleClient:             oraclePB.NewKaijuOracleRPCClient(conn),
+		insuranceClient:          insurancePB.NewKaijuInsuranceRPCClient(conn),
+		spotExchangeClient:       spotExchangePB.NewKaijuSpotExchangeRPCClient(conn),
+		derivativeExchangeClient: derivativeExchangePB.NewKaijuDerivativeExchangeRPCClient(conn),
 
 		logger: log.WithFields(log.Fields{
 			"module": "sdk-go",
@@ -141,14 +141,14 @@ type exchangeClient struct {
 
 	sessionCookie string
 
-	metaClient               metaPB.InjectiveMetaRPCClient
-	explorerClient           explorerPB.InjectiveExplorerRPCClient
-	accountClient            accountPB.InjectiveAccountsRPCClient
-	auctionClient            auctionPB.InjectiveAuctionRPCClient
-	oracleClient             oraclePB.InjectiveOracleRPCClient
-	insuranceClient          insurancePB.InjectiveInsuranceRPCClient
-	spotExchangeClient       spotExchangePB.InjectiveSpotExchangeRPCClient
-	derivativeExchangeClient derivativeExchangePB.InjectiveDerivativeExchangeRPCClient
+	metaClient               metaPB.KaijuMetaRPCClient
+	explorerClient           explorerPB.KaijuExplorerRPCClient
+	accountClient            accountPB.KaijuAccountsRPCClient
+	auctionClient            auctionPB.KaijuAuctionRPCClient
+	oracleClient             oraclePB.KaijuOracleRPCClient
+	insuranceClient          insurancePB.KaijuInsuranceRPCClient
+	spotExchangeClient       spotExchangePB.KaijuSpotExchangeRPCClient
+	derivativeExchangeClient derivativeExchangePB.KaijuDerivativeExchangeRPCClient
 
 	closed int64
 }
@@ -230,7 +230,7 @@ func (c *exchangeClient) GetDerivativeOrderbooks(ctx context.Context, marketIds 
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamDerivativeOrderbookSnapshot(ctx context.Context, marketIds []string) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamOrderbookSnapshotClient, error) {
+func (c *exchangeClient) StreamDerivativeOrderbookSnapshot(ctx context.Context, marketIds []string) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamOrderbookSnapshotClient, error) {
 	req := derivativeExchangePB.StreamOrderbookSnapshotRequest{
 		MarketIds: marketIds,
 	}
@@ -250,7 +250,7 @@ func (c *exchangeClient) StreamDerivativeOrderbookSnapshot(ctx context.Context, 
 
 	return stream, nil
 }
-func (c *exchangeClient) StreamDerivativeOrderbookUpdate(ctx context.Context, marketIds []string) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamOrderbookUpdateClient, error) {
+func (c *exchangeClient) StreamDerivativeOrderbookUpdate(ctx context.Context, marketIds []string) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamOrderbookUpdateClient, error) {
 	req := derivativeExchangePB.StreamOrderbookUpdateRequest{
 		MarketIds: marketIds,
 	}
@@ -301,7 +301,7 @@ func (c *exchangeClient) GetDerivativeMarket(ctx context.Context, marketId strin
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamDerivativeMarket(ctx context.Context, marketIds []string) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamMarketClient, error) {
+func (c *exchangeClient) StreamDerivativeMarket(ctx context.Context, marketIds []string) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamMarketClient, error) {
 	req := derivativeExchangePB.StreamMarketRequest{
 		MarketIds: marketIds,
 	}
@@ -322,7 +322,7 @@ func (c *exchangeClient) StreamDerivativeMarket(ctx context.Context, marketIds [
 	return stream, nil
 }
 
-func (c *exchangeClient) StreamDerivativePositions(ctx context.Context, req derivativeExchangePB.StreamPositionsRequest) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamPositionsClient, error) {
+func (c *exchangeClient) StreamDerivativePositions(ctx context.Context, req derivativeExchangePB.StreamPositionsRequest) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamPositionsClient, error) {
 	ctx = c.getCookie(ctx)
 	stream, err := c.derivativeExchangeClient.StreamPositions(ctx, &req)
 	if err != nil {
@@ -339,7 +339,7 @@ func (c *exchangeClient) StreamDerivativePositions(ctx context.Context, req deri
 	return stream, nil
 }
 
-func (c *exchangeClient) StreamDerivativeOrders(ctx context.Context, req derivativeExchangePB.StreamOrdersRequest) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamOrdersClient, error) {
+func (c *exchangeClient) StreamDerivativeOrders(ctx context.Context, req derivativeExchangePB.StreamOrdersRequest) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamOrdersClient, error) {
 	ctx = c.getCookie(ctx)
 	stream, err := c.derivativeExchangeClient.StreamOrders(ctx, &req)
 	if err != nil {
@@ -369,7 +369,7 @@ func (c *exchangeClient) GetDerivativeTrades(ctx context.Context, req derivative
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamDerivativeTrades(ctx context.Context, req derivativeExchangePB.StreamTradesRequest) (derivativeExchangePB.InjectiveDerivativeExchangeRPC_StreamTradesClient, error) {
+func (c *exchangeClient) StreamDerivativeTrades(ctx context.Context, req derivativeExchangePB.StreamTradesRequest) (derivativeExchangePB.KaijuDerivativeExchangeRPC_StreamTradesClient, error) {
 	ctx = c.getCookie(ctx)
 	stream, err := c.derivativeExchangeClient.StreamTrades(ctx, &req)
 	if err != nil {
@@ -475,7 +475,7 @@ func (c *exchangeClient) GetOracleList(ctx context.Context) (oraclePB.OracleList
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamPrices(ctx context.Context, baseSymbol string, quoteSymbol string, oracleType string) (oraclePB.InjectiveOracleRPC_StreamPricesClient, error) {
+func (c *exchangeClient) StreamPrices(ctx context.Context, baseSymbol string, quoteSymbol string, oracleType string) (oraclePB.KaijuOracleRPC_StreamPricesClient, error) {
 	req := oraclePB.StreamPricesRequest{
 		BaseSymbol:  baseSymbol,
 		QuoteSymbol: quoteSymbol,
@@ -532,7 +532,7 @@ func (c *exchangeClient) GetAuctions(ctx context.Context) (auctionPB.AuctionsRes
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamBids(ctx context.Context) (auctionPB.InjectiveAuctionRPC_StreamBidsClient, error) {
+func (c *exchangeClient) StreamBids(ctx context.Context) (auctionPB.KaijuAuctionRPC_StreamBidsClient, error) {
 	req := auctionPB.StreamBidsRequest{}
 
 	ctx = c.getCookie(ctx)
@@ -588,7 +588,7 @@ func (c *exchangeClient) GetSubaccountBalance(ctx context.Context, subaccountId 
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamSubaccountBalance(ctx context.Context, subaccountId string) (accountPB.InjectiveAccountsRPC_StreamSubaccountBalanceClient, error) {
+func (c *exchangeClient) StreamSubaccountBalance(ctx context.Context, subaccountId string) (accountPB.KaijuAccountsRPC_StreamSubaccountBalanceClient, error) {
 	req := accountPB.StreamSubaccountBalanceRequest{
 		SubaccountId: subaccountId,
 	}
@@ -744,7 +744,7 @@ func (c *exchangeClient) GetSpotOrderbooks(ctx context.Context, marketIds []stri
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamSpotOrderbookUpdate(ctx context.Context, marketIds []string) (spotExchangePB.InjectiveSpotExchangeRPC_StreamOrderbookUpdateClient, error) {
+func (c *exchangeClient) StreamSpotOrderbookUpdate(ctx context.Context, marketIds []string) (spotExchangePB.KaijuSpotExchangeRPC_StreamOrderbookUpdateClient, error) {
 	req := spotExchangePB.StreamOrderbookUpdateRequest{
 		MarketIds: marketIds,
 	}
@@ -765,7 +765,7 @@ func (c *exchangeClient) StreamSpotOrderbookUpdate(ctx context.Context, marketId
 	return stream, nil
 }
 
-func (c *exchangeClient) StreamSpotOrderbookSnapshot(ctx context.Context, marketIds []string) (spotExchangePB.InjectiveSpotExchangeRPC_StreamOrderbookSnapshotClient, error) {
+func (c *exchangeClient) StreamSpotOrderbookSnapshot(ctx context.Context, marketIds []string) (spotExchangePB.KaijuSpotExchangeRPC_StreamOrderbookSnapshotClient, error) {
 	req := spotExchangePB.StreamOrderbookSnapshotRequest{
 		MarketIds: marketIds,
 	}
@@ -816,7 +816,7 @@ func (c *exchangeClient) GetSpotMarket(ctx context.Context, marketId string) (sp
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamSpotMarket(ctx context.Context, marketIds []string) (spotExchangePB.InjectiveSpotExchangeRPC_StreamMarketsClient, error) {
+func (c *exchangeClient) StreamSpotMarket(ctx context.Context, marketIds []string) (spotExchangePB.KaijuSpotExchangeRPC_StreamMarketsClient, error) {
 	req := spotExchangePB.StreamMarketsRequest{
 		MarketIds: marketIds,
 	}
@@ -837,7 +837,7 @@ func (c *exchangeClient) StreamSpotMarket(ctx context.Context, marketIds []strin
 	return stream, nil
 }
 
-func (c *exchangeClient) StreamSpotOrders(ctx context.Context, req spotExchangePB.StreamOrdersRequest) (spotExchangePB.InjectiveSpotExchangeRPC_StreamOrdersClient, error) {
+func (c *exchangeClient) StreamSpotOrders(ctx context.Context, req spotExchangePB.StreamOrdersRequest) (spotExchangePB.KaijuSpotExchangeRPC_StreamOrdersClient, error) {
 	ctx = c.getCookie(ctx)
 	stream, err := c.spotExchangeClient.StreamOrders(ctx, &req)
 	if err != nil {
@@ -867,7 +867,7 @@ func (c *exchangeClient) GetSpotTrades(ctx context.Context, req spotExchangePB.T
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamSpotTrades(ctx context.Context, req spotExchangePB.StreamTradesRequest) (spotExchangePB.InjectiveSpotExchangeRPC_StreamTradesClient, error) {
+func (c *exchangeClient) StreamSpotTrades(ctx context.Context, req spotExchangePB.StreamTradesRequest) (spotExchangePB.KaijuSpotExchangeRPC_StreamTradesClient, error) {
 	ctx = c.getCookie(ctx)
 	stream, err := c.spotExchangeClient.StreamTrades(ctx, &req)
 	if err != nil {
@@ -975,7 +975,7 @@ func (c *exchangeClient) GetInfo(ctx context.Context, req metaPB.InfoRequest) (m
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamKeepalive(ctx context.Context) (metaPB.InjectiveMetaRPC_StreamKeepaliveClient, error) {
+func (c *exchangeClient) StreamKeepalive(ctx context.Context) (metaPB.KaijuMetaRPC_StreamKeepaliveClient, error) {
 	req := metaPB.StreamKeepaliveRequest{}
 
 	ctx = c.getCookie(ctx)
@@ -1110,7 +1110,7 @@ func (c *exchangeClient) GetIBCTransfers(ctx context.Context, req explorerPB.Get
 	return *res, nil
 }
 
-func (c *exchangeClient) StreamTxs(ctx context.Context) (explorerPB.InjectiveExplorerRPC_StreamTxsClient, error) {
+func (c *exchangeClient) StreamTxs(ctx context.Context) (explorerPB.KaijuExplorerRPC_StreamTxsClient, error) {
 	req := explorerPB.StreamTxsRequest{}
 
 	ctx = c.getCookie(ctx)
@@ -1129,7 +1129,7 @@ func (c *exchangeClient) StreamTxs(ctx context.Context) (explorerPB.InjectiveExp
 	return stream, nil
 }
 
-func (c *exchangeClient) StreamBlocks(ctx context.Context) (explorerPB.InjectiveExplorerRPC_StreamBlocksClient, error) {
+func (c *exchangeClient) StreamBlocks(ctx context.Context) (explorerPB.KaijuExplorerRPC_StreamBlocksClient, error) {
 	req := explorerPB.StreamBlocksRequest{}
 
 	ctx = c.getCookie(ctx)

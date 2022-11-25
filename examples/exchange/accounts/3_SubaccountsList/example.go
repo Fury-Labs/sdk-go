@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/InjectiveLabs/sdk-go/client/common"
-	exchangeclient "github.com/InjectiveLabs/sdk-go/client/exchange"
+	"github.com/Fury-Labs/sdk-go/client/common"
+	exchangeclient "github.com/Fury-Labs/sdk-go/client/exchange"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 	}
 
 	ctx := context.Background()
-	accountAddress := "inj14au322k9munkmx5wrchz9q30juf5wjgz2cfqku"
+	accountAddress := "kai14au322k9munkmx5wrchz9q30juf5wjgz2cfqku"
 	res, err := exchangeClient.GetSubaccountsList(ctx, accountAddress)
 	if err != nil {
 		fmt.Println(err)

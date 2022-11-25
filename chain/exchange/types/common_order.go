@@ -110,7 +110,7 @@ var eip712OrderTypes = gethsigner.Types{
 func computeOrderHash(marketId, subaccountId, feeRecipient, price, quantity, margin, triggerPrice, orderType string, nonce uint32) (common.Hash, error) {
 	chainID := ethmath.NewHexOrDecimal256(888)
 	var domain = gethsigner.TypedDataDomain{
-		Name:              "Injective Protocol",
+		Name:              "Kaiju Protocol",
 		Version:           "2.0.0",
 		ChainId:           chainID,
 		VerifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",

@@ -4,10 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	explorerPB "github.com/InjectiveLabs/sdk-go/exchange/explorer_rpc/pb"
+	explorerPB "github.com/Fury-Labs/sdk-go/exchange/explorer_rpc/pb"
 
-	"github.com/InjectiveLabs/sdk-go/client/common"
-	exchangeclient "github.com/InjectiveLabs/sdk-go/client/exchange"
+	"github.com/Fury-Labs/sdk-go/client/common"
+	exchangeclient "github.com/Fury-Labs/sdk-go/client/exchange"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	address := "inj1akxycslq8cjt0uffw4rjmfm3echchptu52a2dq"
+	address := "kai1akxycslq8cjt0uffw4rjmfm3echchptu52a2dq"
 	after := uint64(14112176)
 
 	req := explorerPB.GetAccountTxsRequest{

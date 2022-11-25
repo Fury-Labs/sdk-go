@@ -1,12 +1,12 @@
 syntax = "proto3";
-package injective.peggy.v1;
+package kaiju.peggy.v1;
 
 // TODO-JT: add ERC20DeployedEvent claim
 
 import "gogoproto/gogo.proto";
 import "google/protobuf/any.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/peggy/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/peggy/types";
 
 // ClaimType is the cosmos type of an event from the counterpart chain that can
 // be handled

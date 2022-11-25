@@ -1,11 +1,11 @@
 syntax = "proto3";
-package injective.exchange.v1beta1;
+package kaiju.exchange.v1beta1;
 
-import "injective/exchange/v1beta1/exchange.proto";
-import "injective/exchange/v1beta1/tx.proto";
+import "kaiju/exchange/v1beta1/exchange.proto";
+import "kaiju/exchange/v1beta1/tx.proto";
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/exchange/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/exchange/types";
 
 // GenesisState defines the exchange module's genesis state.
 message GenesisState {

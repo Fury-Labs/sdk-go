@@ -192,7 +192,7 @@ func (m *SpotLimitOrder) ToTrimmed() *TrimmedSpotLimitOrder {
 func (o *SpotOrder) ComputeOrderHash(nonce uint32) (common.Hash, error) {
 	chainID := ethmath.NewHexOrDecimal256(888)
 	var domain = gethsigner.TypedDataDomain{
-		Name:              "Injective Protocol",
+		Name:              "Kaiju Protocol",
 		Version:           "2.0.0",
 		ChainId:           chainID,
 		VerifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",

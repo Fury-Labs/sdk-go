@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	chainclient "github.com/InjectiveLabs/sdk-go/client/chain"
-	"github.com/InjectiveLabs/sdk-go/client/common"
+	chainclient "github.com/Fury-Labs/sdk-go/client/chain"
+	"github.com/Fury-Labs/sdk-go/client/common"
 	rpchttp "github.com/tendermint/tendermint/rpc/client/http"
 )
 
@@ -25,14 +25,14 @@ func main() {
 		clientCtx,
 		network.ChainGrpcEndpoint,
 		common.OptionTLSCert(network.ChainTlsCert),
-		common.OptionGasPrices("500000000inj"),
+		common.OptionGasPrices("500000000kai"),
 	)
 	if err != nil {
 		panic(err)
 	}
 
 	failEventCh := make(chan map[string]uint, 10000)
-	go chainClient.StreamEventOrderFail("inj1rwv4zn3jptsqs7l8lpa3uvzhs57y8duemete9e", failEventCh)
+	go chainClient.StreamEventOrderFail("kai1rwv4zn3jptsqs7l8lpa3uvzhs57y8duemete9e", failEventCh)
 	for {
 		e := <-failEventCh
 		fmt.Println(e)

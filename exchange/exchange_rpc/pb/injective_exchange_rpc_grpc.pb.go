@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.4
-// source: injective_exchange_rpc.proto
+// source: kaiju_exchange_rpc.proto
 
-package injective_exchange_rpcpb
+package kaiju_exchange_rpcpb
 
 import (
 	context "context"
@@ -18,10 +18,10 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// InjectiveExchangeRPCClient is the client API for InjectiveExchangeRPC service.
+// KaijuExchangeRPCClient is the client API for KaijuExchangeRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type InjectiveExchangeRPCClient interface {
+type KaijuExchangeRPCClient interface {
 	// GetTx gets transaction details by hash.
 	GetTx(ctx context.Context, in *GetTxRequest, opts ...grpc.CallOption) (*GetTxResponse, error)
 	// PrepareTx generates a Web3-signable body for a Cosmos transaction
@@ -36,72 +36,72 @@ type InjectiveExchangeRPCClient interface {
 	GetFeePayer(ctx context.Context, in *GetFeePayerRequest, opts ...grpc.CallOption) (*GetFeePayerResponse, error)
 }
 
-type injectiveExchangeRPCClient struct {
+type kaijuExchangeRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewInjectiveExchangeRPCClient(cc grpc.ClientConnInterface) InjectiveExchangeRPCClient {
-	return &injectiveExchangeRPCClient{cc}
+func NewKaijuExchangeRPCClient(cc grpc.ClientConnInterface) KaijuExchangeRPCClient {
+	return &kaijuExchangeRPCClient{cc}
 }
 
-func (c *injectiveExchangeRPCClient) GetTx(ctx context.Context, in *GetTxRequest, opts ...grpc.CallOption) (*GetTxResponse, error) {
+func (c *kaijuExchangeRPCClient) GetTx(ctx context.Context, in *GetTxRequest, opts ...grpc.CallOption) (*GetTxResponse, error) {
 	out := new(GetTxResponse)
-	err := c.cc.Invoke(ctx, "/injective_exchange_rpc.InjectiveExchangeRPC/GetTx", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_exchange_rpc.KaijuExchangeRPC/GetTx", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExchangeRPCClient) PrepareTx(ctx context.Context, in *PrepareTxRequest, opts ...grpc.CallOption) (*PrepareTxResponse, error) {
+func (c *kaijuExchangeRPCClient) PrepareTx(ctx context.Context, in *PrepareTxRequest, opts ...grpc.CallOption) (*PrepareTxResponse, error) {
 	out := new(PrepareTxResponse)
-	err := c.cc.Invoke(ctx, "/injective_exchange_rpc.InjectiveExchangeRPC/PrepareTx", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_exchange_rpc.KaijuExchangeRPC/PrepareTx", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExchangeRPCClient) BroadcastTx(ctx context.Context, in *BroadcastTxRequest, opts ...grpc.CallOption) (*BroadcastTxResponse, error) {
+func (c *kaijuExchangeRPCClient) BroadcastTx(ctx context.Context, in *BroadcastTxRequest, opts ...grpc.CallOption) (*BroadcastTxResponse, error) {
 	out := new(BroadcastTxResponse)
-	err := c.cc.Invoke(ctx, "/injective_exchange_rpc.InjectiveExchangeRPC/BroadcastTx", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_exchange_rpc.KaijuExchangeRPC/BroadcastTx", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExchangeRPCClient) PrepareCosmosTx(ctx context.Context, in *PrepareCosmosTxRequest, opts ...grpc.CallOption) (*PrepareCosmosTxResponse, error) {
+func (c *kaijuExchangeRPCClient) PrepareCosmosTx(ctx context.Context, in *PrepareCosmosTxRequest, opts ...grpc.CallOption) (*PrepareCosmosTxResponse, error) {
 	out := new(PrepareCosmosTxResponse)
-	err := c.cc.Invoke(ctx, "/injective_exchange_rpc.InjectiveExchangeRPC/PrepareCosmosTx", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_exchange_rpc.KaijuExchangeRPC/PrepareCosmosTx", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExchangeRPCClient) BroadcastCosmosTx(ctx context.Context, in *BroadcastCosmosTxRequest, opts ...grpc.CallOption) (*BroadcastCosmosTxResponse, error) {
+func (c *kaijuExchangeRPCClient) BroadcastCosmosTx(ctx context.Context, in *BroadcastCosmosTxRequest, opts ...grpc.CallOption) (*BroadcastCosmosTxResponse, error) {
 	out := new(BroadcastCosmosTxResponse)
-	err := c.cc.Invoke(ctx, "/injective_exchange_rpc.InjectiveExchangeRPC/BroadcastCosmosTx", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_exchange_rpc.KaijuExchangeRPC/BroadcastCosmosTx", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveExchangeRPCClient) GetFeePayer(ctx context.Context, in *GetFeePayerRequest, opts ...grpc.CallOption) (*GetFeePayerResponse, error) {
+func (c *kaijuExchangeRPCClient) GetFeePayer(ctx context.Context, in *GetFeePayerRequest, opts ...grpc.CallOption) (*GetFeePayerResponse, error) {
 	out := new(GetFeePayerResponse)
-	err := c.cc.Invoke(ctx, "/injective_exchange_rpc.InjectiveExchangeRPC/GetFeePayer", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_exchange_rpc.KaijuExchangeRPC/GetFeePayer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// InjectiveExchangeRPCServer is the server API for InjectiveExchangeRPC service.
-// All implementations must embed UnimplementedInjectiveExchangeRPCServer
+// KaijuExchangeRPCServer is the server API for KaijuExchangeRPC service.
+// All implementations must embed UnimplementedKaijuExchangeRPCServer
 // for forward compatibility
-type InjectiveExchangeRPCServer interface {
+type KaijuExchangeRPCServer interface {
 	// GetTx gets transaction details by hash.
 	GetTx(context.Context, *GetTxRequest) (*GetTxResponse, error)
 	// PrepareTx generates a Web3-signable body for a Cosmos transaction
@@ -114,184 +114,184 @@ type InjectiveExchangeRPCServer interface {
 	BroadcastCosmosTx(context.Context, *BroadcastCosmosTxRequest) (*BroadcastCosmosTxResponse, error)
 	// Return fee payer information's
 	GetFeePayer(context.Context, *GetFeePayerRequest) (*GetFeePayerResponse, error)
-	mustEmbedUnimplementedInjectiveExchangeRPCServer()
+	mustEmbedUnimplementedKaijuExchangeRPCServer()
 }
 
-// UnimplementedInjectiveExchangeRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedInjectiveExchangeRPCServer struct {
+// UnimplementedKaijuExchangeRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedKaijuExchangeRPCServer struct {
 }
 
-func (UnimplementedInjectiveExchangeRPCServer) GetTx(context.Context, *GetTxRequest) (*GetTxResponse, error) {
+func (UnimplementedKaijuExchangeRPCServer) GetTx(context.Context, *GetTxRequest) (*GetTxResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTx not implemented")
 }
-func (UnimplementedInjectiveExchangeRPCServer) PrepareTx(context.Context, *PrepareTxRequest) (*PrepareTxResponse, error) {
+func (UnimplementedKaijuExchangeRPCServer) PrepareTx(context.Context, *PrepareTxRequest) (*PrepareTxResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PrepareTx not implemented")
 }
-func (UnimplementedInjectiveExchangeRPCServer) BroadcastTx(context.Context, *BroadcastTxRequest) (*BroadcastTxResponse, error) {
+func (UnimplementedKaijuExchangeRPCServer) BroadcastTx(context.Context, *BroadcastTxRequest) (*BroadcastTxResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BroadcastTx not implemented")
 }
-func (UnimplementedInjectiveExchangeRPCServer) PrepareCosmosTx(context.Context, *PrepareCosmosTxRequest) (*PrepareCosmosTxResponse, error) {
+func (UnimplementedKaijuExchangeRPCServer) PrepareCosmosTx(context.Context, *PrepareCosmosTxRequest) (*PrepareCosmosTxResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PrepareCosmosTx not implemented")
 }
-func (UnimplementedInjectiveExchangeRPCServer) BroadcastCosmosTx(context.Context, *BroadcastCosmosTxRequest) (*BroadcastCosmosTxResponse, error) {
+func (UnimplementedKaijuExchangeRPCServer) BroadcastCosmosTx(context.Context, *BroadcastCosmosTxRequest) (*BroadcastCosmosTxResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BroadcastCosmosTx not implemented")
 }
-func (UnimplementedInjectiveExchangeRPCServer) GetFeePayer(context.Context, *GetFeePayerRequest) (*GetFeePayerResponse, error) {
+func (UnimplementedKaijuExchangeRPCServer) GetFeePayer(context.Context, *GetFeePayerRequest) (*GetFeePayerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFeePayer not implemented")
 }
-func (UnimplementedInjectiveExchangeRPCServer) mustEmbedUnimplementedInjectiveExchangeRPCServer() {}
+func (UnimplementedKaijuExchangeRPCServer) mustEmbedUnimplementedKaijuExchangeRPCServer() {}
 
-// UnsafeInjectiveExchangeRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to InjectiveExchangeRPCServer will
+// UnsafeKaijuExchangeRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KaijuExchangeRPCServer will
 // result in compilation errors.
-type UnsafeInjectiveExchangeRPCServer interface {
-	mustEmbedUnimplementedInjectiveExchangeRPCServer()
+type UnsafeKaijuExchangeRPCServer interface {
+	mustEmbedUnimplementedKaijuExchangeRPCServer()
 }
 
-func RegisterInjectiveExchangeRPCServer(s grpc.ServiceRegistrar, srv InjectiveExchangeRPCServer) {
-	s.RegisterService(&InjectiveExchangeRPC_ServiceDesc, srv)
+func RegisterKaijuExchangeRPCServer(s grpc.ServiceRegistrar, srv KaijuExchangeRPCServer) {
+	s.RegisterService(&KaijuExchangeRPC_ServiceDesc, srv)
 }
 
-func _InjectiveExchangeRPC_GetTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExchangeRPC_GetTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTxRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExchangeRPCServer).GetTx(ctx, in)
+		return srv.(KaijuExchangeRPCServer).GetTx(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_exchange_rpc.InjectiveExchangeRPC/GetTx",
+		FullMethod: "/kaiju_exchange_rpc.KaijuExchangeRPC/GetTx",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExchangeRPCServer).GetTx(ctx, req.(*GetTxRequest))
+		return srv.(KaijuExchangeRPCServer).GetTx(ctx, req.(*GetTxRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExchangeRPC_PrepareTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExchangeRPC_PrepareTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PrepareTxRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExchangeRPCServer).PrepareTx(ctx, in)
+		return srv.(KaijuExchangeRPCServer).PrepareTx(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_exchange_rpc.InjectiveExchangeRPC/PrepareTx",
+		FullMethod: "/kaiju_exchange_rpc.KaijuExchangeRPC/PrepareTx",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExchangeRPCServer).PrepareTx(ctx, req.(*PrepareTxRequest))
+		return srv.(KaijuExchangeRPCServer).PrepareTx(ctx, req.(*PrepareTxRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExchangeRPC_BroadcastTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExchangeRPC_BroadcastTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BroadcastTxRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExchangeRPCServer).BroadcastTx(ctx, in)
+		return srv.(KaijuExchangeRPCServer).BroadcastTx(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_exchange_rpc.InjectiveExchangeRPC/BroadcastTx",
+		FullMethod: "/kaiju_exchange_rpc.KaijuExchangeRPC/BroadcastTx",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExchangeRPCServer).BroadcastTx(ctx, req.(*BroadcastTxRequest))
+		return srv.(KaijuExchangeRPCServer).BroadcastTx(ctx, req.(*BroadcastTxRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExchangeRPC_PrepareCosmosTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExchangeRPC_PrepareCosmosTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PrepareCosmosTxRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExchangeRPCServer).PrepareCosmosTx(ctx, in)
+		return srv.(KaijuExchangeRPCServer).PrepareCosmosTx(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_exchange_rpc.InjectiveExchangeRPC/PrepareCosmosTx",
+		FullMethod: "/kaiju_exchange_rpc.KaijuExchangeRPC/PrepareCosmosTx",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExchangeRPCServer).PrepareCosmosTx(ctx, req.(*PrepareCosmosTxRequest))
+		return srv.(KaijuExchangeRPCServer).PrepareCosmosTx(ctx, req.(*PrepareCosmosTxRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExchangeRPC_BroadcastCosmosTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExchangeRPC_BroadcastCosmosTx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BroadcastCosmosTxRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExchangeRPCServer).BroadcastCosmosTx(ctx, in)
+		return srv.(KaijuExchangeRPCServer).BroadcastCosmosTx(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_exchange_rpc.InjectiveExchangeRPC/BroadcastCosmosTx",
+		FullMethod: "/kaiju_exchange_rpc.KaijuExchangeRPC/BroadcastCosmosTx",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExchangeRPCServer).BroadcastCosmosTx(ctx, req.(*BroadcastCosmosTxRequest))
+		return srv.(KaijuExchangeRPCServer).BroadcastCosmosTx(ctx, req.(*BroadcastCosmosTxRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveExchangeRPC_GetFeePayer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuExchangeRPC_GetFeePayer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetFeePayerRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveExchangeRPCServer).GetFeePayer(ctx, in)
+		return srv.(KaijuExchangeRPCServer).GetFeePayer(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_exchange_rpc.InjectiveExchangeRPC/GetFeePayer",
+		FullMethod: "/kaiju_exchange_rpc.KaijuExchangeRPC/GetFeePayer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveExchangeRPCServer).GetFeePayer(ctx, req.(*GetFeePayerRequest))
+		return srv.(KaijuExchangeRPCServer).GetFeePayer(ctx, req.(*GetFeePayerRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// InjectiveExchangeRPC_ServiceDesc is the grpc.ServiceDesc for InjectiveExchangeRPC service.
+// KaijuExchangeRPC_ServiceDesc is the grpc.ServiceDesc for KaijuExchangeRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var InjectiveExchangeRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "injective_exchange_rpc.InjectiveExchangeRPC",
-	HandlerType: (*InjectiveExchangeRPCServer)(nil),
+var KaijuExchangeRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kaiju_exchange_rpc.KaijuExchangeRPC",
+	HandlerType: (*KaijuExchangeRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetTx",
-			Handler:    _InjectiveExchangeRPC_GetTx_Handler,
+			Handler:    _KaijuExchangeRPC_GetTx_Handler,
 		},
 		{
 			MethodName: "PrepareTx",
-			Handler:    _InjectiveExchangeRPC_PrepareTx_Handler,
+			Handler:    _KaijuExchangeRPC_PrepareTx_Handler,
 		},
 		{
 			MethodName: "BroadcastTx",
-			Handler:    _InjectiveExchangeRPC_BroadcastTx_Handler,
+			Handler:    _KaijuExchangeRPC_BroadcastTx_Handler,
 		},
 		{
 			MethodName: "PrepareCosmosTx",
-			Handler:    _InjectiveExchangeRPC_PrepareCosmosTx_Handler,
+			Handler:    _KaijuExchangeRPC_PrepareCosmosTx_Handler,
 		},
 		{
 			MethodName: "BroadcastCosmosTx",
-			Handler:    _InjectiveExchangeRPC_BroadcastCosmosTx_Handler,
+			Handler:    _KaijuExchangeRPC_BroadcastCosmosTx_Handler,
 		},
 		{
 			MethodName: "GetFeePayer",
-			Handler:    _InjectiveExchangeRPC_GetFeePayer_Handler,
+			Handler:    _KaijuExchangeRPC_GetFeePayer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "injective_exchange_rpc.proto",
+	Metadata: "kaiju_exchange_rpc.proto",
 }

@@ -1,12 +1,12 @@
 syntax = "proto3";
-package injective.exchange.v1beta1;
+package kaiju.exchange.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "injective/oracle/v1beta1/oracle.proto";
-import "injective/exchange/v1beta1/exchange.proto";
+import "kaiju/oracle/v1beta1/oracle.proto";
+import "kaiju/exchange/v1beta1/exchange.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/exchange/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/exchange/types";
 
 
 message EventBatchSpotExecution {

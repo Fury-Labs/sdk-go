@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	log "github.com/InjectiveLabs/suplog"
+	log "github.com/Fury-Labs/suplog"
 
 	rpcclient "github.com/tendermint/tendermint/rpc/client"
 	rpchttp "github.com/tendermint/tendermint/rpc/client/http"

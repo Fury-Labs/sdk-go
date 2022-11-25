@@ -7,8 +7,8 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
-type InjectiveExecMsg struct {
-	ExecutionData ExecutionData `json:"injective_exec"`
+type KaijuExecMsg struct {
+	ExecutionData ExecutionData `json:"kaiju_exec"`
 }
 
 type ExecutionData struct {
@@ -17,7 +17,7 @@ type ExecutionData struct {
 	Args   interface{} `json:"args"`
 }
 
-func NewInjectiveExecMsg(origin sdk.AccAddress, data string) (*InjectiveExecMsg, error) {
+func NewKaijuExecMsg(origin sdk.AccAddress, data string) (*KaijuExecMsg, error) {
 	var e ExecutionData
 	if err := json.Unmarshal([]byte(data), &e); err != nil {
 		return nil, sdkerrors.Wrap(err, data)
@@ -30,7 +30,7 @@ func NewInjectiveExecMsg(origin sdk.AccAddress, data string) (*InjectiveExecMsg,
 	// override e.Origin for safety
 	e.Origin = origin.String()
 
-	return &InjectiveExecMsg{
+	return &KaijuExecMsg{
 		ExecutionData: e,
 	}, nil
 }

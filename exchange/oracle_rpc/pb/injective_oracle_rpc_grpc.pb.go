@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.4
-// source: injective_oracle_rpc.proto
+// source: kaiju_oracle_rpc.proto
 
-package injective_oracle_rpcpb
+package kaiju_oracle_rpcpb
 
 import (
 	context "context"
@@ -18,51 +18,51 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// InjectiveOracleRPCClient is the client API for InjectiveOracleRPC service.
+// KaijuOracleRPCClient is the client API for KaijuOracleRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type InjectiveOracleRPCClient interface {
+type KaijuOracleRPCClient interface {
 	// List all oracles
 	OracleList(ctx context.Context, in *OracleListRequest, opts ...grpc.CallOption) (*OracleListResponse, error)
 	// Gets the price of the oracle
 	Price(ctx context.Context, in *PriceRequest, opts ...grpc.CallOption) (*PriceResponse, error)
 	// StreamPrices streams new price changes for a specified oracle. If no oracles
 	// are provided, all price changes are streamed.
-	StreamPrices(ctx context.Context, in *StreamPricesRequest, opts ...grpc.CallOption) (InjectiveOracleRPC_StreamPricesClient, error)
+	StreamPrices(ctx context.Context, in *StreamPricesRequest, opts ...grpc.CallOption) (KaijuOracleRPC_StreamPricesClient, error)
 }
 
-type injectiveOracleRPCClient struct {
+type kaijuOracleRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewInjectiveOracleRPCClient(cc grpc.ClientConnInterface) InjectiveOracleRPCClient {
-	return &injectiveOracleRPCClient{cc}
+func NewKaijuOracleRPCClient(cc grpc.ClientConnInterface) KaijuOracleRPCClient {
+	return &kaijuOracleRPCClient{cc}
 }
 
-func (c *injectiveOracleRPCClient) OracleList(ctx context.Context, in *OracleListRequest, opts ...grpc.CallOption) (*OracleListResponse, error) {
+func (c *kaijuOracleRPCClient) OracleList(ctx context.Context, in *OracleListRequest, opts ...grpc.CallOption) (*OracleListResponse, error) {
 	out := new(OracleListResponse)
-	err := c.cc.Invoke(ctx, "/injective_oracle_rpc.InjectiveOracleRPC/OracleList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_oracle_rpc.KaijuOracleRPC/OracleList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveOracleRPCClient) Price(ctx context.Context, in *PriceRequest, opts ...grpc.CallOption) (*PriceResponse, error) {
+func (c *kaijuOracleRPCClient) Price(ctx context.Context, in *PriceRequest, opts ...grpc.CallOption) (*PriceResponse, error) {
 	out := new(PriceResponse)
-	err := c.cc.Invoke(ctx, "/injective_oracle_rpc.InjectiveOracleRPC/Price", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_oracle_rpc.KaijuOracleRPC/Price", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveOracleRPCClient) StreamPrices(ctx context.Context, in *StreamPricesRequest, opts ...grpc.CallOption) (InjectiveOracleRPC_StreamPricesClient, error) {
-	stream, err := c.cc.NewStream(ctx, &InjectiveOracleRPC_ServiceDesc.Streams[0], "/injective_oracle_rpc.InjectiveOracleRPC/StreamPrices", opts...)
+func (c *kaijuOracleRPCClient) StreamPrices(ctx context.Context, in *StreamPricesRequest, opts ...grpc.CallOption) (KaijuOracleRPC_StreamPricesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &KaijuOracleRPC_ServiceDesc.Streams[0], "/kaiju_oracle_rpc.KaijuOracleRPC/StreamPrices", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &injectiveOracleRPCStreamPricesClient{stream}
+	x := &kaijuOracleRPCStreamPricesClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -72,16 +72,16 @@ func (c *injectiveOracleRPCClient) StreamPrices(ctx context.Context, in *StreamP
 	return x, nil
 }
 
-type InjectiveOracleRPC_StreamPricesClient interface {
+type KaijuOracleRPC_StreamPricesClient interface {
 	Recv() (*StreamPricesResponse, error)
 	grpc.ClientStream
 }
 
-type injectiveOracleRPCStreamPricesClient struct {
+type kaijuOracleRPCStreamPricesClient struct {
 	grpc.ClientStream
 }
 
-func (x *injectiveOracleRPCStreamPricesClient) Recv() (*StreamPricesResponse, error) {
+func (x *kaijuOracleRPCStreamPricesClient) Recv() (*StreamPricesResponse, error) {
 	m := new(StreamPricesResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -89,125 +89,125 @@ func (x *injectiveOracleRPCStreamPricesClient) Recv() (*StreamPricesResponse, er
 	return m, nil
 }
 
-// InjectiveOracleRPCServer is the server API for InjectiveOracleRPC service.
-// All implementations must embed UnimplementedInjectiveOracleRPCServer
+// KaijuOracleRPCServer is the server API for KaijuOracleRPC service.
+// All implementations must embed UnimplementedKaijuOracleRPCServer
 // for forward compatibility
-type InjectiveOracleRPCServer interface {
+type KaijuOracleRPCServer interface {
 	// List all oracles
 	OracleList(context.Context, *OracleListRequest) (*OracleListResponse, error)
 	// Gets the price of the oracle
 	Price(context.Context, *PriceRequest) (*PriceResponse, error)
 	// StreamPrices streams new price changes for a specified oracle. If no oracles
 	// are provided, all price changes are streamed.
-	StreamPrices(*StreamPricesRequest, InjectiveOracleRPC_StreamPricesServer) error
-	mustEmbedUnimplementedInjectiveOracleRPCServer()
+	StreamPrices(*StreamPricesRequest, KaijuOracleRPC_StreamPricesServer) error
+	mustEmbedUnimplementedKaijuOracleRPCServer()
 }
 
-// UnimplementedInjectiveOracleRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedInjectiveOracleRPCServer struct {
+// UnimplementedKaijuOracleRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedKaijuOracleRPCServer struct {
 }
 
-func (UnimplementedInjectiveOracleRPCServer) OracleList(context.Context, *OracleListRequest) (*OracleListResponse, error) {
+func (UnimplementedKaijuOracleRPCServer) OracleList(context.Context, *OracleListRequest) (*OracleListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OracleList not implemented")
 }
-func (UnimplementedInjectiveOracleRPCServer) Price(context.Context, *PriceRequest) (*PriceResponse, error) {
+func (UnimplementedKaijuOracleRPCServer) Price(context.Context, *PriceRequest) (*PriceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Price not implemented")
 }
-func (UnimplementedInjectiveOracleRPCServer) StreamPrices(*StreamPricesRequest, InjectiveOracleRPC_StreamPricesServer) error {
+func (UnimplementedKaijuOracleRPCServer) StreamPrices(*StreamPricesRequest, KaijuOracleRPC_StreamPricesServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamPrices not implemented")
 }
-func (UnimplementedInjectiveOracleRPCServer) mustEmbedUnimplementedInjectiveOracleRPCServer() {}
+func (UnimplementedKaijuOracleRPCServer) mustEmbedUnimplementedKaijuOracleRPCServer() {}
 
-// UnsafeInjectiveOracleRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to InjectiveOracleRPCServer will
+// UnsafeKaijuOracleRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KaijuOracleRPCServer will
 // result in compilation errors.
-type UnsafeInjectiveOracleRPCServer interface {
-	mustEmbedUnimplementedInjectiveOracleRPCServer()
+type UnsafeKaijuOracleRPCServer interface {
+	mustEmbedUnimplementedKaijuOracleRPCServer()
 }
 
-func RegisterInjectiveOracleRPCServer(s grpc.ServiceRegistrar, srv InjectiveOracleRPCServer) {
-	s.RegisterService(&InjectiveOracleRPC_ServiceDesc, srv)
+func RegisterKaijuOracleRPCServer(s grpc.ServiceRegistrar, srv KaijuOracleRPCServer) {
+	s.RegisterService(&KaijuOracleRPC_ServiceDesc, srv)
 }
 
-func _InjectiveOracleRPC_OracleList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuOracleRPC_OracleList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(OracleListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveOracleRPCServer).OracleList(ctx, in)
+		return srv.(KaijuOracleRPCServer).OracleList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_oracle_rpc.InjectiveOracleRPC/OracleList",
+		FullMethod: "/kaiju_oracle_rpc.KaijuOracleRPC/OracleList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveOracleRPCServer).OracleList(ctx, req.(*OracleListRequest))
+		return srv.(KaijuOracleRPCServer).OracleList(ctx, req.(*OracleListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveOracleRPC_Price_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuOracleRPC_Price_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PriceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveOracleRPCServer).Price(ctx, in)
+		return srv.(KaijuOracleRPCServer).Price(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_oracle_rpc.InjectiveOracleRPC/Price",
+		FullMethod: "/kaiju_oracle_rpc.KaijuOracleRPC/Price",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveOracleRPCServer).Price(ctx, req.(*PriceRequest))
+		return srv.(KaijuOracleRPCServer).Price(ctx, req.(*PriceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveOracleRPC_StreamPrices_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _KaijuOracleRPC_StreamPrices_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(StreamPricesRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(InjectiveOracleRPCServer).StreamPrices(m, &injectiveOracleRPCStreamPricesServer{stream})
+	return srv.(KaijuOracleRPCServer).StreamPrices(m, &kaijuOracleRPCStreamPricesServer{stream})
 }
 
-type InjectiveOracleRPC_StreamPricesServer interface {
+type KaijuOracleRPC_StreamPricesServer interface {
 	Send(*StreamPricesResponse) error
 	grpc.ServerStream
 }
 
-type injectiveOracleRPCStreamPricesServer struct {
+type kaijuOracleRPCStreamPricesServer struct {
 	grpc.ServerStream
 }
 
-func (x *injectiveOracleRPCStreamPricesServer) Send(m *StreamPricesResponse) error {
+func (x *kaijuOracleRPCStreamPricesServer) Send(m *StreamPricesResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-// InjectiveOracleRPC_ServiceDesc is the grpc.ServiceDesc for InjectiveOracleRPC service.
+// KaijuOracleRPC_ServiceDesc is the grpc.ServiceDesc for KaijuOracleRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var InjectiveOracleRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "injective_oracle_rpc.InjectiveOracleRPC",
-	HandlerType: (*InjectiveOracleRPCServer)(nil),
+var KaijuOracleRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kaiju_oracle_rpc.KaijuOracleRPC",
+	HandlerType: (*KaijuOracleRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "OracleList",
-			Handler:    _InjectiveOracleRPC_OracleList_Handler,
+			Handler:    _KaijuOracleRPC_OracleList_Handler,
 		},
 		{
 			MethodName: "Price",
-			Handler:    _InjectiveOracleRPC_Price_Handler,
+			Handler:    _KaijuOracleRPC_Price_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "StreamPrices",
-			Handler:       _InjectiveOracleRPC_StreamPrices_Handler,
+			Handler:       _KaijuOracleRPC_StreamPrices_Handler,
 			ServerStreams: true,
 		},
 	},
-	Metadata: "injective_oracle_rpc.proto",
+	Metadata: "kaiju_oracle_rpc.proto",
 }

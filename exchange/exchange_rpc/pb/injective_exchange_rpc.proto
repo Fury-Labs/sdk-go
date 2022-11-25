@@ -1,18 +1,18 @@
 // Code generated with goa v3.5.2, DO NOT EDIT.
 //
-// InjectiveExchangeRPC protocol buffer definition
+// KaijuExchangeRPC protocol buffer definition
 //
 // Command:
-// $ goa gen github.com/InjectiveLabs/injective-indexer/api/design -o ../
+// $ goa gen github.com/Fury-Labs/kaiju-indexer/api/design -o ../
 
 syntax = "proto3";
 
-package injective_exchange_rpc;
+package kaiju_exchange_rpc;
 
-option go_package = "/injective_exchange_rpcpb";
+option go_package = "/kaiju_exchange_rpcpb";
 
-// InjectiveExchangeRPC defines gRPC API of an Injective Exchange service.
-service InjectiveExchangeRPC {
+// KaijuExchangeRPC defines gRPC API of an Kaiju Exchange service.
+service KaijuExchangeRPC {
 	// GetTx gets transaction details by hash.
 	rpc GetTx (GetTxRequest) returns (GetTxResponse);
 	// PrepareTx generates a Web3-signable body for a Cosmos transaction

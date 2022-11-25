@@ -71,7 +71,7 @@ func NewRegistryDeactivateMsg(contractAddress string) ([]byte, error) {
 	deactivateMsg := RegistryDeactivateMsg{RegistryDeactivate: &RegistryDeactivate{ContractAddress: contractAddress}}
 
 	// nolint:all
-	// execMsg := []byte('{"deactivate":{"contract_address":"inj1nc5tatafv6eyq7llkr2gv50ff9e22mnfhg8yh3"}}')
+	// execMsg := []byte('{"deactivate":{"contract_address":"kai1nc5tatafv6eyq7llkr2gv50ff9e22mnfhg8yh3"}}')
 	execMsg, err := json.Marshal(deactivateMsg)
 	if err != nil {
 		return nil, err

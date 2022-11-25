@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.4
-// source: injective_insurance_rpc.proto
+// source: kaiju_insurance_rpc.proto
 
-package injective_insurance_rpcpb
+package kaiju_insurance_rpcpb
 
 import (
 	context "context"
@@ -18,128 +18,128 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// InjectiveInsuranceRPCClient is the client API for InjectiveInsuranceRPC service.
+// KaijuInsuranceRPCClient is the client API for KaijuInsuranceRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type InjectiveInsuranceRPCClient interface {
+type KaijuInsuranceRPCClient interface {
 	// Funds lists all insurance funds.
 	Funds(ctx context.Context, in *FundsRequest, opts ...grpc.CallOption) (*FundsResponse, error)
 	// PendingRedemptions lists all pending redemptions according to a filter
 	Redemptions(ctx context.Context, in *RedemptionsRequest, opts ...grpc.CallOption) (*RedemptionsResponse, error)
 }
 
-type injectiveInsuranceRPCClient struct {
+type kaijuInsuranceRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewInjectiveInsuranceRPCClient(cc grpc.ClientConnInterface) InjectiveInsuranceRPCClient {
-	return &injectiveInsuranceRPCClient{cc}
+func NewKaijuInsuranceRPCClient(cc grpc.ClientConnInterface) KaijuInsuranceRPCClient {
+	return &kaijuInsuranceRPCClient{cc}
 }
 
-func (c *injectiveInsuranceRPCClient) Funds(ctx context.Context, in *FundsRequest, opts ...grpc.CallOption) (*FundsResponse, error) {
+func (c *kaijuInsuranceRPCClient) Funds(ctx context.Context, in *FundsRequest, opts ...grpc.CallOption) (*FundsResponse, error) {
 	out := new(FundsResponse)
-	err := c.cc.Invoke(ctx, "/injective_insurance_rpc.InjectiveInsuranceRPC/Funds", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_insurance_rpc.KaijuInsuranceRPC/Funds", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *injectiveInsuranceRPCClient) Redemptions(ctx context.Context, in *RedemptionsRequest, opts ...grpc.CallOption) (*RedemptionsResponse, error) {
+func (c *kaijuInsuranceRPCClient) Redemptions(ctx context.Context, in *RedemptionsRequest, opts ...grpc.CallOption) (*RedemptionsResponse, error) {
 	out := new(RedemptionsResponse)
-	err := c.cc.Invoke(ctx, "/injective_insurance_rpc.InjectiveInsuranceRPC/Redemptions", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kaiju_insurance_rpc.KaijuInsuranceRPC/Redemptions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// InjectiveInsuranceRPCServer is the server API for InjectiveInsuranceRPC service.
-// All implementations must embed UnimplementedInjectiveInsuranceRPCServer
+// KaijuInsuranceRPCServer is the server API for KaijuInsuranceRPC service.
+// All implementations must embed UnimplementedKaijuInsuranceRPCServer
 // for forward compatibility
-type InjectiveInsuranceRPCServer interface {
+type KaijuInsuranceRPCServer interface {
 	// Funds lists all insurance funds.
 	Funds(context.Context, *FundsRequest) (*FundsResponse, error)
 	// PendingRedemptions lists all pending redemptions according to a filter
 	Redemptions(context.Context, *RedemptionsRequest) (*RedemptionsResponse, error)
-	mustEmbedUnimplementedInjectiveInsuranceRPCServer()
+	mustEmbedUnimplementedKaijuInsuranceRPCServer()
 }
 
-// UnimplementedInjectiveInsuranceRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedInjectiveInsuranceRPCServer struct {
+// UnimplementedKaijuInsuranceRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedKaijuInsuranceRPCServer struct {
 }
 
-func (UnimplementedInjectiveInsuranceRPCServer) Funds(context.Context, *FundsRequest) (*FundsResponse, error) {
+func (UnimplementedKaijuInsuranceRPCServer) Funds(context.Context, *FundsRequest) (*FundsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Funds not implemented")
 }
-func (UnimplementedInjectiveInsuranceRPCServer) Redemptions(context.Context, *RedemptionsRequest) (*RedemptionsResponse, error) {
+func (UnimplementedKaijuInsuranceRPCServer) Redemptions(context.Context, *RedemptionsRequest) (*RedemptionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Redemptions not implemented")
 }
-func (UnimplementedInjectiveInsuranceRPCServer) mustEmbedUnimplementedInjectiveInsuranceRPCServer() {}
+func (UnimplementedKaijuInsuranceRPCServer) mustEmbedUnimplementedKaijuInsuranceRPCServer() {}
 
-// UnsafeInjectiveInsuranceRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to InjectiveInsuranceRPCServer will
+// UnsafeKaijuInsuranceRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KaijuInsuranceRPCServer will
 // result in compilation errors.
-type UnsafeInjectiveInsuranceRPCServer interface {
-	mustEmbedUnimplementedInjectiveInsuranceRPCServer()
+type UnsafeKaijuInsuranceRPCServer interface {
+	mustEmbedUnimplementedKaijuInsuranceRPCServer()
 }
 
-func RegisterInjectiveInsuranceRPCServer(s grpc.ServiceRegistrar, srv InjectiveInsuranceRPCServer) {
-	s.RegisterService(&InjectiveInsuranceRPC_ServiceDesc, srv)
+func RegisterKaijuInsuranceRPCServer(s grpc.ServiceRegistrar, srv KaijuInsuranceRPCServer) {
+	s.RegisterService(&KaijuInsuranceRPC_ServiceDesc, srv)
 }
 
-func _InjectiveInsuranceRPC_Funds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuInsuranceRPC_Funds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FundsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveInsuranceRPCServer).Funds(ctx, in)
+		return srv.(KaijuInsuranceRPCServer).Funds(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_insurance_rpc.InjectiveInsuranceRPC/Funds",
+		FullMethod: "/kaiju_insurance_rpc.KaijuInsuranceRPC/Funds",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveInsuranceRPCServer).Funds(ctx, req.(*FundsRequest))
+		return srv.(KaijuInsuranceRPCServer).Funds(ctx, req.(*FundsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InjectiveInsuranceRPC_Redemptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _KaijuInsuranceRPC_Redemptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RedemptionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InjectiveInsuranceRPCServer).Redemptions(ctx, in)
+		return srv.(KaijuInsuranceRPCServer).Redemptions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/injective_insurance_rpc.InjectiveInsuranceRPC/Redemptions",
+		FullMethod: "/kaiju_insurance_rpc.KaijuInsuranceRPC/Redemptions",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InjectiveInsuranceRPCServer).Redemptions(ctx, req.(*RedemptionsRequest))
+		return srv.(KaijuInsuranceRPCServer).Redemptions(ctx, req.(*RedemptionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// InjectiveInsuranceRPC_ServiceDesc is the grpc.ServiceDesc for InjectiveInsuranceRPC service.
+// KaijuInsuranceRPC_ServiceDesc is the grpc.ServiceDesc for KaijuInsuranceRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var InjectiveInsuranceRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "injective_insurance_rpc.InjectiveInsuranceRPC",
-	HandlerType: (*InjectiveInsuranceRPCServer)(nil),
+var KaijuInsuranceRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kaiju_insurance_rpc.KaijuInsuranceRPC",
+	HandlerType: (*KaijuInsuranceRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Funds",
-			Handler:    _InjectiveInsuranceRPC_Funds_Handler,
+			Handler:    _KaijuInsuranceRPC_Funds_Handler,
 		},
 		{
 			MethodName: "Redemptions",
-			Handler:    _InjectiveInsuranceRPC_Redemptions_Handler,
+			Handler:    _KaijuInsuranceRPC_Redemptions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "injective_insurance_rpc.proto",
+	Metadata: "kaiju_insurance_rpc.proto",
 }

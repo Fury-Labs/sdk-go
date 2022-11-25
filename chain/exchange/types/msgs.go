@@ -12,9 +12,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/auth/signing"
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/InjectiveLabs/sdk-go/chain/crypto/ethsecp256k1"
-	oracletypes "github.com/InjectiveLabs/sdk-go/chain/oracle/types"
-	wasmxtypes "github.com/InjectiveLabs/sdk-go/chain/wasmx/types"
+	"github.com/Fury-Labs/sdk-go/chain/crypto/ethsecp256k1"
+	oracletypes "github.com/Fury-Labs/sdk-go/chain/oracle/types"
+	wasmxtypes "github.com/Fury-Labs/sdk-go/chain/wasmx/types"
 )
 
 const RouterKey = ModuleName
@@ -1462,7 +1462,7 @@ func (msg *MsgPrivilegedExecuteContract) ValidateBasic() error {
 }
 
 func (msg *MsgPrivilegedExecuteContract) HasEmptyFunds() bool {
-	return msg.Funds == "" || msg.Funds == "0" || msg.Funds == "0inj"
+	return msg.Funds == "" || msg.Funds == "0" || msg.Funds == "0kai"
 }
 
 func (msg *MsgPrivilegedExecuteContract) GetSignBytes() []byte {

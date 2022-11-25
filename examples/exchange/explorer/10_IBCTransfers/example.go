@@ -4,10 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	explorerPB "github.com/InjectiveLabs/sdk-go/exchange/explorer_rpc/pb"
+	explorerPB "github.com/Fury-Labs/sdk-go/exchange/explorer_rpc/pb"
 
-	"github.com/InjectiveLabs/sdk-go/client/common"
-	exchangeclient "github.com/InjectiveLabs/sdk-go/client/exchange"
+	"github.com/Fury-Labs/sdk-go/client/common"
+	exchangeclient "github.com/Fury-Labs/sdk-go/client/exchange"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 	}
 
 	ctx := context.Background()
-	receiver := "inj1ddcp5ftqmntudn4m6heg2adud6hn58urnwlmkh"
+	receiver := "kai1ddcp5ftqmntudn4m6heg2adud6hn58urnwlmkh"
 
 	req := explorerPB.GetIBCTransferTxsRequest{
 		Receiver: receiver,

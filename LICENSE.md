@@ -1,4 +1,4 @@
-Copyright © 2020 - 2022 Injective Labs Inc. (https://injectivelabs.org/)
+Copyright © 2020 - 2022 Kaiju Labs Inc. (https://fury-labs.org/)
 
                                  Apache License
                            Version 2.0, January 2004

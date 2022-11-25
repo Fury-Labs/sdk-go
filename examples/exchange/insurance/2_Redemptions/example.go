@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/InjectiveLabs/sdk-go/client/common"
-	exchangeclient "github.com/InjectiveLabs/sdk-go/client/exchange"
-	insurancePB "github.com/InjectiveLabs/sdk-go/exchange/insurance_rpc/pb"
+	"github.com/Fury-Labs/sdk-go/client/common"
+	exchangeclient "github.com/Fury-Labs/sdk-go/client/exchange"
+	insurancePB "github.com/Fury-Labs/sdk-go/exchange/insurance_rpc/pb"
 )
 
 func main() {

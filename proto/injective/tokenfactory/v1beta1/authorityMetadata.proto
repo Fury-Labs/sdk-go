@@ -1,10 +1,10 @@
 syntax = "proto3";
-package injective.tokenfactory.v1beta1;
+package kaiju.tokenfactory.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/tokenfactory/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/tokenfactory/types";
 
 // DenomAuthorityMetadata specifies metadata for addresses that have specific
 // capabilities over a token factory denom. Right now there is only one Admin
@@ -12,6 +12,6 @@ option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/mod
 message DenomAuthorityMetadata {
   option (gogoproto.equal) = true;
 
-  // Can be empty for no admin, or a valid injective address
+  // Can be empty for no admin, or a valid kaiju address
   string admin = 1 [ (gogoproto.moretags) = "yaml:\"admin\"" ];
 }

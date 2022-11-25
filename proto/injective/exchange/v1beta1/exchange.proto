@@ -1,11 +1,11 @@
 syntax = "proto3";
-package injective.exchange.v1beta1;
+package kaiju.exchange.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "injective/oracle/v1beta1/oracle.proto";
+import "kaiju/oracle/v1beta1/oracle.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/exchange/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/exchange/types";
 
 
 enum AtomicMarketOrderAccessLevel {
@@ -20,12 +20,12 @@ enum AtomicMarketOrderAccessLevel {
 message Params {
   option (gogoproto.equal) = true;
 
-  // spot_market_instant_listing_fee defines the expedited fee in INJ required to create a spot market by bypassing governance
+  // spot_market_instant_listing_fee defines the expedited fee in KAI required to create a spot market by bypassing governance
   cosmos.base.v1beta1.Coin spot_market_instant_listing_fee = 1 [
     (gogoproto.nullable) = false
   ];
 
-  // derivative_market_instant_listing_fee defines the expedited fee in INJ required to create a derivative market by bypassing governance
+  // derivative_market_instant_listing_fee defines the expedited fee in KAI required to create a derivative market by bypassing governance
   cosmos.base.v1beta1.Coin derivative_market_instant_listing_fee = 2 [
     (gogoproto.nullable) = false
   ];
@@ -93,8 +93,8 @@ message Params {
   // max_derivative_order_side_count defines the maximum number of derivative active orders a subaccount can have for a given orderbook side
   uint32 max_derivative_order_side_count = 14;
 
-  // inj_reward_staked_requirement_threshold defines the threshold on INJ rewards after which one also needs staked INJ to receive more
-  string inj_reward_staked_requirement_threshold = 15 [
+  // kai_reward_staked_requirement_threshold defines the threshold on KAI rewards after which one also needs staked KAI to receive more
+  string kai_reward_staked_requirement_threshold = 15 [
     (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
     (gogoproto.nullable) = false
   ];
@@ -107,7 +107,7 @@ message Params {
     (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
     (gogoproto.nullable) = false
   ];
-  // binary_options_market_instant_listing_fee defines the expedited fee in INJ required to create a derivative market by bypassing governance
+  // binary_options_market_instant_listing_fee defines the expedited fee in KAI required to create a derivative market by bypassing governance
   cosmos.base.v1beta1.Coin binary_options_market_instant_listing_fee = 18 [
     (gogoproto.nullable) = false
   ];
@@ -158,7 +158,7 @@ message MarketFeeMultiplier {
   ];
 }
 
-// An object describing a derivative market in the Injective Futures Protocol.
+// An object describing a derivative market in the Kaiju Futures Protocol.
 message DerivativeMarket {
   option (gogoproto.goproto_getters) = false;
 
@@ -169,7 +169,7 @@ message DerivativeMarket {
   // Oracle quote currency
   string oracle_quote = 3;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 4;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 4;
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 5;
   // Address of the quote currency denomination for the derivative contract
@@ -217,7 +217,7 @@ message DerivativeMarket {
   ];
 
 }
-// An object describing a binary options market in Injective Protocol.
+// An object describing a binary options market in Kaiju Protocol.
 message BinaryOptionsMarket {
   option (gogoproto.goproto_getters) = false;
 
@@ -228,7 +228,7 @@ message BinaryOptionsMarket {
   // Oracle Provider
   string oracle_provider = 3;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 4;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 4;
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 5;
   // expiration timestamp

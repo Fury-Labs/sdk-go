@@ -17,7 +17,7 @@ func RegisterInterfaces(registry codectypes.InterfaceRegistry) {
 		&MsgEthereumTx{},
 	)
 
-	registry.RegisterInterface("injective.evm.v1beta1.ExtensionOptionsEthereumTx", (*ExtensionOptionsEthereumTxI)(nil))
+	registry.RegisterInterface("kaiju.evm.v1beta1.ExtensionOptionsEthereumTx", (*ExtensionOptionsEthereumTxI)(nil))
 	registry.RegisterImplementations(
 		(*ExtensionOptionsEthereumTxI)(nil),
 		&ExtensionOptionsEthereumTx{},

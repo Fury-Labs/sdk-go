@@ -5,7 +5,7 @@ import (
 
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	oracletypes "github.com/InjectiveLabs/sdk-go/chain/oracle/types"
+	oracletypes "github.com/Fury-Labs/sdk-go/chain/oracle/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
@@ -36,39 +36,39 @@ const (
 
 func init() {
 	gov.RegisterProposalType(ProposalTypeExchangeEnable)
-	gov.RegisterProposalTypeCodec(&ExchangeEnableProposal{}, "injective/ExchangeEnableProposal")
+	gov.RegisterProposalTypeCodec(&ExchangeEnableProposal{}, "kaiju/ExchangeEnableProposal")
 	gov.RegisterProposalType(ProposalTypeBatchExchangeModification)
-	gov.RegisterProposalTypeCodec(&BatchExchangeModificationProposal{}, "injective/BatchExchangeModificationProposal")
+	gov.RegisterProposalTypeCodec(&BatchExchangeModificationProposal{}, "kaiju/BatchExchangeModificationProposal")
 	gov.RegisterProposalType(ProposalTypeSpotMarketParamUpdate)
-	gov.RegisterProposalTypeCodec(&SpotMarketParamUpdateProposal{}, "injective/SpotMarketParamUpdateProposal")
+	gov.RegisterProposalTypeCodec(&SpotMarketParamUpdateProposal{}, "kaiju/SpotMarketParamUpdateProposal")
 	gov.RegisterProposalType(ProposalTypeSpotMarketLaunch)
-	gov.RegisterProposalTypeCodec(&SpotMarketLaunchProposal{}, "injective/SpotMarketLaunchProposal")
+	gov.RegisterProposalTypeCodec(&SpotMarketLaunchProposal{}, "kaiju/SpotMarketLaunchProposal")
 	gov.RegisterProposalType(ProposalTypePerpetualMarketLaunch)
-	gov.RegisterProposalTypeCodec(&PerpetualMarketLaunchProposal{}, "injective/PerpetualMarketLaunchProposal")
+	gov.RegisterProposalTypeCodec(&PerpetualMarketLaunchProposal{}, "kaiju/PerpetualMarketLaunchProposal")
 	gov.RegisterProposalType(ProposalTypeExpiryFuturesMarketLaunch)
-	gov.RegisterProposalTypeCodec(&ExpiryFuturesMarketLaunchProposal{}, "injective/ExpiryFuturesMarketLaunchProposal")
+	gov.RegisterProposalTypeCodec(&ExpiryFuturesMarketLaunchProposal{}, "kaiju/ExpiryFuturesMarketLaunchProposal")
 	gov.RegisterProposalType(ProposalTypeDerivativeMarketParamUpdate)
-	gov.RegisterProposalTypeCodec(&DerivativeMarketParamUpdateProposal{}, "injective/DerivativeMarketParamUpdateProposal")
+	gov.RegisterProposalTypeCodec(&DerivativeMarketParamUpdateProposal{}, "kaiju/DerivativeMarketParamUpdateProposal")
 	gov.RegisterProposalType(ProposalTypeMarketForcedSettlement)
-	gov.RegisterProposalTypeCodec(&MarketForcedSettlementProposal{}, "injective/MarketForcedSettlementProposal")
+	gov.RegisterProposalTypeCodec(&MarketForcedSettlementProposal{}, "kaiju/MarketForcedSettlementProposal")
 	gov.RegisterProposalType(ProposalUpdateDenomDecimals)
-	gov.RegisterProposalTypeCodec(&UpdateDenomDecimalsProposal{}, "injective/UpdateDenomDecimalsProposal")
+	gov.RegisterProposalTypeCodec(&UpdateDenomDecimalsProposal{}, "kaiju/UpdateDenomDecimalsProposal")
 	gov.RegisterProposalType(ProposalTypeTradingRewardCampaign)
-	gov.RegisterProposalTypeCodec(&TradingRewardCampaignLaunchProposal{}, "injective/TradingRewardCampaignLaunchProposal")
+	gov.RegisterProposalTypeCodec(&TradingRewardCampaignLaunchProposal{}, "kaiju/TradingRewardCampaignLaunchProposal")
 	gov.RegisterProposalType(ProposalTypeTradingRewardCampaignUpdate)
-	gov.RegisterProposalTypeCodec(&TradingRewardCampaignUpdateProposal{}, "injective/TradingRewardCampaignUpdateProposal")
+	gov.RegisterProposalTypeCodec(&TradingRewardCampaignUpdateProposal{}, "kaiju/TradingRewardCampaignUpdateProposal")
 	gov.RegisterProposalType(ProposalTypeTradingRewardPointsUpdate)
-	gov.RegisterProposalTypeCodec(&TradingRewardPendingPointsUpdateProposal{}, "injective/TradingRewardPendingPointsUpdateProposal")
+	gov.RegisterProposalTypeCodec(&TradingRewardPendingPointsUpdateProposal{}, "kaiju/TradingRewardPendingPointsUpdateProposal")
 	gov.RegisterProposalType(ProposalTypeFeeDiscountProposal)
-	gov.RegisterProposalTypeCodec(&FeeDiscountProposal{}, "injective/FeeDiscountProposal")
+	gov.RegisterProposalTypeCodec(&FeeDiscountProposal{}, "kaiju/FeeDiscountProposal")
 	gov.RegisterProposalType(ProposalTypeBatchCommunityPoolSpendProposal)
-	gov.RegisterProposalTypeCodec(&BatchCommunityPoolSpendProposal{}, "injective/BatchCommunityPoolSpendProposal")
+	gov.RegisterProposalTypeCodec(&BatchCommunityPoolSpendProposal{}, "kaiju/BatchCommunityPoolSpendProposal")
 	gov.RegisterProposalType(ProposalTypeBinaryOptionsMarketLaunch)
-	gov.RegisterProposalTypeCodec(&BinaryOptionsMarketLaunchProposal{}, "injective/BinaryOptionsMarketLaunchProposal")
+	gov.RegisterProposalTypeCodec(&BinaryOptionsMarketLaunchProposal{}, "kaiju/BinaryOptionsMarketLaunchProposal")
 	gov.RegisterProposalType(ProposalTypeBinaryOptionsMarketParamUpdate)
-	gov.RegisterProposalTypeCodec(&BinaryOptionsMarketParamUpdateProposal{}, "injective/BinaryOptionsMarketParamUpdateProposal")
+	gov.RegisterProposalTypeCodec(&BinaryOptionsMarketParamUpdateProposal{}, "kaiju/BinaryOptionsMarketParamUpdateProposal")
 	gov.RegisterProposalType(ProposalAtomicMarketOrderFeeMultiplierSchedule)
-	gov.RegisterProposalTypeCodec(&AtomicMarketOrderFeeMultiplierScheduleProposal{}, "injective/AtomicMarketOrderFeeMultiplierScheduleProposal")
+	gov.RegisterProposalTypeCodec(&AtomicMarketOrderFeeMultiplierScheduleProposal{}, "kaiju/AtomicMarketOrderFeeMultiplierScheduleProposal")
 }
 
 func SafeIsPositiveInt(v sdk.Int) bool {

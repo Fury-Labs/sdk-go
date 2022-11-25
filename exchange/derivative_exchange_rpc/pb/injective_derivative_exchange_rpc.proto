@@ -1,19 +1,19 @@
 // Code generated with goa v3.5.2, DO NOT EDIT.
 //
-// InjectiveDerivativeExchangeRPC protocol buffer definition
+// KaijuDerivativeExchangeRPC protocol buffer definition
 //
 // Command:
-// $ goa gen github.com/InjectiveLabs/injective-indexer/api/design -o ../
+// $ goa gen github.com/Fury-Labs/kaiju-indexer/api/design -o ../
 
 syntax = "proto3";
 
-package injective_derivative_exchange_rpc;
+package kaiju_derivative_exchange_rpc;
 
-option go_package = "/injective_derivative_exchange_rpcpb";
+option go_package = "/kaiju_derivative_exchange_rpcpb";
 
-// InjectiveDerivativeExchangeRPC defines gRPC API of Derivative Markets
+// KaijuDerivativeExchangeRPC defines gRPC API of Derivative Markets
 // provider.
-service InjectiveDerivativeExchangeRPC {
+service KaijuDerivativeExchangeRPC {
 	// Markets gets a list of Derivative Markets
 	rpc Markets (MarketsRequest) returns (MarketsResponse);
 	// Market gets details of a single derivative market

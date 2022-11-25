@@ -1,9 +1,9 @@
 syntax = "proto3";
-package injective.exchange.v1beta1;
+package kaiju.exchange.v1beta1;
 
 import "cosmos_proto/cosmos.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/exchange/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/exchange/types";
 
 // spot authz messages
 message CreateSpotLimitOrderAuthz {

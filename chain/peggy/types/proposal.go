@@ -12,9 +12,9 @@ const (
 
 func init() {
 	gov.RegisterProposalType(ProposalTypeBlacklistEthereumAddresses)
-	gov.RegisterProposalTypeCodec(&BlacklistEthereumAddressesProposal{}, "injective/BlacklistEthereumAddressesProposal")
+	gov.RegisterProposalTypeCodec(&BlacklistEthereumAddressesProposal{}, "kaiju/BlacklistEthereumAddressesProposal")
 	gov.RegisterProposalType(ProposalTypeRevokeEthereumBlacklist)
-	gov.RegisterProposalTypeCodec(&RevokeEthereumBlacklistProposal{}, "injective/RevokeEthereumBlacklistProposal")
+	gov.RegisterProposalTypeCodec(&RevokeEthereumBlacklistProposal{}, "kaiju/RevokeEthereumBlacklistProposal")
 }
 
 // Implements Proposal Interface

@@ -1,45 +1,45 @@
 syntax = "proto3";
-package injective.insurance.v1beta1;
+package kaiju.insurance.v1beta1;
 
 import "google/api/annotations.proto";
-import "injective/insurance/v1beta1/insurance.proto";
+import "kaiju/insurance/v1beta1/insurance.proto";
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "injective/insurance/v1beta1/genesis.proto";
+import "kaiju/insurance/v1beta1/genesis.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/insurance/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/insurance/types";
 
 // Query defines the gRPC querier service.
 service Query {
 
   // Retrieves insurance params
   rpc InsuranceParams(QueryInsuranceParamsRequest) returns (QueryInsuranceParamsResponse) {
-    option (google.api.http).get = "/injective/insurance/v1beta1/params";
+    option (google.api.http).get = "/kaiju/insurance/v1beta1/params";
   }
 
   // Retrieves individual insurance fund information from market id
   rpc InsuranceFund(QueryInsuranceFundRequest) returns (QueryInsuranceFundResponse) {
-    option (google.api.http).get = "/injective/insurance/v1beta1/insurance_fund/{market_id}";
+    option (google.api.http).get = "/kaiju/insurance/v1beta1/insurance_fund/{market_id}";
   }
 
   // Retrieves all insurance funds
   rpc InsuranceFunds(QueryInsuranceFundsRequest) returns (QueryInsuranceFundsResponse) {
-    option (google.api.http).get = "/injective/insurance/v1beta1/insurance_funds";
+    option (google.api.http).get = "/kaiju/insurance/v1beta1/insurance_funds";
   }
 
   // Retrives the value of insurance fund share token at current price (not pending redemption)
   rpc EstimatedRedemptions(QueryEstimatedRedemptionsRequest) returns (QueryEstimatedRedemptionsResponse) {
-    option (google.api.http).get = "/injective/insurance/v1beta1/estimated_redemptions";
+    option (google.api.http).get = "/kaiju/insurance/v1beta1/estimated_redemptions";
   }
 
   // Retrieves pending redemptions' share token at current price
   rpc PendingRedemptions(QueryPendingRedemptionsRequest) returns (QueryPendingRedemptionsResponse) {
-    option (google.api.http).get = "/injective/insurance/v1beta1/pending_redemptions";
+    option (google.api.http).get = "/kaiju/insurance/v1beta1/pending_redemptions";
   }
 
   // Retrieves the entire insurance module's state
   rpc InsuranceModuleState(QueryModuleStateRequest) returns (QueryModuleStateResponse) {
-    option (google.api.http).get = "/injective/insurance/v1beta1/module_state";
+    option (google.api.http).get = "/kaiju/insurance/v1beta1/module_state";
   }
 }
 

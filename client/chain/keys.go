@@ -14,9 +14,9 @@ import (
 	cosmtypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/pkg/errors"
 
-	"github.com/InjectiveLabs/sdk-go/chain/crypto/ethsecp256k1"
-	"github.com/InjectiveLabs/sdk-go/chain/crypto/hd"
-	"github.com/InjectiveLabs/sdk-go/client/common"
+	"github.com/Fury-Labs/sdk-go/chain/crypto/ethsecp256k1"
+	"github.com/Fury-Labs/sdk-go/chain/crypto/hd"
+	"github.com/Fury-Labs/sdk-go/client/common"
 )
 
 const defaultKeyringKeyName = "validator"
@@ -45,7 +45,7 @@ func InitCosmosKeyring(
 			return emptyCosmosAddress, nil, err
 		}
 
-		// Specfic to Injective chain with Ethermint keys
+		// Specfic to Kaiju chain with Ethermint keys
 		// Should be secp256k1.PrivKey for generic Cosmos chain
 		cosmosAccPk := &ethsecp256k1.PrivKey{
 			Key: pkBytes,

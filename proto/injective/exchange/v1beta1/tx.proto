@@ -1,15 +1,15 @@
 syntax = "proto3";
-package injective.exchange.v1beta1;
+package kaiju.exchange.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "injective/oracle/v1beta1/oracle.proto";
-import "injective/exchange/v1beta1/exchange.proto";
+import "kaiju/oracle/v1beta1/oracle.proto";
+import "kaiju/exchange/v1beta1/exchange.proto";
 import "cosmos/base/v1beta1/coin.proto";
 import "cosmos/distribution/v1beta1/distribution.proto";
 import "google/protobuf/any.proto";
 import "cosmos_proto/cosmos.proto";
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/exchange/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/exchange/types";
 
 // Msg defines the staking Msg service.
 service Msg {
@@ -243,7 +243,7 @@ message MsgInstantPerpetualMarketLaunch {
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 6;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 7;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 7;
   // maker_fee_rate defines the trade fee rate for makers on the perpetual market
   string maker_fee_rate = 8 [
     (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
@@ -292,7 +292,7 @@ message MsgInstantBinaryOptionsMarketLaunch {
   // Oracle Provider
   string oracle_provider = 4;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 5;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 5;
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 6;
   // maker_fee_rate defines the trade fee rate for makers on the perpetual market
@@ -343,7 +343,7 @@ message MsgInstantExpiryFuturesMarketLaunch {
   // Oracle quote currency
   string oracle_quote = 5;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 6;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 6;
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 7;
   // Expiration time of the market
@@ -852,7 +852,7 @@ message PerpetualMarketLaunchProposal {
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 7;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 8;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 8;
   // initial_margin_ratio defines the initial margin ratio for the derivative market
   string initial_margin_ratio = 9 [
     (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
@@ -900,7 +900,7 @@ message BinaryOptionsMarketLaunchProposal {
   // Oracle Provider
   string oracle_provider = 5;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 6;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 6;
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 7;
   // expiration timestamp
@@ -950,7 +950,7 @@ message ExpiryFuturesMarketLaunchProposal {
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 7;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 8;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 8;
   // Expiration time of the market
   int64 expiry = 9;
   // initial_margin_ratio defines the initial margin ratio for the derivative market
@@ -1139,7 +1139,7 @@ message ProviderOracleParams {
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 3;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 4;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 4;
 }
 
 message OracleParams {
@@ -1150,7 +1150,7 @@ message OracleParams {
   // Scale factor for oracle prices.
   uint32 oracle_scale_factor = 3;
   // Oracle type
-  injective.oracle.v1beta1.OracleType oracle_type = 4;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 4;
 }
 
 message TradingRewardCampaignLaunchProposal {

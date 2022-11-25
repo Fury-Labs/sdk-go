@@ -1,29 +1,29 @@
 syntax = "proto3";
-package injective.auction.v1beta1;
+package kaiju.auction.v1beta1;
 
 import "google/api/annotations.proto";
-import "injective/auction/v1beta1/auction.proto";
-import "injective/auction/v1beta1/genesis.proto";
+import "kaiju/auction/v1beta1/auction.proto";
+import "kaiju/auction/v1beta1/genesis.proto";
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/auction/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/auction/types";
 
 // Query defines the gRPC querier service.
 service Query {
 
   // Retrieves auction params
   rpc AuctionParams(QueryAuctionParamsRequest) returns (QueryAuctionParamsResponse) {
-    option (google.api.http).get = "/injective/auction/v1beta1/params";
+    option (google.api.http).get = "/kaiju/auction/v1beta1/params";
   }
 
   // Retrieves current auction basket with current highest bid and bidder
   rpc CurrentAuctionBasket(QueryCurrentAuctionBasketRequest) returns (QueryCurrentAuctionBasketResponse) {
-    option (google.api.http).get = "/injective/auction/v1beta1/basket";
+    option (google.api.http).get = "/kaiju/auction/v1beta1/basket";
   };
 
   // Retrieves the entire auction module's state
   rpc AuctionModuleState(QueryModuleStateRequest) returns (QueryModuleStateResponse) {
-    option (google.api.http).get = "/injective/auction/v1beta1/module_state";
+    option (google.api.http).get = "/kaiju/auction/v1beta1/module_state";
   }
 
 }

@@ -11,9 +11,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 
-	"github.com/InjectiveLabs/sdk-go/chain/evm/types"
-	"github.com/InjectiveLabs/sdk-go/ethereum/rpc"
-	"github.com/InjectiveLabs/sdk-go/wrappers"
+	"github.com/Fury-Labs/sdk-go/chain/evm/types"
+	"github.com/Fury-Labs/sdk-go/ethereum/rpc"
+	"github.com/Fury-Labs/sdk-go/wrappers"
 )
 
 // GetQueryCmd returns the parent command for all x/bank CLi query commands.

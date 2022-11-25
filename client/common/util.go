@@ -5,7 +5,7 @@ import (
 	"crypto/x509"
 	"encoding/hex"
 	"fmt"
-	chaintypes "github.com/InjectiveLabs/sdk-go/chain/types"
+	chaintypes "github.com/Fury-Labs/sdk-go/chain/types"
 	"google.golang.org/grpc/credentials"
 	"io/ioutil"
 	"strings"

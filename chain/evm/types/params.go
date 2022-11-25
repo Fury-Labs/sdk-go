@@ -38,7 +38,7 @@ func NewParams(evmDenom string, enableCreate, enableCall bool, extraEIPs ...int6
 // DefaultParams returns default evm parameters
 func DefaultParams() Params {
 	return Params{
-		EvmDenom:     "inj",
+		EvmDenom:     "kai",
 		EnableCreate: true,
 		EnableCall:   true,
 		ExtraEIPs:    []int64(nil), // TODO: define default values

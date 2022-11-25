@@ -17,13 +17,13 @@ const (
 
 func init() {
 	gov.RegisterProposalType(ProposalContractRegistrationRequest)
-	gov.RegisterProposalTypeCodec(&ContractRegistrationRequestProposal{}, "injective/ContractRegistrationRequestProposal")
+	gov.RegisterProposalTypeCodec(&ContractRegistrationRequestProposal{}, "kaiju/ContractRegistrationRequestProposal")
 	gov.RegisterProposalType(ProposalBatchContractRegistrationRequest)
-	gov.RegisterProposalTypeCodec(&BatchContractRegistrationRequestProposal{}, "injective/BatchContractRegistrationRequestProposal")
+	gov.RegisterProposalTypeCodec(&BatchContractRegistrationRequestProposal{}, "kaiju/BatchContractRegistrationRequestProposal")
 	gov.RegisterProposalType(ProposalBatchContractDeregistration)
-	gov.RegisterProposalTypeCodec(&BatchContractDeregistrationProposal{}, "injective/BatchContractDeregistrationProposal")
+	gov.RegisterProposalTypeCodec(&BatchContractDeregistrationProposal{}, "kaiju/BatchContractDeregistrationProposal")
 	gov.RegisterProposalType(ProposalBatchStoreCode)
-	gov.RegisterProposalTypeCodec(&BatchStoreCodeProposal{}, "injective/BatchStoreCodeProposal")
+	gov.RegisterProposalTypeCodec(&BatchStoreCodeProposal{}, "kaiju/BatchStoreCodeProposal")
 
 }
 

@@ -20,13 +20,13 @@ const (
 	// funding is consistently applied on the hour for all perpetual markets.
 	DefaultFundingMultipleSeconds int64 = 3600
 
-	// SpotMarketInstantListingFee is 1000 INJ
+	// SpotMarketInstantListingFee is 1000 KAI
 	SpotMarketInstantListingFee int64 = 1000
 
-	// DerivativeMarketInstantListingFee is 1000 INJ
+	// DerivativeMarketInstantListingFee is 1000 KAI
 	DerivativeMarketInstantListingFee int64 = 1000
 
-	// BinaryOptionsMarketInstantListingFee is 100 INJ
+	// BinaryOptionsMarketInstantListingFee is 100 KAI
 	BinaryOptionsMarketInstantListingFee int64 = 100
 
 	// MaxDerivativeOrderSideCount is 20
@@ -97,7 +97,7 @@ func NewParams(
 	defaultHourlyFundingRateCap sdk.Dec,
 	defaultHourlyInterestRate sdk.Dec,
 	maxDerivativeSideOrderCount uint32,
-	injRewardStakedRequirementThreshold sdk.Int,
+	kaiRewardStakedRequirementThreshold sdk.Int,
 	tradingRewardsVestingDuration int64,
 	liquidatorRewardShareRate sdk.Dec,
 	binaryOptionsMarketInstantListingFee sdk.Coin,
@@ -122,7 +122,7 @@ func NewParams(
 		DefaultHourlyFundingRateCap:                 defaultHourlyFundingRateCap,
 		DefaultHourlyInterestRate:                   defaultHourlyInterestRate,
 		MaxDerivativeOrderSideCount:                 maxDerivativeSideOrderCount,
-		InjRewardStakedRequirementThreshold:         injRewardStakedRequirementThreshold,
+		InjRewardStakedRequirementThreshold:         kaiRewardStakedRequirementThreshold,
 		TradingRewardsVestingDuration:               tradingRewardsVestingDuration,
 		LiquidatorRewardShareRate:                   liquidatorRewardShareRate,
 		BinaryOptionsMarketInstantListingFee:        binaryOptionsMarketInstantListingFee,
@@ -166,8 +166,8 @@ func (p *Params) ParamSetPairs() paramtypes.ParamSetPairs {
 // DefaultParams returns a default set of parameters.
 func DefaultParams() Params {
 	return Params{
-		SpotMarketInstantListingFee:                 sdk.NewCoin("inj", sdk.NewIntWithDecimal(SpotMarketInstantListingFee, 18)),
-		DerivativeMarketInstantListingFee:           sdk.NewCoin("inj", sdk.NewIntWithDecimal(DerivativeMarketInstantListingFee, 18)),
+		SpotMarketInstantListingFee:                 sdk.NewCoin("kai", sdk.NewIntWithDecimal(SpotMarketInstantListingFee, 18)),
+		DerivativeMarketInstantListingFee:           sdk.NewCoin("kai", sdk.NewIntWithDecimal(DerivativeMarketInstantListingFee, 18)),
 		DefaultSpotMakerFeeRate:                     sdk.NewDecWithPrec(-1, 4), // default -0.01% maker fees
 		DefaultSpotTakerFeeRate:                     sdk.NewDecWithPrec(1, 3),  // default 0.1% taker fees
 		DefaultDerivativeMakerFeeRate:               sdk.NewDecWithPrec(-1, 4), // default -0.01% maker fees
@@ -180,10 +180,10 @@ func DefaultParams() Params {
 		DefaultHourlyFundingRateCap:                 sdk.NewDecWithPrec(625, 6),     // default 0.0625% max hourly funding rate
 		DefaultHourlyInterestRate:                   sdk.NewDecWithPrec(416666, 11), // 0.01% daily interest rate = 0.0001 / 24 = 0.00000416666
 		MaxDerivativeOrderSideCount:                 MaxDerivativeOrderSideCount,
-		InjRewardStakedRequirementThreshold:         sdk.NewIntWithDecimal(100, 18), // 100 INJ
+		InjRewardStakedRequirementThreshold:         sdk.NewIntWithDecimal(100, 18), // 100 KAI
 		TradingRewardsVestingDuration:               604800,                         // 7 days
 		LiquidatorRewardShareRate:                   sdk.NewDecWithPrec(5, 2),       // 5% liquidator reward
-		BinaryOptionsMarketInstantListingFee:        sdk.NewCoin("inj", sdk.NewIntWithDecimal(BinaryOptionsMarketInstantListingFee, 18)),
+		BinaryOptionsMarketInstantListingFee:        sdk.NewCoin("kai", sdk.NewIntWithDecimal(BinaryOptionsMarketInstantListingFee, 18)),
 		AtomicMarketOrderAccessLevel:                AtomicMarketOrderAccessLevel_SmartContractsOnly,
 		SpotAtomicMarketOrderFeeMultiplier:          sdk.NewDecWithPrec(25, 1),        // default 2.5 multiplier
 		DerivativeAtomicMarketOrderFeeMultiplier:    sdk.NewDecWithPrec(25, 1),        // default 2.5 multiplier
@@ -237,7 +237,7 @@ func (p Params) Validate() error {
 		return fmt.Errorf("max_derivative_order_side_count is incorrect: %w", err)
 	}
 	if err := validateInjRewardStakedRequirementThreshold(p.InjRewardStakedRequirementThreshold); err != nil {
-		return fmt.Errorf("inj_reward_staked_requirement_threshold is incorrect: %w", err)
+		return fmt.Errorf("kai_reward_staked_requirement_threshold is incorrect: %w", err)
 	}
 	if err := validateLiquidatorRewardShareRate(p.LiquidatorRewardShareRate); err != nil {
 		return fmt.Errorf("liquidator_reward_share_rate is incorrect: %w", err)

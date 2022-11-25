@@ -1,14 +1,14 @@
 syntax = "proto3";
-package injective.insurance.v1beta1;
+package kaiju.insurance.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "injective/oracle/v1beta1/oracle.proto";
+import "kaiju/oracle/v1beta1/oracle.proto";
 
 
-option go_package = "github.com/InjectiveLabs/injective-core/injective-chain/modules/insurance/types";
+option go_package = "github.com/Fury-Labs/kaiju-core/kaiju-chain/modules/insurance/types";
 
 message Params {
   option (gogoproto.equal) = true;
@@ -41,7 +41,7 @@ message InsuranceFund {
   // Oracle quote currency of the derivative market
   string oracle_quote = 9;
   // Oracle type of the derivative market
-  injective.oracle.v1beta1.OracleType oracle_type = 10;
+  kaiju.oracle.v1beta1.OracleType oracle_type = 10;
   // Expiration time of the derivative market. Should be -1 for perpetual markets.
   int64 expiry = 11;
 }
